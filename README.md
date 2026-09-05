@@ -9,8 +9,6 @@
 どちらも査読前の原稿です。著者による公開は SSRN・PhilArchive などの窓口で行っており、
 このリポジトリは**全文を読める形に開き、版と出典をひとところに置くため**のものです。
 
-**読みやすい形の公開版** → [cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation](https://cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation/)
-
 ## 二篇
 
 ### [The Nobility and Exemplarity of the Celibate Individual](papers/celibate-individual.md)
