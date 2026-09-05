@@ -78,7 +78,7 @@ node build.js
 
 ## ライセンス
 
-本文・要旨ともに [CC BY 4.0](LICENSE)。出典を示せば、改変も含めて自由に使えます。
+© 2026 根本卓哉（Takuya Nemoto）— 本文・要旨ともに [CC BY 4.0](LICENSE)。出典を示せば、改変も含めて自由に使えます。
 引用の書き方は [docs/how-to-cite.md](docs/how-to-cite.md) にあります。
 
 ## 執筆における AI の利用
