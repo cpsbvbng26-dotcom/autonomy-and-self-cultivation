@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+title: 自律と自己陶冶 — 二篇のプレプリント
+message: このリポジトリを参照する場合は、以下の情報を用いてください。個々の論文を引用する場合は docs/how-to-cite.md を参照してください。
+type: dataset
+authors:
+  - family-names: Nemoto
+    given-names: Takuya
+    orcid: https://orcid.org/0009-0000-1406-0547
+    affiliation: Independent Researcher
+repository-code: https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation
+url: https://cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation/
+abstract: >-
+  自分の生をどこまで自分で治められるかを主題にした二篇のプレプリントを、
+  全文・PDF・出典とともに収めたリポジトリ。一篇は独身を擁護しうる自己陶冶の型として
+  読み直し、もう一篇は断片化した自己の統合を「人格的帝国主義」として素描する。
+keywords:
+  - celibacy
+  - antinatalism
+  - autonomy
+  - quality of life
+  - personal imperialism
+  - self-sovereignty
+  - Kant
+  - Nietzsche
+license: CC-BY-4.0
+date-released: 2026-09-05
+references:
+  - type: article
+    title: >-
+      The Nobility and Exemplarity of the Celibate Individual: An Antinatalist
+      and Ascetic Reconsideration of Autonomy and Quality of Life
+    authors:
+      - family-names: Nemoto
+        given-names: Takuya
+        orcid: https://orcid.org/0009-0000-1406-0547
+    year: 2026
+    month: 8
+    version: "2"
+    license: CC-BY-4.0
+    notes: Preprint. Not peer-reviewed. Original version 21 October 2025.
+  - type: article
+    title: >-
+      Manifesto of Imperial Selfhood: The Age of Personal Imperialism and Its
+      Spiritual Existence
+    authors:
+      - family-names: Nemoto
+        given-names: Takuya
+        orcid: https://orcid.org/0009-0000-1406-0547
+    year: 2026
+    month: 8
+    license: CC-BY-4.0
+    notes: Exploratory essay, revised and expanded edition. Preprint. Not peer-reviewed.

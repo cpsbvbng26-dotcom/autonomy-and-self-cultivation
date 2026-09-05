@@ -1,0 +1,282 @@
+#!/usr/bin/env node
+/**
+ * Markdown を静的な HTML に変換して site/ に書き出す。
+ * 依存パッケージはなく、Node.js だけで動く。
+ *
+ * 対応する記法は、この資料で実際に使っているものに限る。
+ *   見出し / 段落 / 箇条書き / 番号付き / 表 / 引用 / 水平線
+ *   強調 / コード / リンク / コードブロック
+ *
+ * 見出しには GitHub と同じ形の id を振る。論文の節に直接リンクできるようにするため。
+ */
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+
+const ROOT = __dirname;
+const OUT = path.join(ROOT, 'site');
+
+const SITE_NAME = '自律と自己陶冶';
+const REPO = 'https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation';
+const REPO_BLOB = REPO + '/blob/main/';
+
+const esc = (s) => String(s)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+// GitHub の見出し id と同じ作り方（小文字化・記号を落とす・空白をハイフンに）
+const slug = (s) => String(s)
+  .toLowerCase()
+  .replace(/<[^>]+>/g, '')
+  .replace(/[^\p{L}\p{N}\s-]/gu, '')
+  .trim()
+  .replace(/\s+/g, '-');
+
+/* ---------------------------------------------------------------- *
+ * 行内の記法
+ * ---------------------------------------------------------------- */
+
+function inline(text) {
+  // コードは先に取り出して、他の変換から守る
+  const codes = [];
+  let s = String(text).replace(/`([^`]+)`/g, function (m, c) {
+    codes.push('<code>' + esc(c) + '</code>');
+    return '%%CODE' + (codes.length - 1) + '%%';
+  });
+
+  s = esc(s);
+
+  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, href) {
+    let to = href;
+    let external = /^https?:/.test(href);
+
+    if (!external && !/^#/.test(href)) {
+      if (/\.md(#|$)/.test(href)) {
+        to = href.replace(/\.md(#|$)/, '.html$1');       // 変換済みのページへ
+      } else if (/\.pdf$/.test(href)) {
+        to = href;                                        // PDF はそのまま site/ に置く
+      } else {
+        to = REPO_BLOB + href.replace(/^\.\//, '');       // それ以外は元の場所へ
+        external = true;
+      }
+    }
+
+    const attrs = external ? ' target="_blank" rel="noopener"' : '';
+    return '<a href="' + to + '"' + attrs + '>' + label + '</a>';
+  });
+
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+  return s.replace(/%%CODE(\d+)%%/g, function (m, i) { return codes[Number(i)]; });
+}
+
+/* ---------------------------------------------------------------- *
+ * ブロック
+ * ---------------------------------------------------------------- */
+
+function render(md) {
+  const lines = md.replace(/<!--[\s\S]*?-->/g, '').split('\n');
+  const out = [];
+  let i = 0;
+
+  const isTableSep = (l) => /^\|?[\s:|-]+\|[\s:|-]*$/.test(l) && l.indexOf('-') !== -1;
+  const isBlockStart = (l) =>
+    /^(#{1,4}\s|```|>|[-*]\s|\d+\.\s)/.test(l) || /^---+$/.test(l.trim());
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    if (!line.trim()) { i++; continue; }
+
+    // コードブロック
+    if (/^```/.test(line)) {
+      const buf = [];
+      i++;
+      while (i < lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]);
+      i++;
+      out.push('<pre><code>' + esc(buf.join('\n')) + '</code></pre>');
+      continue;
+    }
+
+    // 水平線
+    if (/^---+$/.test(line.trim())) { out.push('<hr>'); i++; continue; }
+
+    // 見出し
+    const h = line.match(/^(#{1,4})\s+(.*)$/);
+    if (h) {
+      const level = h[1].length;
+      const text = h[2].trim();
+      const id = slug(text);
+      out.push('<h' + level + ' id="' + esc(id) + '">' + inline(text) + '</h' + level + '>');
+      i++;
+      continue;
+    }
+
+    // 表
+    if (line.indexOf('|') !== -1 && i + 1 < lines.length && isTableSep(lines[i + 1])) {
+      const cells = (l) => l.replace(/^\||\|$/g, '').split('|').map((c) => c.trim());
+      const head = cells(line);
+      i += 2;
+      const body = [];
+      while (i < lines.length && lines[i].indexOf('|') !== -1 && lines[i].trim()) {
+        body.push(cells(lines[i++]));
+      }
+      const empty = head.every((c) => !c);
+      out.push('<div class="table-wrap"><table>'
+        + (empty ? '' : '<thead><tr>' + head.map((c) => '<th>' + inline(c) + '</th>').join('') + '</tr></thead>')
+        + '<tbody>'
+        + body.map((r) => '<tr>' + r.map((c) => '<td>' + inline(c) + '</td>').join('') + '</tr>').join('')
+        + '</tbody></table></div>');
+      continue;
+    }
+
+    // 引用
+    if (/^>\s?/.test(line)) {
+      const buf = [];
+      while (i < lines.length && /^>\s?/.test(lines[i])) buf.push(lines[i++].replace(/^>\s?/, ''));
+      out.push('<blockquote>' + inline(buf.join(' ')) + '</blockquote>');
+      continue;
+    }
+
+    // 箇条書き・番号付き
+    const bullet = /^[-*]\s+/;
+    const ordered = /^\d+\.\s+/;
+    if (bullet.test(line) || ordered.test(line)) {
+      const tag = bullet.test(line) ? 'ul' : 'ol';
+      const re = bullet.test(line) ? bullet : ordered;
+      const items = [];
+      while (i < lines.length
+             && (re.test(lines[i]) || (items.length && /^\s{2,}\S/.test(lines[i])))) {
+        if (re.test(lines[i])) items.push(lines[i++].replace(re, ''));
+        else items[items.length - 1] += ' ' + lines[i++].trim();   // 継続行
+      }
+      out.push('<' + tag + '>'
+        + items.map((t) => '<li>' + inline(t) + '</li>').join('')
+        + '</' + tag + '>');
+      continue;
+    }
+
+    // 段落
+    const buf = [];
+    while (i < lines.length && lines[i].trim() && !isBlockStart(lines[i])
+           && !(lines[i].indexOf('|') !== -1 && i + 1 < lines.length && isTableSep(lines[i + 1]))) {
+      buf.push(lines[i++]);
+    }
+    if (buf.length) out.push('<p>' + inline(buf.join(' ')) + '</p>');
+    else i++;
+  }
+
+  return out.join('\n');
+}
+
+/* ---------------------------------------------------------------- *
+ * 出力
+ * ---------------------------------------------------------------- */
+
+const NAV = [
+  ['index.html', '概観'],
+  ['papers/celibate-individual.html', '独身と自己陶冶'],
+  ['papers/imperial-selfhood.html', '人格的帝国主義'],
+  ['docs/how-to-cite.html', '引用']
+];
+
+function layout(title, body, depth) {
+  const up = '../'.repeat(depth);
+  const nav = NAV.map((n) => '      <a href="' + up + n[0] + '">' + n[1] + '</a>').join('\n');
+  const css = fs.readFileSync(path.join(ROOT, 'assets', 'style.css'), 'utf8');
+
+  return [
+    '<!DOCTYPE html>',
+    '<html lang="ja">',
+    '<head>',
+    '<meta charset="UTF-8">',
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+    '<title>' + esc(title) + '</title>',
+    '<meta name="description" content="自分の生をどこまで自分で治められるかを主題にした二篇のプレプリント。全文・PDF・出典。">',
+    '<meta name="robots" content="index, follow">',
+    '<meta name="theme-color" content="#faf9f7">',
+    '<style>',
+    css,
+    '</style>',
+    '</head>',
+    '<body>',
+    '',
+    '<a class="skip-link" href="#main">本文へスキップ</a>',
+    '',
+    '<header>',
+    '  <div class="wrap head-row">',
+    '    <a class="mark serif" href="' + up + 'index.html">' + SITE_NAME + '</a>',
+    '    <nav class="nav">',
+    nav,
+    '      <button id="themeToggle" class="theme-toggle" type="button" aria-label="テーマを切り替える">&#9790;</button>',
+    '    </nav>',
+    '  </div>',
+    '</header>',
+    '',
+    '<main id="main" class="wrap prose" tabindex="-1">',
+    body,
+    '</main>',
+    '',
+    '<footer>',
+    '  <div class="wrap foot">',
+    '    <span>CC BY 4.0 &nbsp;/&nbsp; 根本卓哉</span>',
+    '    <span><a href="' + REPO + '">GitHub</a></span>',
+    '  </div>',
+    '</footer>',
+    '',
+    '<script src="' + up + 'assets/theme.js"></script>',
+    '</body>',
+    '</html>',
+    ''
+  ].join('\n');
+}
+
+function copyDir(from, to) {
+  fs.mkdirSync(to, { recursive: true });
+  for (const name of fs.readdirSync(from)) {
+    const src = path.join(from, name);
+    if (fs.statSync(src).isDirectory()) copyDir(src, path.join(to, name));
+    else fs.copyFileSync(src, path.join(to, name));
+  }
+}
+
+function build() {
+  const files = [];
+  (function walk(dir) {
+    for (const name of fs.readdirSync(dir)) {
+      const full = path.join(dir, name);
+      if (fs.statSync(full).isDirectory()) {
+        if (['.git', '.github', 'site', 'assets', 'pdf'].indexOf(name) === -1) walk(full);
+      } else if (name.endsWith('.md')) {
+        files.push(full);
+      }
+    }
+  })(ROOT);
+
+  fs.rmSync(OUT, { recursive: true, force: true });
+
+  for (const src of files) {
+    const rel = path.relative(ROOT, src).replace(/\.md$/, '.html');
+    const dest = path.join(OUT, rel);
+    const md = fs.readFileSync(src, 'utf8');
+    const m = md.match(/^#\s+(.*)$/m);
+    const title = m ? m[1] : SITE_NAME;
+    const depth = rel.split(path.sep).length - 1;
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    const pageTitle = title === SITE_NAME ? SITE_NAME : title + ' | ' + SITE_NAME;
+    fs.writeFileSync(dest, layout(pageTitle, render(md), depth));
+  }
+
+  fs.renameSync(path.join(OUT, 'README.html'), path.join(OUT, 'index.html'));
+  fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
+  fs.copyFileSync(path.join(ROOT, 'assets', 'theme.js'), path.join(OUT, 'assets', 'theme.js'));
+  copyDir(path.join(ROOT, 'pdf'), path.join(OUT, 'pdf'));
+  fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
+
+  console.log('生成しました: site/ (' + files.length + ' ページ)');
+}
+
+build();
