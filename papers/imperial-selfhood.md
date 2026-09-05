@@ -9,7 +9,7 @@ Takuya Nemoto
 | 改訂版 | 2026年8月 |
 | 種別 | エッセイ（探索的・査読前） |
 | 本文の言語 | 英語 |
-| ライセンス | CC BY 4.0 |
+| ライセンス | CC BY 4.0（このリポジトリでの公開条件） |
 | PDF | [manifesto-of-imperial-selfhood-revised.pdf](../pdf/manifesto-of-imperial-selfhood-revised.pdf) |
 
 原註: Prepared for open-access distribution via Zenodo, Academia.edu, and ResearchGate. This revised
@@ -35,7 +35,9 @@ Artificial Intelligence at the end of this document.
 最後に、自身の語彙が抱えるリスク —— 再帰的に限定したはずの「帝国」の比喩が、
 征服と支配の歴史的な重みを持ち込んでしまうのではないか —— を、未解決の最重要問題として提示します。
 
-> 以下は PDF の本文をそのまま Markdown に起こしたものです。語句は一切変更していません。
+> 以下は PDF の本文を Markdown に起こしたものです。抽出した語の並びと照合し、
+> 全 4368 語のうち 4364 語が一致しています。残る 4 語は行末で割れたハイフン語を
+> 一語に繋ぎ直した箇所です（[詳細](../docs/ai-disclosure.md#このリポジトリについて)）。
 
 ---
 
