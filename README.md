@@ -6,8 +6,8 @@
 もう一篇は、断片化した自己を統合する試みを「人格的帝国主義」という概念のもとで素描します。
 主題は離れて見えますが、問いは共通しています —— **何を基準に、自分の生の形を決めるのか**。
 
-どちらも査読前の原稿です。正式な公開先は SSRN と PhilArchive で、このリポジトリは
-**全文を読める形に開き、版と出典をひとところに置くため**のものです。
+どちらも査読前の原稿です。著者による公開は SSRN・PhilArchive などの窓口で行っており、
+このリポジトリは**全文を読める形に開き、版と出典をひとところに置くため**のものです。
 
 **読みやすい形の公開版** → [cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation](https://cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation/)
 
@@ -38,8 +38,8 @@
 
 | | |
 | --- | --- |
-| [papers/](papers/README.md) | 全文（Markdown）。PDF の本文をそのまま起こしたもの |
-| [pdf/](pdf/) | 配布した PDF そのもの |
+| [papers/](papers/README.md) | 全文（Markdown）。PDF の本文を起こしたもの |
+| [pdf/](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/tree/main/pdf) | 配布した PDF そのもの |
 | [docs/how-to-cite.md](docs/how-to-cite.md) | 引用の書き方 |
 | [docs/ai-disclosure.md](docs/ai-disclosure.md) | 執筆における AI 利用の開示 |
 | `build.js` | Markdown を静的な HTML に変換する（依存パッケージなし） |
@@ -51,17 +51,21 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 `git diff` で改訂の中身がそのまま読め、全文検索も効きます。**PDF が配布物、Markdown が読むための形**、
 という役割分担です。
 
-本文の語句は PDF から一切変更していません（機械的に照合しています）。日本語の要旨だけは
-このリポジトリのために書き下ろしたもので、原文にはありません。
+本文は PDF から起こしたもので、書き写したものではありません。抽出した語の並びと照合して、
+独身論は全 3739 語が一致、人格的帝国主義は全 4368 語のうち 4 語が異なります。この 4 語は
+`non-negotiable` `self-overcoming` のように**行末で割れたハイフン語を繋ぎ直した箇所**で、
+それ以外に手を入れた箇所はありません。
+
+日本語の要旨だけは、このリポジトリのために書き下ろしたもので、原文にはありません。
 
 ## 公開先
 
-正式な公開先は次のとおりです。このリポジトリの内容と食い違いがあれば、公開先を正とします。
+著者ページは次のとおりです。各論文の掲載ページと内容が食い違う場合は、掲載ページを正とします。
 
 | | |
 | --- | --- |
 | SSRN | [著者ページ](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) |
-| PhilArchive / PhilPeople | [著者ページ](https://philpeople.org/profiles/takuyanemoto) |
+| PhilPeople / PhilArchive | [著者ページ](https://philpeople.org/profiles/takuyanemoto) |
 | ORCID | [0009-0000-1406-0547](https://orcid.org/0009-0000-1406-0547) |
 
 ## サイトを手元で作る

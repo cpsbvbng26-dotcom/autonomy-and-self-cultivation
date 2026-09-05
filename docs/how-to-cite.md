@@ -1,7 +1,7 @@
 # 引用の書き方
 
 どちらも査読前の原稿です。引用する際は、**プレプリントであることが読者に分かる形**にしてください。
-正式な公開先は SSRN と PhilArchive で、版が更新された場合はそちらが正になります。
+著者による公開は SSRN・PhilArchive などの窓口で行っており、版が更新された場合はそちらが正になります。
 
 ## The Nobility and Exemplarity of the Celibate Individual
 
@@ -20,7 +20,7 @@ Ascetic Reconsideration of Autonomy and Quality of Life," version 2, preprint, A
 ```
 
 初版は 2025年10月21日、改訂版 (v2) は 2026年8月22日です。**どちらの版を参照したかを明記してください。**
-節を指す場合は、番号（例: §4）が版をまたいで安定しています。
+v2 で議論が番号付きの節に組み直されているため、節番号は版をまたいでは対応しません。
 
 ## Manifesto of Imperial Selfhood
 
