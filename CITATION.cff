@@ -43,6 +43,9 @@ references:
       - type: doi
         value: 10.2139/ssrn.7358779
         description: SSRN に登録された同一の本文
+      - type: url
+        value: "https://philarchive.org/rec/NEMTNA"
+        description: PhilArchive の掲載ページ
     notes: Preprint. Not peer-reviewed. Original version 21 October 2025.
   - type: article
     title: >-
@@ -60,6 +63,9 @@ references:
       - type: doi
         value: 10.2139/ssrn.7358818
         description: SSRN に登録された同一の本文
+      - type: url
+        value: "https://philarchive.org/rec/NEMMOI"
+        description: PhilArchive の掲載ページ
     notes: Exploratory essay, revised and expanded edition. Preprint. Not peer-reviewed.
   - type: article
     title: >-
@@ -72,5 +78,9 @@ references:
     year: 2026
     month: 8
     doi: 10.5281/zenodo.22064241
+    identifiers:
+      - type: url
+        value: "https://philarchive.org/rec/NEMFSI"
+        description: PhilArchive の掲載ページ
     license: CC-BY-4.0
     notes: Preprint. Not peer-reviewed.

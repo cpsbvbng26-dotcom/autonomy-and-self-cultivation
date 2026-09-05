@@ -11,6 +11,7 @@ Takuya Nemoto — Independent Researcher
 | 本文の言語 | 英語 |
 | ライセンス | CC BY 4.0（このリポジトリでの公開条件） |
 | DOI | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) |
+| PhilArchive | [NEMFSI](https://philarchive.org/rec/NEMFSI) |
 | PDF | [fragmentarian-spiritual-individualism.pdf](../pdf/fragmentarian-spiritual-individualism.pdf) |
 
 ## 日本語による要旨

@@ -84,14 +84,16 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 **はじめの二篇は Zenodo と SSRN の両方に登録されており、DOI が 2 つあります。**
 引用の際は Zenodo の DOI を用いてください（こちらを正とします）。SSRN の DOI は同一の本文を指します。
 
-| | |
-| --- | --- |
-| SSRN | [著者ページ](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) |
-| 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254)（SSRN: [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779)） |
-| 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583)（SSRN: [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818)） |
-| 断片主義 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) |
-| PhilPeople / PhilArchive | [著者ページ](https://philpeople.org/profiles/takuyanemoto) |
-| ORCID | [0009-0000-1406-0547](https://orcid.org/0009-0000-1406-0547) |
+| | Zenodo（正） | SSRN | PhilArchive |
+| --- | --- | --- | --- |
+| 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [NEMTNA](https://philarchive.org/rec/NEMTNA) |
+| 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) | [NEMMOI](https://philarchive.org/rec/NEMMOI) |
+| 断片主義 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) | — | [NEMFSI](https://philarchive.org/rec/NEMFSI) |
+
+**PhilArchive は DOI を発行しません。** 掲載先が増えても識別子は増えないため、
+哲学の読者に届ける窓口として使っています。
+
+著者ページ: [PhilPeople](https://philpeople.org/profiles/takuyanemoto) ｜ [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) ｜ [ORCID](https://orcid.org/0009-0000-1406-0547)
 
 ## サイトを手元で作る
 

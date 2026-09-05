@@ -13,6 +13,7 @@ Takuya Nemoto — Independent Researcher
 | ライセンス | CC BY 4.0 |
 | DOI | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) |
 | SSRN | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779)（同一のもの） |
+| PhilArchive | [NEMTNA](https://philarchive.org/rec/NEMTNA) |
 | PDF | [nobility-and-exemplarity-of-the-celibate-individual-v2.pdf](../pdf/nobility-and-exemplarity-of-the-celibate-individual-v2.pdf) |
 
 ## 日本語による要旨
