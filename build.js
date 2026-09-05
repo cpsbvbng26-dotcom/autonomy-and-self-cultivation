@@ -181,6 +181,7 @@ const NAV = [
   ['index.html', '概観'],
   ['papers/celibate-individual.html', '独身と自己陶冶'],
   ['papers/imperial-selfhood.html', '人格的帝国主義'],
+  ['papers/fragmentarian-spiritual-individualism.html', '断片主義'],
   ['docs/how-to-cite.html', '引用']
 ];
 
@@ -196,7 +197,7 @@ function layout(title, body, depth) {
     '<meta charset="UTF-8">',
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
     '<title>' + esc(title) + '</title>',
-    '<meta name="description" content="自分の生をどこまで自分で治められるかを主題にした二篇のプレプリント。全文・PDF・出典。">',
+    '<meta name="description" content="自分の生をどこまで自分で治められるかを主題にした三篇のプレプリント。全文・PDF・出典。">',
     '<meta name="robots" content="index, follow">',
     '<meta name="theme-color" content="#faf9f7">',
     '<style>',

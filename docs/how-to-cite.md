@@ -1,6 +1,6 @@
 # 引用の書き方
 
-どちらも査読前の原稿です。引用する際は、**プレプリントであることが読者に分かる形**にしてください。
+いずれも査読前の原稿です。引用する際は、**プレプリントであることが読者に分かる形**にしてください。
 著者による公開は SSRN・PhilArchive などの窓口で行っており、版が更新された場合はそちらが正になります。
 
 ## The Nobility and Exemplarity of the Celibate Individual
@@ -41,9 +41,27 @@ Spiritual Existence," revised and expanded edition, preprint, August 2026,
 https://doi.org/10.5281/zenodo.22057583.
 ```
 
+## Fragmentarian Spiritual Individualism
+
+APA 第7版:
+
+```
+Nemoto, T. (2026). Fragmentarian spiritual individualism: A philosophy of fragments
+for solitary spiritual autonomy [Preprint]. https://doi.org/10.5281/zenodo.22064241
+```
+
+Chicago（注記式）:
+
+```
+Takuya Nemoto, "Fragmentarian Spiritual Individualism: A Philosophy of Fragments for
+Solitary Spiritual Autonomy," preprint, August 2026, https://doi.org/10.5281/zenodo.22064241.
+```
+
+この一篇は Zenodo にのみ登録されており、DOI は 1 つです。
+
 ## 二つの DOI について
 
-いずれの論文も Zenodo と SSRN の両方に登録されており、**DOI が 2 つあります**。
+はじめの二篇は Zenodo と SSRN の両方に登録されており、**DOI が 2 つあります**。
 
 | | 独身論 | 人格的帝国主義 |
 | --- | --- | --- |

@@ -1,15 +1,18 @@
 # 自律と自己陶冶
 
-**自分の生をどこまで自分で治められるか**を主題にした、二篇のプレプリントを収めたリポジトリです。
+**自分の生をどこまで自分で治められるか**を主題にした、三篇のプレプリントを収めたリポジトリです。
 
 一篇は独身（celibacy）を、性的活動の欠落ではなく擁護しうる自己陶冶の型として読み直します。
-もう一篇は、断片化した自己を統合する試みを「人格的帝国主義」という概念のもとで素描します。
+一篇は、断片化した自己を統合する試みを「人格的帝国主義」という概念のもとで素描します。
+残る一篇は逆に、断片化を修復すべき傷ではなく生の実際の姿として受け取り、そこに住まうための規律を組み立てます。
+
 主題は離れて見えますが、問いは共通しています —— **何を基準に、自分の生の形を決めるのか**。
+統合を目指す二篇目と、統合を諦める三篇目が並んでいるのは、矛盾ではなく問いの幅です。
 
 どちらも査読前の原稿です。著者による公開は SSRN・PhilArchive などの窓口で行っており、
 このリポジトリは**全文を読める形に開き、版と出典をひとところに置くため**のものです。
 
-## 二篇
+## 三篇
 
 ### [The Nobility and Exemplarity of the Celibate Individual](papers/celibate-individual.md)
 
@@ -32,6 +35,17 @@
 
 [全文](papers/imperial-selfhood.md) ｜ [PDF](pdf/manifesto-of-imperial-selfhood-revised.pdf)
 
+### [Fragmentarian Spiritual Individualism](papers/fragmentarian-spiritual-individualism.md)
+
+*A Philosophy of Fragments for Solitary Spiritual Autonomy* — 2026年8月
+
+生・信仰・社会・思想・終末を、ひとつづきの物語ではなく独立した断片として扱います。断片化を修復すべき傷と
+みなす通例に対し、それが生の実際のあり方の記述として正確なのではないかと問い、克服ではなく
+**厳密さをもって住まう**ための規律を組み立てます。実存主義・キリスト教神秘主義・武士道・戦後日本の
+批評（吉本隆明、柄谷行人）からの総合です。
+
+[全文](papers/fragmentarian-spiritual-individualism.md) ｜ [PDF](pdf/fragmentarian-spiritual-individualism.pdf)
+
 ## このリポジトリの構成
 
 | | |
@@ -49,9 +63,16 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 `git diff` で改訂の中身がそのまま読め、全文検索も効きます。**PDF が配布物、Markdown が読むための形**、
 という役割分担です。
 
-本文は PDF から起こしたもので、書き写したものではありません。抽出した語の並びと照合して、
-独身論は全 3739 語が一致、人格的帝国主義は全 4368 語のうち 4 語が異なります。この 4 語は
-`non-negotiable` `self-overcoming` のように**行末で割れたハイフン語を繋ぎ直した箇所**で、
+本文は PDF から起こしたもので、書き写したものではありません。抽出した語の並びと照合しています。
+
+| | 語数 | 一致 | 差 |
+| --- | --- | --- | --- |
+| 独身論 | 3739 | 3739 | なし |
+| 人格的帝国主義 | 4368 | 4364 | ハイフン語の結合 4 |
+| 断片主義 | 5173 | 5165 | ハイフン語の結合 4、抽出器が入れた余分な空白 4 |
+
+`non-negotiable` `self-overcoming` のように**行末で割れた語を繋ぎ直した**もの、および
+`( Seelengrund)` のように**抽出器が括弧の内側に入れてしまった空白を取り除いた**ものだけで、
 それ以外に手を入れた箇所はありません。
 
 日本語の要旨だけは、このリポジトリのために書き下ろしたもので、原文にはありません。
@@ -60,7 +81,7 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 
 著者ページと、各論文の識別子です。
 
-**二篇はいずれも Zenodo と SSRN の両方に登録されており、DOI が 2 つあります。**
+**はじめの二篇は Zenodo と SSRN の両方に登録されており、DOI が 2 つあります。**
 引用の際は Zenodo の DOI を用いてください（こちらを正とします）。SSRN の DOI は同一の本文を指します。
 
 | | |
@@ -68,6 +89,7 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 | SSRN | [著者ページ](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) |
 | 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254)（SSRN: [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779)） |
 | 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583)（SSRN: [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818)） |
+| 断片主義 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) |
 | PhilPeople / PhilArchive | [著者ページ](https://philpeople.org/profiles/takuyanemoto) |
 | ORCID | [0009-0000-1406-0547](https://orcid.org/0009-0000-1406-0547) |
 
@@ -89,7 +111,7 @@ node build.js
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge&logo=claude&logoColor=white)](https://claude.com/claude-code)
 [![Assisted by Grok](https://img.shields.io/badge/Assisted%20by-Grok-111111?style=for-the-badge)](https://grok.com)
 
-二篇とも、改訂にあたって Claude（Anthropic）の助力を得ています。どの作業に使い、
+三篇とも、執筆または改訂にあたって Claude（Anthropic）の助力を得ています。どの作業に使い、
 どこまでを著者が引き受けているかは、各論文の末尾の開示文と
 [docs/ai-disclosure.md](docs/ai-disclosure.md) に記載しています。
 
