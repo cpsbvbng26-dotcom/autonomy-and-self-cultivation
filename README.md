@@ -1,5 +1,7 @@
 # 自律と自己陶冶
 
+[![照合](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/actions/workflows/verify.yml/badge.svg)](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/actions/workflows/verify.yml)
+
 **自分の生をどこまで自分で治められるか**を主題にした、三篇のプレプリントを収めたリポジトリです。
 
 一篇は独身（celibacy）を、性的活動の欠落ではなく擁護しうる自己陶冶の型として読み直します。
@@ -64,18 +66,29 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 という役割分担です。
 
 本文は PDF から起こしたもので、書き写したものではありません。抽出した語の並びと照合しています。
+**下の数字は、書き写した値ではありません。** [`verification/check_fidelity.py`](verification/check_fidelity.py)
+を実行すると出ます。
 
-| | 語数 | 一致 | 差 |
-| --- | --- | --- | --- |
-| 独身論 | 3739 | 3739 | なし |
-| 人格的帝国主義 | 4368 | 4364 | ハイフン語の結合 4 |
-| 断片主義 | 5173 | 5165 | ハイフン語の結合 4、抽出器が入れた余分な空白 4 |
+| | PDF の語数 | 一致 | 食い違い | 内訳 |
+| --- | --- | --- | --- | --- |
+| 独身論 | 3696 | 3696 | なし | — |
+| 人格的帝国主義 | 4302 | 4294 | 4 箇所 | ハイフン語の結合 4 |
+| 断片主義 | 5147 | 5131 | 8 箇所 | ハイフン語の結合 4、括弧内の余分な空白 4 |
 
-`non-negotiable` `self-overcoming` のように**行末で割れた語を繋ぎ直した**もの、および
-`( Seelengrund)` のように**抽出器が括弧の内側に入れてしまった空白を取り除いた**ものだけで、
-それ以外に手を入れた箇所はありません。
+数えているのは **Abstract 以降**です。冒頭の書誌表と日本語の要旨はこのリポジトリのために
+書き下ろしたもので、原文にはないため、照合の対象から外しています。
 
-日本語の要旨だけは、このリポジトリのために書き下ろしたもので、原文にはありません。
+食い違いは全件が二種類のどちらかです。`non-negotiable` `self-overcoming` `Jean-François`
+のように**行末で割れた語を繋ぎ直した**もの、および `( Seelengrund)` `(共同幻想 )` のように
+**抽出器が括弧の内側に入れてしまった空白を取り除いた**もの。**それ以外に手を入れた箇所はありません。**
+
+```
+pip install pypdf
+python3 verification/check_fidelity.py       # 上の表が出る
+python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
+```
+
+本文か PDF のどちらかが変われば落ちます。GitHub Actions が push ごとに実行しています。
 
 ## 公開先
 
