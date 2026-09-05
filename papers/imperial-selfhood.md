@@ -10,7 +10,8 @@ Takuya Nemoto
 | 種別 | エッセイ（探索的・査読前） |
 | 本文の言語 | 英語 |
 | ライセンス | CC BY 4.0（このリポジトリでの公開条件） |
-| DOI | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) |
+| DOI | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) |
+| SSRN | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818)（同一のもの） |
 | PDF | [manifesto-of-imperial-selfhood-revised.pdf](../pdf/manifesto-of-imperial-selfhood-revised.pdf) |
 
 原註: Prepared for open-access distribution via Zenodo, Academia.edu, and ResearchGate. This revised

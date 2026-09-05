@@ -58,13 +58,16 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 
 ## 公開先
 
-著者ページは次のとおりです。各論文の掲載ページと内容が食い違う場合は、掲載ページを正とします。
+著者ページと、各論文の識別子です。
+
+**二篇はいずれも Zenodo と SSRN の両方に登録されており、DOI が 2 つあります。**
+引用の際は Zenodo の DOI を用いてください（こちらを正とします）。SSRN の DOI は同一の本文を指します。
 
 | | |
 | --- | --- |
 | SSRN | [著者ページ](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) |
-| 独身論 | DOI [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) |
-| 人格的帝国主義 | DOI [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) |
+| 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254)（SSRN: [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779)） |
+| 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583)（SSRN: [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818)） |
 | PhilPeople / PhilArchive | [著者ページ](https://philpeople.org/profiles/takuyanemoto) |
 | ORCID | [0009-0000-1406-0547](https://orcid.org/0009-0000-1406-0547) |
 

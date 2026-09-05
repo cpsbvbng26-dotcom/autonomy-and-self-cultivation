@@ -10,7 +10,7 @@ APA 第7版:
 ```
 Nemoto, T. (2026). The nobility and exemplarity of the celibate individual: An antinatalist
 and ascetic reconsideration of autonomy and quality of life (Version 2) [Preprint].
-https://doi.org/10.2139/ssrn.7358779
+https://doi.org/10.5281/zenodo.22058254
 ```
 
 Chicago（注記式）:
@@ -18,7 +18,7 @@ Chicago（注記式）:
 ```
 Takuya Nemoto, "The Nobility and Exemplarity of the Celibate Individual: An Antinatalist and
 Ascetic Reconsideration of Autonomy and Quality of Life," version 2, preprint, August 2026,
-https://doi.org/10.2139/ssrn.7358779.
+https://doi.org/10.5281/zenodo.22058254.
 ```
 
 初版は 2025年10月21日、改訂版 (v2) は 2026年8月22日です。**どちらの版を参照したかを明記してください。**
@@ -30,7 +30,7 @@ APA 第7版:
 
 ```
 Nemoto, T. (2026). Manifesto of imperial selfhood: The age of personal imperialism and its
-spiritual existence (Revised and expanded ed.) [Preprint]. https://doi.org/10.2139/ssrn.7358818
+spiritual existence (Revised and expanded ed.) [Preprint]. https://doi.org/10.5281/zenodo.22057583
 ```
 
 Chicago（注記式）:
@@ -38,8 +38,20 @@ Chicago（注記式）:
 ```
 Takuya Nemoto, "Manifesto of Imperial Selfhood: The Age of Personal Imperialism and Its
 Spiritual Existence," revised and expanded edition, preprint, August 2026,
-https://doi.org/10.2139/ssrn.7358818.
+https://doi.org/10.5281/zenodo.22057583.
 ```
+
+## 二つの DOI について
+
+いずれの論文も Zenodo と SSRN の両方に登録されており、**DOI が 2 つあります**。
+
+| | 独身論 | 人格的帝国主義 |
+| --- | --- | --- |
+| Zenodo（正） | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) |
+| SSRN | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) |
+
+**引用には Zenodo の DOI を用いてください。** 同じ本文なので、どちらを引いても間違いではありませんが、
+引用がばらけると被引用が分散します。著者としては Zenodo を正としています。
 
 ## このリポジトリ自体を指す場合
 

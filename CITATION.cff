@@ -37,7 +37,11 @@ references:
     month: 8
     version: "2"
     license: CC-BY-4.0
-    doi: 10.2139/ssrn.7358779
+    doi: 10.5281/zenodo.22058254
+    identifiers:
+      - type: doi
+        value: 10.2139/ssrn.7358779
+        description: SSRN に登録された同一の本文
     notes: Preprint. Not peer-reviewed. Original version 21 October 2025.
   - type: article
     title: >-
@@ -50,5 +54,9 @@ references:
     year: 2026
     month: 8
     license: CC-BY-4.0
-    doi: 10.2139/ssrn.7358818
+    doi: 10.5281/zenodo.22057583
+    identifiers:
+      - type: doi
+        value: 10.2139/ssrn.7358818
+        description: SSRN に登録された同一の本文
     notes: Exploratory essay, revised and expanded edition. Preprint. Not peer-reviewed.
