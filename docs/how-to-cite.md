@@ -10,13 +10,15 @@ APA 第7版:
 ```
 Nemoto, T. (2026). The nobility and exemplarity of the celibate individual: An antinatalist
 and ascetic reconsideration of autonomy and quality of life (Version 2) [Preprint].
+https://doi.org/10.2139/ssrn.7358779
 ```
 
 Chicago（注記式）:
 
 ```
 Takuya Nemoto, "The Nobility and Exemplarity of the Celibate Individual: An Antinatalist and
-Ascetic Reconsideration of Autonomy and Quality of Life," version 2, preprint, August 2026.
+Ascetic Reconsideration of Autonomy and Quality of Life," version 2, preprint, August 2026,
+https://doi.org/10.2139/ssrn.7358779.
 ```
 
 初版は 2025年10月21日、改訂版 (v2) は 2026年8月22日です。**どちらの版を参照したかを明記してください。**
@@ -28,14 +30,15 @@ APA 第7版:
 
 ```
 Nemoto, T. (2026). Manifesto of imperial selfhood: The age of personal imperialism and its
-spiritual existence (Revised and expanded ed.) [Preprint].
+spiritual existence (Revised and expanded ed.) [Preprint]. https://doi.org/10.2139/ssrn.7358818
 ```
 
 Chicago（注記式）:
 
 ```
 Takuya Nemoto, "Manifesto of Imperial Selfhood: The Age of Personal Imperialism and Its
-Spiritual Existence," revised and expanded edition, preprint, August 2026.
+Spiritual Existence," revised and expanded edition, preprint, August 2026,
+https://doi.org/10.2139/ssrn.7358818.
 ```
 
 ## このリポジトリ自体を指す場合
