@@ -132,6 +132,6 @@ node build.js
 
 ## 著者
 
-根本卓哉（Takuya Nemoto）— 独立研究者
+根本卓哉（Takuya Nemoto）
 [プロフィール](https://cpsbvbng26-dotcom.github.io/cpsbvbng26-dotcom/) ｜
 [ORCID](https://orcid.org/0009-0000-1406-0547)
