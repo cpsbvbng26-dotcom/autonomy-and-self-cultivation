@@ -26,4 +26,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: 誤変換とバッジ記法
+        run: node verification/check_text.js
       - run: node build.js
