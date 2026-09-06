@@ -29,3 +29,5 @@ jobs:
       - name: 誤変換とバッジ記法
         run: node verification/check_text.js
       - run: node build.js
+      - name: 生成物と CSP
+        run: node verification/check_site.js

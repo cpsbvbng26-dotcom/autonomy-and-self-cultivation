@@ -13,6 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'site');
@@ -39,6 +40,41 @@ const slug = (s) => String(s)
  * 行内の記法
  * ---------------------------------------------------------------- */
 
+/* ---------------------------------------------------------------- *
+ * Content-Security-Policy
+ *
+ * このサイトは外部から何も読み込まない。それを「そう書いてある」ではなく
+ * ブラウザが強制する制約にする。default-src 'none' から始めて、実際に
+ * 使っているものだけを名指しで許す。
+ *
+ * インラインの <style> <script> は中身の SHA-256 で許す。'unsafe-inline'
+ * は使わない —— 使えば注入されたスクリプトも通り、置く意味が無くなる。
+ * 生成のたびに計算し直すので、中身を変えても入れ直す手間はない。
+ * ---------------------------------------------------------------- */
+function withCSP(html) {
+  const sha = (t) =>
+    "'sha256-" + crypto.createHash('sha256').update(t, 'utf8').digest('base64') + "'";
+  const blocks = (tag) => {
+    const re = new RegExp('<' + tag + '(?![^>]*\\bsrc=)[^>]*>([\\s\\S]*?)</' + tag + '>', 'g');
+    const out = [];
+    let m;
+    while ((m = re.exec(html)) !== null) out.push(sha(m[1]));
+    return out;
+  };
+  const csp = [
+    "default-src 'none'",
+    "script-src 'self' " + blocks('script').join(' '),
+    'style-src ' + blocks('style').join(' '),
+    "img-src 'self' data:",
+    "connect-src 'none'",
+    "form-action 'none'",
+    "base-uri 'none'"
+  ].join('; ').replace(/\s+/g, ' ').replace(/ ;/g, ';');
+
+  const tag = '<meta http-equiv="Content-Security-Policy" content="' + csp + '">\n';
+  return html.replace(/(<meta name="viewport"[^>]*>\n?)/, '$1' + tag);
+}
+
 function inline(text) {
   // コードは先に取り出して、他の変換から守る
   const codes = [];
@@ -48,6 +84,16 @@ function inline(text) {
   });
 
   s = esc(s);
+
+  // 画像。リンクの中に置かれる（バッジ）ことがあるので、リンクより先に変換する。
+  //
+  // 外部ホストの画像は <img> にせず、代替テキストだけを残す。生成したサイトが
+  // third-party へリクエストを出さないようにするため。README のバッジはこの経路を
+  // 通るので、GitHub 上ではバッジのまま、サイト上ではリンクつきの文字列になる。
+  s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, function (m, alt, src) {
+    if (/^https?:/.test(src)) return alt;
+    return '<img src="' + src + '" alt="' + alt + '" loading="lazy">';
+  });
 
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, href) {
     let to = href;
@@ -269,7 +315,7 @@ function build() {
     const depth = rel.split(path.sep).length - 1;
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     const pageTitle = title === SITE_NAME ? SITE_NAME : title + ' | ' + SITE_NAME;
-    fs.writeFileSync(dest, layout(pageTitle, render(md), depth));
+    fs.writeFileSync(dest, withCSP(layout(pageTitle, render(md), depth)));
   }
 
   fs.renameSync(path.join(OUT, 'README.html'), path.join(OUT, 'index.html'));
