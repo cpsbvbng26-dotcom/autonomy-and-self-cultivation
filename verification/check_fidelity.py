@@ -30,6 +30,10 @@ import os
 import re
 import sys
 
+# 暗号化されていない PDF に暗号処理は要らない。環境によっては cryptography の
+# 読み込みそのものが壊れるので、先に塞いでから pypdf を読む。
+sys.modules.setdefault("cryptography", None)
+
 try:
     from pypdf import PdfReader
 except ImportError:
