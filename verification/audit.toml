@@ -1,0 +1,208 @@
+# 三篇の PDF に対する、正誤表の監査の宣言。
+#
+#     python3 verification/check_errata.py
+#
+# PDF は公開済みで、もう直せない。直せるのは ERRATA.md のほうである。
+# ここに書いてあるのは「ERRATA.md が三篇からずれていないこと」の条件である。
+#
+# 道具は errata-check（MIT、DOI: 10.5281/zenodo.22649054）。単一ファイルなので
+# verification/errata_check.py に写して使っている。
+
+root = ".."
+
+[document]
+path = "ERRATA.md"
+
+[[source]]
+id = "N"
+path = "pdf/nobility-and-exemplarity-of-the-celibate-individual-v2.pdf"
+sha256 = "fba3eb679eb247cbb6d51d9df203f7d6b84547bef68108d5ee2775560a8a28db"
+
+[[source]]
+id = "M"
+path = "pdf/manifesto-of-imperial-selfhood-revised.pdf"
+sha256 = "2d1d169954079fc4684e3505bce950a0120ccb838626545d7717e7c17b447541"
+
+[[source]]
+id = "F"
+path = "pdf/fragmentarian-spiritual-individualism.pdf"
+sha256 = "58dbe84b2be8fe7fe6a785419ca7223415dcb1c199764f9eaf65305d41b2bb71"
+
+# ------------------------------------------------- E1 —— DOI が印字されていない
+#
+# 「印字されていない」ことの検査である。present = false で、無いことを確かめる。
+# 一つでも紙面に現れたら落ちる。そのときは正誤表のほうが誤っている。
+
+[[quote]]
+source = "N"
+where = "自身の DOI"
+text = "10.5281/zenodo.22058254"
+present = false
+
+[[quote]]
+source = "M"
+where = "自身の DOI"
+text = "10.5281/zenodo.22057583"
+present = false
+
+[[quote]]
+source = "F"
+where = "自身の DOI"
+text = "10.5281/zenodo.22064241"
+present = false
+
+# doi.org へのリンクの形でも印字されていないこと
+
+[[quote]]
+source = "N"
+where = "DOI の解決 URL"
+text = "doi.org/10.5281"
+present = false
+
+[[quote]]
+source = "M"
+where = "DOI の解決 URL"
+text = "doi.org/10.5281"
+present = false
+
+[[quote]]
+source = "F"
+where = "DOI の解決 URL"
+text = "doi.org/10.5281"
+present = false
+
+# ---------------------------------------------- E2 —— ORCID が印字されていない
+
+[[quote]]
+source = "N"
+where = "ORCID"
+text = "0009-0000-1406-0547"
+present = false
+
+[[quote]]
+source = "M"
+where = "ORCID"
+text = "0009-0000-1406-0547"
+present = false
+
+[[quote]]
+source = "F"
+where = "ORCID"
+text = "0009-0000-1406-0547"
+present = false
+
+# 検査数字そのものは合っている。正誤表が挙げている ORCID が正しいことの確認。
+
+[[identifier]]
+kind = "orcid"
+value = "0009-0000-1406-0547"
+
+# --------------------------------- E3 —— 初版を指すが、その所在を示していない
+
+[[count]]
+source = "N"
+group = "version"
+expect = 1
+
+[[quote]]
+source = "N"
+group = "version"
+where = "表紙の改訂の注記"
+text = "Original version: 21 October 2025 | Revised version (v2): 22 August 2026"
+
+# ---------------------------------------- E4 —— 表紙が挙げる頒布先（未確認）
+
+[[count]]
+source = "M"
+group = "distribution"
+expect = 1
+
+[[quote]]
+source = "M"
+group = "distribution"
+where = "表紙"
+text = "Prepared for open-access distribution via Zenodo, Academia.edu, and ResearchGate."
+
+# ---------------------------------- N2 —— 偽陽性を出した箇所は、実際にあること
+#
+# 私の照合が「参考文献欄に無い」と誤報した項目。**実際にはある。**
+# ここで present = true にしておけば、同じ誤報を二度出せない。
+
+[[quote]]
+source = "M"
+where = "参考文献（Nietzsche 1967）"
+text = "Nietzsche, Friedrich. The Will to Power. Translated by Walter Kaufmann and R. J. Hollingdale. New York: Vintage, 1967."
+in_document = true
+
+[[quote]]
+source = "M"
+where = "本文の引用（Nietzsche 1967）"
+text = "with expanded editions in 1906 and 1911 (Nietzsche 1967)"
+in_document = false
+
+# ------------------------------------------ N3 —— 査読前であることの明示
+
+[[quote]]
+source = "N"
+where = "表紙"
+text = "Preprint. Not peer-reviewed."
+in_document = false
+
+[[quote]]
+source = "F"
+where = "表紙"
+text = "Preprint. This work has not been peer reviewed."
+in_document = false
+
+# ------------------------------------------------ N4 —— AI の使用の開示
+
+[[quote]]
+source = "N"
+where = "AI 開示"
+text = "The author reviewed, revised, and takes full intellectual responsibility for all claims, arguments, and citations herein."
+in_document = false
+
+[[quote]]
+source = "M"
+where = "AI 開示"
+text = "The author's original draft set out the core proposal"
+in_document = false
+
+[[quote]]
+source = "F"
+where = "AI 開示"
+text = "AI Use Disclosure Statement"
+in_document = false
+
+# ------------------------------------------------------------ 未解決の項目
+
+[[open_item]]
+id = "E1"
+heading_pattern = "^## E1 —"
+must_say = ["この項目は解決しません", "10.5281/zenodo.22058254"]
+must_not_say = ["解決済み"]
+
+[[open_item]]
+id = "E2"
+heading_pattern = "^## E2 —"
+must_say = ["この項目は解決しません"]
+
+[[open_item]]
+id = "E3"
+heading_pattern = "^## E3 —"
+must_say = ["この項目は解決しません"]
+
+[[open_item]]
+id = "E4"
+heading_pattern = "^## E4 —"
+must_say = ["この項目は未解決です", "未確認"]
+must_not_say = ["確認済みです"]
+
+[[open_item]]
+id = "N2"
+heading_pattern = "^### N2 —"
+must_say = ["検査の側の誤りです"]
+
+[dates]
+stamp_pattern = "最終更新: (\\d{4})年(\\d{1,2})月(\\d{1,2})日"
+any_pattern = "(\\d{4})年(\\d{1,2})月(\\d{1,2})日"
