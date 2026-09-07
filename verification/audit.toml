@@ -5,7 +5,7 @@
 # PDF は公開済みで、もう直せない。直せるのは ERRATA.md のほうである。
 # ここに書いてあるのは「ERRATA.md が三篇からずれていないこと」の条件である。
 #
-# 道具は errata-check（MIT、DOI: 10.5281/zenodo.22649054）。単一ファイルなので
+# 道具は errata-check（MIT、v0.2.0、DOI: 10.5281/zenodo.22649899）。単一ファイルなので
 # verification/errata_check.py に写して使っている。
 
 root = ".."
