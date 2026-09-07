@@ -37,6 +37,29 @@ const INCONSISTENT = [
     note: '散文は常用字体。史料そのものの引用（敍勲四等授瑞寶章 など）はこの限りではない' }
 ];
 
+/* 自分の散文では使わないと決めた自称。
+ *
+ * **紙面には印字されている。**そこは直せないし、直さない。だが、いま自分が
+ * 書く文章では使わない。忘れると自然に戻ってくるので、機械で止める。
+ *
+ * 逐語転記だけは例外である。papers/ の Markdown は PDF をそのまま写したもので、
+ * 語を一つでも変えれば check_fidelity.py が落ちる。**原文を書き換えて辻褄を
+ * 合わせることはしない。**
+ *
+ * 例外の一覧は check_fidelity.py の対応表から取る。手で書くと、例外だけを
+ * 静かに広げられてしまう。転記であると宣言した先だけが例外になる。 */
+const FORBIDDEN = [
+  { term: '独立研究者', note: '自分の散文では使わない' },
+  { term: 'Independent Researcher', note: '同上（英訳）' }
+];
+
+const TRANSCRIPTS = new Set(
+  (fs.readFileSync(path.join(ROOT, 'verification', 'check_fidelity.py'), 'utf8')
+    .match(/"md":\s*"([^"]+)"/g) || [])
+    .map((m) => m.replace(/"md":\s*"/, '').replace(/"$/, ''))
+    .map((rel) => path.normalize(rel))
+);
+
 /* Markdown のバッジ記法の壊れ。![...] の ! が落ちる、括弧が全角になる。 */
 const BADGE_BROKEN = /\[!(?!\[)[^\]]*\]\(https?:\/\/[^)]*badge/;
 
@@ -72,6 +95,19 @@ files.forEach((file) => {
         });
       }
     });
+
+    if (!TRANSCRIPTS.has(rel)) {
+      FORBIDDEN.forEach((c) => {
+        if (line.indexOf(c.term) >= 0) {
+          hits.push({
+            file: rel, line: i + 1, kind: '使わないと決めた語',
+            msg: '「' + c.term + '」  ' + c.note
+              + '（逐語転記は例外。いまの例外: ' + [...TRANSCRIPTS].join(', ') + '）',
+            text: line.trim().slice(0, 90)
+          });
+        }
+      });
+    }
 
     INCONSISTENT.forEach((c) => {
       if (line.indexOf(c.wrong) >= 0) {
@@ -109,4 +145,4 @@ if (hits.length) {
   });
   process.exit(1);
 }
-console.log('既知の誤変換・表記の揺れ・バッジの壊れ・第三者のロゴは見つかりませんでした。');
+console.log('既知の誤変換・表記の揺れ・使わないと決めた語・バッジの壊れ・第三者のロゴは見つかりませんでした。');
