@@ -110,7 +110,7 @@ group = "version"
 where = "表紙の改訂の注記"
 text = "Original version: 21 October 2025 | Revised version (v2): 22 August 2026"
 
-# ---------------------------------------- E4 —— 表紙が挙げる頒布先（未確認）
+# ------------------------------------ E4 —— 表紙が挙げる頒布先（一つ欠けた）
 
 [[count]]
 source = "M"
@@ -195,8 +195,8 @@ must_say = ["この項目は解決しません"]
 [[open_item]]
 id = "E4"
 heading_pattern = "^## E4 —"
-must_say = ["この項目は未解決です", "未確認"]
-must_not_say = ["確認済みです"]
+must_say = ["この項目は解決しません", "無い"]
+must_not_say = ["まだ確かめていません"]
 
 [[open_item]]
 id = "N2"

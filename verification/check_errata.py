@@ -50,8 +50,12 @@ def check(label, cond, detail=""):
 declared = sorted(os.path.basename(s["path"]) for s in spec["source"])
 actual = sorted(f for f in os.listdir(os.path.join(ROOT, "pdf")) if f.endswith(".pdf"))
 check("配布している PDF は宣言した三篇だけ", declared == actual, ", ".join(actual))
-check("正誤表が未解決の項目を持っている",
-      "この項目は未解決です" in audit.document_text())
+# もとは「未解決の項目がまだあること」を見ていた。E4 が最後の未解決項目で、
+# 2026年9月8日に所在を確かめて閉じたため、見る対象が無くなった。
+# 代わりに「解決しないと決めた項目が消えていないこと」を見る。
+# 個々の項目の文言は [[open_item]] の宣言が押さえている。
+check("正誤表が、解決しないと決めた項目を持っている",
+      "この項目は解決しません" in audit.document_text())
 
 passed = sum(r.ok for r in results) + sum(1 for _, ok, _ in extra if ok)
 failed = [r.label for r in results if not r.ok] + [l for l, ok, _ in extra if not ok]
