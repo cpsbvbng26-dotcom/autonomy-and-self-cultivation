@@ -242,6 +242,54 @@ where = "M の AI 開示"
 text = "translated from Japanese"
 present = false
 
+# ------------------------- E6 —— 引用について AI に何をさせたかの書き分け
+#
+# 二本は引用の割り当てを開示しているが、断章論だけ狭い。三本とも
+# 「著者は原典に当たっていない」とは述べていない。紙面から取って固定する。
+
+[[quote]]
+source = "N"
+group = "citation_disclosure"
+where = "独身論の AI 開示（引用の割り当て）"
+text = "situate the paper's claims within existing philosophical literature"
+
+[[quote]]
+source = "M"
+group = "citation_disclosure"
+where = "M の AI 開示（引用の割り当て）"
+text = "identify and verify the bibliographic citations listed in the References section"
+
+[[quote]]
+source = "F"
+group = "citation_disclosure"
+where = "断章論の AI 開示（狭い書き方）"
+text = "checking selected bibliographic details for accuracy"
+
+# 「原典に当たっていない」に相当する記述は、どの紙面にも無い。
+
+[[quote]]
+source = "N"
+where = "独身論"
+text = "the author has not consulted"
+present = false
+
+[[quote]]
+source = "M"
+where = "M"
+text = "the author has not consulted"
+present = false
+
+[[quote]]
+source = "F"
+where = "断章論"
+text = "the author has not consulted"
+present = false
+
+[[open_item]]
+id = "E6"
+heading_pattern = "^## E6 —"
+must_say = ["この項目は解決しません", "当たっていません", "捏造ではない", "剽窃ではない"]
+
 [[open_item]]
 id = "E5"
 heading_pattern = "^## E5 —"
