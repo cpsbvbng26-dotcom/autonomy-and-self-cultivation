@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+"""参考文献の宣言が、紙面と食い違っていないかを見る。
+
+    python3 verification/check_references.py
+
+**この検査は「読んだか」を見ない。**内面は外から確かめられない。見るのは
+宣言と紙面の整合だけである。
+
+いまはほとんどが空欄で、それが正しい初期状態である（ERRATA の `E6`）。
+**空欄であることは失敗ではない。**失敗になるのは、
+
+  - 宣言した典拠が、その論文の紙面に無いとき（でっち上げ）
+  - 埋めた項目が、決まりを満たしていないとき
+  - **未記入の件数を、散文が実際と違う数で名乗っているとき**
+
+の三つである。**残りが何件かを、機械が数えて散文と突き合わせる。**
+埋めた日は git が持つので、あとから遡って埋めたことにはできない。
+"""
+
+import io
+import os
+import re
+import sys
+import tomllib
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+
+from errata_check import extract_text, normalize   # noqa: E402
+
+ROLES = ("直接支持", "用語の出所", "対立見解", "背景", "反例")
+
+PDF = {
+    "F": "pdf/fragmentarian-spiritual-individualism.pdf",
+    "M": "pdf/manifesto-of-imperial-selfhood-revised.pdf",
+    "N": "pdf/nobility-and-exemplarity-of-the-celibate-individual-v2.pdf",
+}
+
+passed, failures = 0, []
+
+
+def check(label, ok, detail=""):
+    global passed
+    if ok:
+        passed += 1
+        print("  PASS  " + label + (("  " + detail) if detail else ""))
+    else:
+        failures.append(label)
+        print("  FAIL  " + label + (("  " + detail) if detail else ""))
+
+
+with io.open(os.path.join(HERE, "references.toml"), "rb") as fh:
+    spec = tomllib.load(fh)
+refs = spec.get("reference", [])
+
+print("\n1. 宣言の形")
+
+ids = [r.get("id", "") for r in refs]
+check("id が重複していない", len(set(ids)) == len(ids), "%d 件" % len(ids))
+check("すべてに論文の別がある",
+      all(r.get("paper") in PDF for r in refs),
+      "、".join(sorted(set(str(r.get("paper")) for r in refs))))
+check("すべてに bib がある", all(str(r.get("bib", "")).strip() for r in refs))
+
+print("\n2. 宣言した典拠が、その論文の紙面にあるか")
+
+text = {}
+for pid, path in PDF.items():
+    text[pid] = normalize(extract_text(os.path.join(ROOT, path)))
+
+missing = [r["id"] for r in refs
+           if normalize(r["bib"]) not in text.get(r.get("paper"), "")]
+check("宣言した典拠がすべて紙面にある", not missing,
+      ("紙面に無い: " + "、".join(missing[:5])) if missing
+      else "%d 件を三篇の参考文献欄と突き合わせた" % len(refs))
+
+print("\n3. 埋めた項目が、決まりを満たしているか")
+
+
+def filled(r):
+    return bool(str(r.get("locus", "")).strip()
+                and str(r.get("supports", "")).strip()
+                and str(r.get("role", "")).strip())
+
+
+done = [r for r in refs if filled(r)]
+todo = [r for r in refs if not filled(r)]
+
+bad_role = [r["id"] for r in done if r.get("role") not in ROLES]
+check("埋めた項目の使い方が決めた語である", not bad_role,
+      "、".join(bad_role) or "使えるのは " + "・".join(ROLES))
+
+half = [r["id"] for r in refs
+        if not filled(r) and any(str(r.get(k, "")).strip()
+                                 for k in ("locus", "supports", "role"))]
+check("途中まで埋まった項目が無い", not half,
+      ("locus・supports・role は揃えて埋める: " + "、".join(half[:5])) if half else "")
+
+print("\n4. 散文が名乗る残り件数")
+
+errata = io.open(os.path.join(ROOT, "ERRATA.md"), encoding="utf-8").read()
+m = re.search(r"未記入は \*\*(\d+) 件\*\*", errata)
+check("ERRATA.md が名乗る未記入の件数が実際と合う",
+      m is not None and int(m.group(1)) == len(todo),
+      ("名乗り %s / 実際 %d" % (m.group(1) if m else "無し", len(todo))))
+
+print("\n" + "-" * 58)
+print("  記入済み %d 件 / 未記入 %d 件 / 合計 %d 件"
+      % (len(done), len(todo), len(refs)))
+if failures:
+    print("%d 件が通り、%d 件が通りませんでした。" % (passed, len(failures)))
+    for f in failures:
+        print("  - " + f)
+    sys.exit(1)
+print("%d 件すべて通りました。" % passed)
