@@ -198,6 +198,55 @@ heading_pattern = "^## E4 —"
 must_say = ["この項目は解決しません", "無い"]
 must_not_say = ["まだ確かめていません"]
 
+# ------------------------------- E5 —— 開示文が挙げている作業（翻訳は無い）
+#
+# 三篇とも AI の使用を開示し、何をさせたかを列挙している。その列挙に
+# 「翻訳」が無いことが E5 である。列挙のほうを紙面から取って固定しておく。
+
+[[quote]]
+source = "F"
+group = "ai_disclosure"
+where = "断章論の AI 開示"
+text = "expanding the author’s original conceptual outline into full prose"
+
+[[quote]]
+source = "N"
+group = "ai_disclosure"
+where = "独身論の AI 開示"
+text = "expand and copyedit the prose of the original manuscript"
+
+[[quote]]
+source = "M"
+group = "ai_disclosure"
+where = "M の AI 開示"
+text = "expand the exposition of each philosophical source with additional textual and historical detail"
+
+# 「翻訳」という語が、どの開示文にも無いこと。ここが E5 の中身である。
+# 参考文献の側では translation が出てくるので、開示文の言い回しで狙い撃つ。
+
+[[quote]]
+source = "F"
+where = "断章論の AI 開示"
+text = "translated from Japanese"
+present = false
+
+[[quote]]
+source = "N"
+where = "独身論の AI 開示"
+text = "translated from Japanese"
+present = false
+
+[[quote]]
+source = "M"
+where = "M の AI 開示"
+text = "translated from Japanese"
+present = false
+
+[[open_item]]
+id = "E5"
+heading_pattern = "^## E5 —"
+must_say = ["この項目は解決しません", "特定できません", "違反していません"]
+
 [[open_item]]
 id = "N2"
 heading_pattern = "^### N2 —"
