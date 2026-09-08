@@ -140,6 +140,43 @@ source = "M"
 group = "e7"
 expect = 2
 
+# E7 は M だけの話である。N と F には無い。範囲を機械で固定しておく。
+
+[[quote]]
+source = "N"
+where = "E7 の断言（N には無い）"
+text = "No data, quotations, or sources were fabricated"
+present = false
+
+[[quote]]
+source = "F"
+where = "E7 の断言（F には無い）"
+text = "No data, quotations, or sources were fabricated"
+present = false
+
+# ------------------------------- N5・N6 —— 紙面に現れない語
+#
+# 論証の構造に関わる語が、一度も出てこないこと。出てきたら、その時点で
+# N5 と N6 を書き直す番である。
+
+[[quote]]
+source = "N"
+where = "N5 —— 避妊への言及"
+text = "contracept"
+present = false
+
+[[quote]]
+source = "N"
+where = "N6 —— アセクシュアリティへの言及"
+text = "asexual"
+present = false
+
+[[quote]]
+source = "N"
+where = "N6 —— 非自発性への言及"
+text = "involuntary"
+present = false
+
 [[quote]]
 source = "M"
 group = "distribution"
