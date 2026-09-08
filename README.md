@@ -2,17 +2,17 @@
 
 [![照合](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/actions/workflows/verify.yml/badge.svg)](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/actions/workflows/verify.yml)
 
-**自分の生をどこまで自分で治められるか**を主題にした、三篇のプレプリントを収めたリポジトリです。
+**自分の生をどこまで自分で治められるか**を主題にした、三篇のプレプリントを収めたリポジトリである。
 
-一篇は独身（celibacy）を、性的活動の欠落ではなく擁護しうる自己陶冶の型として読み直します。
-一篇は、断片化した自己を統合する試みを「人格的帝国主義」という概念のもとで素描します。
-残る一篇は逆に、断片化を修復すべき傷ではなく生の実際の姿として受け取り、そこに住まうための規律を組み立てます。
+一篇は独身（celibacy）を、性的活動の欠落ではなく擁護しうる自己陶冶の型として読み直す。
+一篇は、断片化した自己を統合する試みを「人格的帝国主義」という概念のもとで素描する。
+残る一篇は逆に、断片化を修復すべき傷ではなく生の実際の姿として受け取り、そこに住まうための規律を組み立てる。
 
-主題は離れて見えますが、問いは共通しています —— **何を基準に、自分の生の形を決めるのか**。
-統合を目指す二篇目と、統合を諦める三篇目が並んでいるのは、矛盾ではなく問いの幅です。
+主題は離れて見えるが、問いは共通している —— **何を基準に、自分の生の形を決めるのか**。
+統合を目指す二篇目と、統合を諦める三篇目が並んでいるのは、矛盾ではなく問いの幅である。
 
-どちらも査読前の原稿です。著者による公開は SSRN・PhilArchive などの窓口で行っており、
-このリポジトリは**全文を読める形に開き、版と出典をひとところに置くため**のものです。
+どちらも査読前の原稿である。著者による公開は SSRN・PhilArchive などの窓口で行っており、
+このリポジトリは**全文を読める形に開き、版と出典をひとところに置くため**のものである。
 
 ## 三篇
 
@@ -21,9 +21,9 @@
 *An Antinatalist and Ascetic Reconsideration of Autonomy and Quality of Life* — v2, 2026年8月22日
 
 性的活動を倫理的に必要とみなす通説は、生殖がなければ社会は存続しないという事実から個人の義務を
-導いています。この論文は、その移行が反出生主義の議論を前に持ちこたえないことを示したうえで、
+導いている。この論文は、その移行が反出生主義の議論を前に持ちこたえないことを示したうえで、
 エピクロスの快の区別とショーペンハウアーの意志の形而上学を手がかりに、他者や欲望の周期に
-依存しない自足的な幸福という観点から独身を積極的に評価します。
+依存しない自足的な幸福という観点から独身を積極的に評価する。
 
 [全文](papers/celibate-individual.md) ｜ [PDF](pdf/nobility-and-exemplarity-of-the-celibate-individual-v2.pdf)
 
@@ -32,8 +32,8 @@
 *An Exploratory Essay on Personal Imperialism and Spiritual Sovereignty* — 改訂版, 2026年8月
 
 カントの「目的の王国」から立法の層を、ニーチェの力への意志から評価の層を、ユンガーの
-「労働者のゲシュタルト」から動員の層を取り、三層構造として組み立てます。眼目は、三者を
-滑らかに統合しないところにあります —— 普遍主義と遠近法主義の緊張こそが構造の中身である、と論じます。
+「労働者のゲシュタルト」から動員の層を取り、三層構造として組み立てる。眼目は、三者を
+滑らかに統合しないところにある —— 普遍主義と遠近法主義の緊張こそが構造の中身である、と論じる。
 
 [全文](papers/imperial-selfhood.md) ｜ [PDF](pdf/manifesto-of-imperial-selfhood-revised.pdf)
 
@@ -41,10 +41,10 @@
 
 *A Philosophy of Fragments for Solitary Spiritual Autonomy* — 2026年8月
 
-生・信仰・社会・思想・終末を、ひとつづきの物語ではなく独立した断片として扱います。断片化を修復すべき傷と
+生・信仰・社会・思想・終末を、ひとつづきの物語ではなく独立した断片として扱う。断片化を修復すべき傷と
 みなす通例に対し、それが生の実際のあり方の記述として正確なのではないかと問い、克服ではなく
-**厳密さをもって住まう**ための規律を組み立てます。実存主義・キリスト教神秘主義・武士道・戦後日本の
-批評（吉本隆明、柄谷行人）からの総合です。
+**厳密さをもって住まう**ための規律を組み立てる。実存主義・キリスト教神秘主義・武士道・戦後日本の
+批評（吉本隆明、柄谷行人）からの総合である。
 
 [全文](papers/fragmentarian-spiritual-individualism.md) ｜ [PDF](pdf/fragmentarian-spiritual-individualism.pdf)
 
@@ -60,14 +60,14 @@
 
 ### なぜ Markdown も置くのか
 
-PDF は体裁を固定できますが、本文を引用しようとすると行が割れ、検索にもかかりにくく、
-版のあいだの違いも見えません。同じ本文を Markdown でも置いておくと、節の見出しに直接リンクでき、
-`git diff` で改訂の中身がそのまま読め、全文検索も効きます。**PDF が配布物、Markdown が読むための形**、
-という役割分担です。
+PDF は体裁を固定できるが、本文を引用しようとすると行が割れ、検索にもかかりにくく、
+版のあいだの違いも見えない。同じ本文を Markdown でも置いておくと、節の見出しに直接リンクでき、
+`git diff` で改訂の中身がそのまま読め、全文検索も効く。**PDF が配布物、Markdown が読むための形**、
+という役割分担である。
 
-本文は PDF から起こしたもので、書き写したものではありません。抽出した語の並びと照合しています。
-**下の数字は、書き写した値ではありません。** [`verification/check_fidelity.py`](verification/check_fidelity.py)
-を実行すると出ます。
+本文は PDF から起こしたもので、書き写したものではない。抽出した語の並びと照合している。
+**下の数字は、書き写した値ではない。** [`verification/check_fidelity.py`](verification/check_fidelity.py)
+を実行すると出る。
 
 | | PDF の語数 | 一致 | 食い違い | 内訳 |
 | --- | --- | --- | --- | --- |
@@ -75,12 +75,12 @@ PDF は体裁を固定できますが、本文を引用しようとすると行�
 | 人格的帝国主義 | 4302 | 4294 | 4 箇所 | ハイフン語の結合 4 |
 | 断片主義 | 5147 | 5131 | 8 箇所 | ハイフン語の結合 4、括弧内の余分な空白 4 |
 
-数えているのは **Abstract 以降**です。冒頭の書誌表と日本語の要旨はこのリポジトリのために
-書き下ろしたもので、原文にはないため、照合の対象から外しています。
+数えているのは **Abstract 以降**である。冒頭の書誌表と日本語の要旨はこのリポジトリのために
+書き下ろしたもので、原文にはないため、照合の対象から外している。
 
-食い違いは全件が二種類のどちらかです。`non-negotiable` `self-overcoming` `Jean-François`
+食い違いは全件が二種類のどちらかである。`non-negotiable` `self-overcoming` `Jean-François`
 のように**行末で割れた語を繋ぎ直した**もの、および `( Seelengrund)` `(共同幻想 )` のように
-**抽出器が括弧の内側に入れてしまった空白を取り除いた**もの。**それ以外に手を入れた箇所はありません。**
+**抽出器が括弧の内側に入れてしまった空白を取り除いた**もの。**それ以外に手を入れた箇所はない。**
 
 ```
 pip install pypdf
@@ -88,14 +88,14 @@ python3 verification/check_fidelity.py       # 上の表が出る
 python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 ```
 
-本文か PDF のどちらかが変われば落ちます。GitHub Actions が push ごとに実行しています。
+本文か PDF のどちらかが変われば落ちる。GitHub Actions が push ごとに実行している。
 
 ## 公開先
 
-著者ページと、各論文の識別子です。
+著者ページと、各論文の識別子である。
 
-**はじめの二篇は Zenodo と SSRN の両方に登録されており、DOI が 2 つあります。**
-引用の際は Zenodo の DOI を用いてください（こちらを正とします）。SSRN の DOI は同一の本文を指します。
+**はじめの二篇は Zenodo と SSRN の両方に登録されており、DOI が 2 つある。**
+引用の際は Zenodo の DOI を用いること（こちらを正とする）。SSRN の DOI は同一の本文を指す。
 
 | | Zenodo（正） | SSRN | PhilArchive |
 | --- | --- | --- | --- |
@@ -103,8 +103,8 @@ python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 | 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) | [NEMMOI](https://philarchive.org/rec/NEMMOI) |
 | 断片主義 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) | — | [NEMFSI](https://philarchive.org/rec/NEMFSI) |
 
-**PhilArchive は DOI を発行しません。** 掲載先が増えても識別子は増えないため、
-哲学の読者に届ける窓口として使っています。
+**PhilArchive は DOI を発行しない。** 掲載先が増えても識別子は増えないため、
+哲学の読者に届ける窓口として使っている。
 
 著者ページ: [PhilPeople](https://philpeople.org/profiles/takuyanemoto) ｜ [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) ｜ [ORCID](https://orcid.org/0009-0000-1406-0547)
 
@@ -114,21 +114,21 @@ python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 node build.js
 ```
 
-`site/` に HTML が出ます。Node.js 以外に必要なものはありません。
+`site/` に HTML が出る。Node.js 以外に必要なものはない。
 
 ## ライセンス
 
-© 2026 根本卓哉（Takuya Nemoto）— 本文・要旨ともに [CC BY 4.0](LICENSE)。出典を示せば、改変も含めて自由に使えます。
-引用の書き方は [docs/how-to-cite.md](docs/how-to-cite.md) にあります。
+© 2026 根本卓哉（Takuya Nemoto）— 本文・要旨ともに [CC BY 4.0](LICENSE)。出典を示せば、改変も含めて自由に使える。
+引用の書き方は [docs/how-to-cite.md](docs/how-to-cite.md) にある。
 
 ## 執筆における AI の利用
 
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge)](https://claude.com/claude-code)
 [![Assisted by Grok](https://img.shields.io/badge/Assisted%20by-Grok-111111?style=for-the-badge)](https://grok.com)
 
-三篇とも、執筆または改訂にあたって Claude（Anthropic）の助力を得ています。どの作業に使い、
+三篇とも、執筆または改訂にあたって Claude（Anthropic）の助力を得ている。どの作業に使い、
 どこまでを著者が引き受けているかは、各論文の末尾の開示文と
-[docs/ai-disclosure.md](docs/ai-disclosure.md) に記載しています。
+[docs/ai-disclosure.md](docs/ai-disclosure.md) に記載している。
 
 ## 著者
 

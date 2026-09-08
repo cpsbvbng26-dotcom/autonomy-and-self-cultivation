@@ -179,23 +179,23 @@ in_document = false
 [[open_item]]
 id = "E1"
 heading_pattern = "^## E1 —"
-must_say = ["この項目は解決しません", "10.5281/zenodo.22058254"]
+must_say = ["この項目は解決しない", "10.5281/zenodo.22058254"]
 must_not_say = ["解決済み"]
 
 [[open_item]]
 id = "E2"
 heading_pattern = "^## E2 —"
-must_say = ["この項目は解決しません"]
+must_say = ["この項目は解決しない"]
 
 [[open_item]]
 id = "E3"
 heading_pattern = "^## E3 —"
-must_say = ["この項目は解決しません"]
+must_say = ["この項目は解決しない"]
 
 [[open_item]]
 id = "E4"
 heading_pattern = "^## E4 —"
-must_say = ["この項目は解決しません", "無い"]
+must_say = ["この項目は解決しない", "無い"]
 must_not_say = ["まだ確かめていません"]
 
 # ------------------------------- E5 —— 開示文が挙げている作業（翻訳は無い）
@@ -288,17 +288,17 @@ present = false
 [[open_item]]
 id = "E6"
 heading_pattern = "^## E6 —"
-must_say = ["この項目は解決しません", "当たっていません", "捏造ではない", "剽窃ではない"]
+must_say = ["この項目は解決しない", "当たっていない", "捏造ではない", "剽窃ではない"]
 
 [[open_item]]
 id = "E5"
 heading_pattern = "^## E5 —"
-must_say = ["この項目は解決しません", "特定できません", "違反していません"]
+must_say = ["この項目は解決しない", "特定できない", "違反していない"]
 
 [[open_item]]
 id = "N2"
 heading_pattern = "^### N2 —"
-must_say = ["検査の側の誤りです"]
+must_say = ["検査の側の誤りである"]
 
 [dates]
 stamp_pattern = "最終更新: (\\d{4})年(\\d{1,2})月(\\d{1,2})日"

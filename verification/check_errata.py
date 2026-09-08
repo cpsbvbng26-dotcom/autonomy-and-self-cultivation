@@ -55,7 +55,7 @@ check("配布している PDF は宣言した三篇だけ", declared == actual, 
 # 代わりに「解決しないと決めた項目が消えていないこと」を見る。
 # 個々の項目の文言は [[open_item]] の宣言が押さえている。
 check("正誤表が、解決しないと決めた項目を持っている",
-      "この項目は解決しません" in audit.document_text())
+      "この項目は解決しない" in audit.document_text())
 
 passed = sum(r.ok for r in results) + sum(1 for _, ok, _ in extra if ok)
 failed = [r.label for r in results if not r.ok] + [l for l, ok, _ in extra if not ok]
