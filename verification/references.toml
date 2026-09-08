@@ -76,6 +76,7 @@ bib = "Karatani, K. Transcritique: On Kant and Marx"
 locus = ""
 supports = ""
 role = ""
+note = "参考文献欄が「Japanese original 2001; English translation 2003」とだけ書いている。**日本語で読んだのか英訳で読んだのかが、紙面から決まらない。**"
 
 [[reference]]
 id = "F-kierkegaard-1843"
@@ -164,6 +165,7 @@ bib = "Colli, Giorgio, and Mazzino Montinari"
 locus = ""
 supports = ""
 role = ""
+note = "批判版。`M-nietzsche-1967` の編纂の経緯を確かめるなら、**突き合わせる相手はこれ**である。参考文献欄に両方が載っているのに、突き合わせた形跡は紙面に無い。"
 
 [[reference]]
 id = "M-davidson-1997"
@@ -204,6 +206,7 @@ bib = "Der Arbeiter: Herrschaft und Gestalt"
 locus = ""
 supports = ""
 role = ""
+note = "M は本文で、国家の総動員を論じた枠組みを自己の陶冶へ移すには**明示的な翻案が要る**と述べている。翻案が成立しているかは、原典の側を見なければ言えない。"
 
 [[reference]]
 id = "M-junger-1930"
@@ -260,6 +263,7 @@ bib = "The Will to Power. Translated by Walter Kaufmann and R"
 locus = ""
 supports = ""
 role = ""
+note = "M は本文で、この語の**編集上の地位が争われている**ことに自ら言及している。遺稿の編纂物であり、著者が公刊した順序ではない。**論文がその危うさを認識していながら、確かめてはいない**箇所である。"
 
 [[reference]]
 id = "M-young-2010"
@@ -340,3 +344,4 @@ bib = "The Holy Bible. 1 Corinthians 7"
 locus = ""
 supports = ""
 role = ""
+note = "参考文献欄の記載が **「any standard translation」** である。**これは箇所の指定になっていない。**訳によって語が変わる場所を、訳を決めずに引いている。"

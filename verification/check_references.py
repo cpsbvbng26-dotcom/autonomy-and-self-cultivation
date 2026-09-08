@@ -105,6 +105,22 @@ check("ERRATA.md が名乗る未記入の件数が実際と合う",
       m is not None and int(m.group(1)) == len(todo),
       ("名乗り %s / 実際 %d" % (m.group(1) if m else "無し", len(todo))))
 
+print("\n5. 書棚が作り直せるか")
+
+import subprocess                                    # noqa: E402
+before = io.open(os.path.join(ROOT, "SHELF.md"), encoding="utf-8").read() \
+    if os.path.exists(os.path.join(ROOT, "SHELF.md")) else None
+subprocess.run([sys.executable, os.path.join(HERE, "build_shelf.py")],
+               capture_output=True, cwd=ROOT)
+after = io.open(os.path.join(ROOT, "SHELF.md"), encoding="utf-8").read()
+check("SHELF.md が references.toml から作り直したものと一致する",
+      before == after, "python3 verification/build_shelf.py を走らせてください")
+
+m2 = re.search(r"まだ読んでいない (\d+) 冊", after)
+check("書棚が名乗る未読の冊数が実際と合う",
+      m2 is not None and int(m2.group(1)) == len(todo),
+      "名乗り %s / 実際 %d" % (m2.group(1) if m2 else "無し", len(todo)))
+
 print("\n" + "-" * 58)
 print("  記入済み %d 件 / 未記入 %d 件 / 合計 %d 件"
       % (len(done), len(todo), len(refs)))
