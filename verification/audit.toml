@@ -117,6 +117,29 @@ source = "M"
 group = "distribution"
 expect = 1
 
+# ------------------------------------- E7 —— 確かめられないことを断言している
+#
+# 開示文の中で、いちばん重い一文である。捏造が無かったことを確かめたのは AI で、
+# 著者は原典に当たっていない（E6）。**AI 自身の報告以外に根拠が無い。**
+# 二つとも紙面に印字されている。書き換えられたら、そこで落ちる。
+
+[[quote]]
+source = "M"
+where = "E7 —— 捏造が無かったことの断言"
+group = "e7"
+text = "No data, quotations, or sources were fabricated by the AI system in the course of this revision."
+
+[[quote]]
+source = "M"
+where = "E7 —— 照合したのは AI である"
+group = "e7"
+text = "verify the bibliographic citations listed in the References section against publicly available sources"
+
+[[count]]
+source = "M"
+group = "e7"
+expect = 2
+
 [[quote]]
 source = "M"
 group = "distribution"
