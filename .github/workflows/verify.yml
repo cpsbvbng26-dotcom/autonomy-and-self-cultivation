@@ -8,7 +8,7 @@ on:
 
 jobs:
   fidelity:
-    name: 紙面との照合 / 正誤表の監査 50 項目
+    name: 紙面との照合 / 正誤表の監査 77 項目 / 参考文献 7 項目
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,8 +17,10 @@ jobs:
           python-version: '3.12'
       - run: pip install pypdf
       - run: python3 verification/check_fidelity.py -v
-      - name: 正誤表が紙面からずれていないか（50 項目）
+      - name: 正誤表が紙面からずれていないか（77 項目）
         run: python3 verification/check_errata.py
+      - name: 参考文献の宣言が紙面と食い違っていないか（7 項目）
+        run: python3 verification/check_references.py
 
   build:
     name: サイトが生成できるか
