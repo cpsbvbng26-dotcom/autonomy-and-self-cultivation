@@ -19,7 +19,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const SKIP = new Set(['.git', 'node_modules', 'site', 'pdf', 'venv']);
-const EXT = ['.md', '.html', '.cff', '.json', '.js', '.py', '.yml'];
+const EXT = ['.md', '.html', '.cff', '.json', '.js', '.py', '.yml', '.toml'];
 
 /* 実際に混入したもの。wrong は日本語として成立しない、または文脈で明らかに誤り。 */
 const CORRUPTIONS = [
@@ -48,9 +48,17 @@ const INCONSISTENT = [
  *
  * 例外の一覧は check_fidelity.py の対応表から取る。手で書くと、例外だけを
  * 静かに広げられてしまう。転記であると宣言した先だけが例外になる。 */
+/* 状態を散文に固定した言い方。**動くものを地の文に書くと、動いたときに嘘になる。**
+ * 実際に嘘になった —— 参考文献の欄が「全部が空欄」「誰も書けない」と書いたまま
+ * 38 件埋まり、「読んでいないからである」と書いたまま一冊読まれた。
+ * 件数と状態は、機械が数えて散文と突き合わせる場所にだけ置く。 */
 const FORBIDDEN = [
   { term: '独立研究者', note: '自分の散文では使わない' },
-  { term: 'Independent Researcher', note: '同上（英訳）' }
+  { term: 'Independent Researcher', note: '同上（英訳）' },
+  { term: '全部が空欄', note: '状態は動く。数えるのは check_references.py である' },
+  { term: 'ほとんどが空欄', note: '同上' },
+  { term: '一冊も読んでいない', note: '同上。実際に一冊読まれた' },
+  { term: 'いまは誰も書けない', note: '同上。紙面から書ける段がある' }
 ];
 
 const TRANSCRIPTS = new Set(
