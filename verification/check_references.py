@@ -256,6 +256,14 @@ check("ERRATA.md が名乗る未記入の件数が実際と合う",
       m is not None and int(m.group(1)) == len(todo),
       ("名乗り %s / 実際 %d" % (m.group(1) if m else "無し", len(todo))))
 
+# 二段の表。**上の段が埋まったことを、読んだことのように読ませない。**
+for 段, 実際 in (("意図", sum(1 for r in refs if intended(r))),
+                 ("確認", sum(1 for r in refs if verified(r)))):
+    m5 = re.search(r"\| %s \|[^|]*\| \*\*(\d+) / %d\*\* \|" % (段, len(refs)), errata)
+    check("ERRATA.md が名乗る「%s」の件数が実際と合う" % 段,
+          m5 is not None and int(m5.group(1)) == 実際,
+          "名乗り %s / 実際 %d" % (m5.group(1) if m5 else "無し", 実際))
+
 m3 = re.search(r"外から来て、なお読んでいないものが \*\*(\d+) 件\*\*", errata)
 check("ERRATA.md が名乗る借り物の件数が実際と合う",
       m3 is not None and int(m3.group(1)) == len(借り物),
