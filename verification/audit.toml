@@ -363,3 +363,16 @@ must_say = ["検査の側の誤りである"]
 [dates]
 stamp_pattern = "最終更新: (\\d{4})年(\\d{1,2})月(\\d{1,2})日"
 any_pattern = "(\\d{4})年(\\d{1,2})月(\\d{1,2})日"
+
+# ------------------------------- CI の題が名乗る参考文献の検査の件数
+#
+# **散文に数を書いたら、その数を機械で確かめられるようにする。**
+# 正誤表の側の件数は check_errata.py が自分で数えている（自分自身を含むため、
+# ここからは呼べない）。こちらは別のスクリプトなので呼べる。
+
+[[number]]
+label = "参考文献と書棚の検査の件数"
+command = "python3 verification/check_references.py"
+extract = "(\\d+) 件すべて通りました"
+pattern = "書棚[^\\n]*?(\\d+) 項目"
+in = [".github/workflows/verify.yml"]

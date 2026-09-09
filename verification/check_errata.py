@@ -17,7 +17,9 @@
 https://github.com/cpsbvbng26-dotcom/errata-check
 """
 
+import io
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -56,6 +58,16 @@ check("配布している PDF は宣言した三篇だけ", declared == actual, 
 # 個々の項目の文言は [[open_item]] の宣言が押さえている。
 check("正誤表が、解決しないと決めた項目を持っている",
       "この項目は解決しない" in audit.document_text())
+
+# CI の題が名乗る件数を、この検査自身が数えた件数と突き合わせる。
+# **自分自身を数に入れる。**だから宣言の前に一つ足す。
+wf = io.open(os.path.join(ROOT, ".github", "workflows", "verify.yml"),
+             encoding="utf-8").read()
+総数 = len(results) + len(extra) + 1
+名乗り = sorted(set(re.findall(r"正誤表[^\n]*?(\d+) 項目", wf)))
+check("CI の題が名乗る正誤表の項目数が実際と合う",
+      名乗り == [str(総数)],
+      "名乗り %s / 実際 %d" % ("・".join(名乗り) or "無し", 総数))
 
 passed = sum(r.ok for r in results) + sum(1 for _, ok, _ in extra if ok)
 failed = [r.label for r in results if not r.ok] + [l for l, ok, _ in extra if not ok]

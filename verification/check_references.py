@@ -158,6 +158,49 @@ check("引用の一致を数えている", True,
       "一致 %d / 部分一致 %d / 不一致 %d / 未検証 %d"
       % (tally["一致"], tally["部分一致"], tally["不一致"], 未検証))
 
+# 未読であることの重さは、典拠ごとに違う。着想が先にあった場合と、典拠が着想を
+# 供給した場合を分けて数える。**外から来ていて、なお読んでいないものが、いちばん深い。**
+# この差は利用者の証言であって、紙面からは出ない。だから紙面との突き合わせは掛からない。
+ORIGINS = ("自前", "外から")
+
+bad_origin = [r["id"] for r in refs
+              if str(r.get("origin", "")).strip()
+              and str(r.get("origin", "")).strip() not in ORIGINS]
+check("origin が決めた語である", not bad_origin,
+      "、".join(bad_origin) or "使えるのは " + "・".join(ORIGINS) + "（空欄は未記載）")
+
+# origin は本文で使われている典拠についてしか言えない。使われていないものに
+# 「着想が先にあった」も「着想を供給した」も無い。
+no_body_origin = [r["id"] for r in refs
+                  if r["id"] in set(spec.get("body_absent", []))
+                  and str(r.get("origin", "")).strip()]
+check("本文に無い項目に origin が書かれていない", not no_body_origin,
+      ("引かれていないのに origin がある: " + "、".join(no_body_origin))
+      if no_body_origin else "")
+
+# origin を書くには、その典拠が何を支えているかが先に要る。
+# **着想の出どころだけ書いて、使い方を書かないことは認めない。**
+origin_no_intent = [r["id"] for r in refs
+                    if str(r.get("origin", "")).strip() and not intended(r)]
+check("origin だけが書かれた項目が無い", not origin_no_intent,
+      ("何を支える引用なのかを書かずに origin を書けない: "
+       + "、".join(origin_no_intent[:5])) if origin_no_intent else "")
+
+o_tally = {k: sum(1 for r in refs if str(r.get("origin", "")).strip() == k)
+           for k in ORIGINS}
+未記載 = sum(1 for r in refs if not str(r.get("origin", "")).strip())
+check("着想の出どころを数えている", True,
+      "自前 %d / 外から %d / 未記載 %d"
+      % (o_tally["自前"], o_tally["外から"], 未記載))
+
+# **いちばん深い組み合わせ。**着想が典拠から来ていて、その典拠を読んでいない。
+# 主張そのものが人伝えの要約に乗っている。散文がこの数を名乗るなら、突き合わせる。
+借り物 = [r["id"] for r in refs
+          if str(r.get("origin", "")).strip() == "外から"
+          and not str(r.get("agreement", "")).strip()]
+check("外から来て、なお読んでいないものを数えている", True,
+      "%d 件（%s）" % (len(借り物), "、".join(借り物)) if 借り物 else "無い")
+
 # 参考文献欄にあるだけで、本文から引かれていない項目。
 #
 # **以前の検査は、参考文献の行に文字列があれば通していた。**本文で使われているかを
@@ -194,6 +237,19 @@ m = re.search(r"未記入は \*\*(\d+) 件\*\*", errata)
 check("ERRATA.md が名乗る未記入の件数が実際と合う",
       m is not None and int(m.group(1)) == len(todo),
       ("名乗り %s / 実際 %d" % (m.group(1) if m else "無し", len(todo))))
+
+m3 = re.search(r"外から来て、なお読んでいないものが \*\*(\d+) 件\*\*", errata)
+check("ERRATA.md が名乗る借り物の件数が実際と合う",
+      m3 is not None and int(m3.group(1)) == len(借り物),
+      ("名乗り %s / 実際 %d" % (m3.group(1) if m3 else "無し", len(借り物))))
+
+# E6 の内訳表。**散文に書いた三つの数を、そのまま突き合わせる。**
+for 語, 実際 in (("自前", o_tally["自前"]), ("外から", o_tally["外から"]),
+                 ("未記載", 未記載)):
+    m4 = re.search(r"\| %s \| (\d+) 件" % 語, errata)
+    check("ERRATA.md が名乗る「%s」の件数が実際と合う" % 語,
+          m4 is not None and int(m4.group(1)) == 実際,
+          "名乗り %s / 実際 %d" % (m4.group(1) if m4 else "無し", 実際))
 
 print("\n5. 書棚が作り直せるか")
 
