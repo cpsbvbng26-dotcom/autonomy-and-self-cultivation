@@ -105,9 +105,27 @@ def filled(r):
 done = [r for r in refs if filled(r)]
 todo = [r for r in refs if not filled(r)]
 
-bad_role = [r["id"] for r in done if r.get("role") not in ROLES]
-check("埋めた項目の使い方が決めた語である", not bad_role,
-      "、".join(bad_role) or "使えるのは " + "・".join(ROLES))
+# 一つの典拠が二つの役を兼ねることはある。用語の出所であり、同時に直接支持でも
+# あるという場合である。だから `role` は「・」で区切って並べられる。
+# **並べられるのは決めた五つだけで、同じ語を二度は書けない。**
+
+
+def roles(r):
+    return [x for x in str(r.get("role", "")).split("・") if x.strip()]
+
+
+bad_role = [r["id"] for r in refs
+            if str(r.get("role", "")).strip()
+            and any(x not in ROLES for x in roles(r))]
+check("使い方が決めた語である", not bad_role,
+      "、".join(bad_role) or "使えるのは " + "・".join(ROLES) + "（「・」で兼ねられる）")
+
+dup_role = [r["id"] for r in refs if len(roles(r)) != len(set(roles(r)))]
+check("同じ使い方を二度書いた項目が無い", not dup_role, "、".join(dup_role))
+
+兼 = [r["id"] for r in refs if len(roles(r)) > 1]
+check("役を兼ねる項目を数えている", True,
+      "%d 件（%s）" % (len(兼), "、".join(兼)) if 兼 else "無い")
 
 half_i = [r["id"] for r in refs
           if not intended(r) and any(str(r.get(k, "")).strip()
