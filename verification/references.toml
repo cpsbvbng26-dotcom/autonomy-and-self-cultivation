@@ -19,13 +19,14 @@
 #   role      直接支持 / 用語の出所 / 対立見解 / 背景 / 反例 の五つだけ
 #   agreement 一致 / 部分一致 / 不一致 の三つだけ。空欄は未検証を意味する
 #   caveat    版や編纂の事情など、読者が知るべき留保（任意）
+#   origin    自前 / 外から の二つだけ。空欄は未記載を意味する（任意）
 #
 # **agreement を分けて置く理由。**「原典に当たっていない」は手続きについての記述で
 # あって、引用が誤っていることを意味しない。三つに分かれる。
 #
 #   一致    典拠が実際にその主張を述べている。**読んでいなくても当たっていた**
 #   不一致  典拠はそう述べていない。**未読が実害になっている**
-#   未検証  どちらか分からない。**いまは 39 件すべてがここにある**
+#   未検証  どちらか分からない。件数は check_references.py が数える
 #
 # **一致だった場合、それは Trinity-Infinity 側で「再発見」と呼んだ形と同じである。**
 # あちらの README は、独立に標準形へ着地したこと自体が、直観が実在する構造を
@@ -33,6 +34,22 @@
 #
 # **ただし読んでからしか言えない。**いま一致だと書けば、読まずに内容を主張したこと
 # になり、E6 を繰り返す。だから欄を作って空にしておく。
+#
+# **origin を分けて置く理由。**未読であることの重さは、典拠ごとに違う。二つに分かれる。
+#
+#   自前    論文の着想が先にあり、典拠は後から結び付けた
+#   外から  典拠が着想を供給した。論文の側に先に無かった
+#
+# 自前の場合、引用が外れていても主張そのものは残る。失われるのは支えだけである。
+# **外から来ていて、なお読んでいない場合は、主張そのものが人伝えの要約に乗っている。**
+# これが E6 のいちばん深いところである。件数は check_references.py が数える。
+#
+# **自前にも自前の危うさがある。**着想に合う典拠を後から探して貼ったのなら、
+# 典拠が実際には違うことを述べている可能性を、着想への確信が隠す。
+# 自前は、確認の代わりにはならない。
+#
+# 皇帝主義では、目的の王国（カント）と意味の帝国（ニーチェ）は着想の側が先にあった。
+# 総動員（ユンガー）は後から来た。**この差は利用者の証言であり、紙面からは出ない。**
 #
 # **埋めた日は git が持つ。**あとから遡って埋めたことにはできない。
 #
@@ -205,8 +222,8 @@ id = "M-colli-1980"
 paper = "M"
 bib = "Colli, Giorgio, and Mazzino Montinari"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節の注 —— `M-nietzsche-1967` が著者の編んだ書ではないこと。批判版が遺稿の配列を復元している"
+role = "背景"
 agreement = ""
 note = "批判版。`M-nietzsche-1967` の編纂の経緯を確かめるなら、**突き合わせる相手はこれ**である。参考文献欄に両方が載っているのに、突き合わせた形跡は紙面に無い。"
 
@@ -215,8 +232,8 @@ id = "M-davidson-1997"
 paper = "M"
 bib = "Davidson, James Dale, and William Rees-Mogg"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— テクノ・リバタリアンの主権的個人。個人帝国主義がそれではないと言うために置いた対照"
+role = "対立見解"
 agreement = ""
 
 [[reference]]
@@ -224,8 +241,8 @@ id = "M-epictetus-2008"
 paper = "M"
 bib = "Epictetus. Discourses and Selected Writings"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— 自分次第のものとそうでないものを分ける訓練。帝国の版図を、統べられる範囲に限る根拠"
+role = "直接支持"
 agreement = ""
 
 [[reference]]
@@ -233,8 +250,8 @@ id = "M-foucault-1988"
 paper = "M"
 bib = "Foucault, Michel. \"Technologies of the Self.\""
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— 自己のテクノロジー。自己を対象として働きかける実践の系譜であり、個人帝国主義にいちばん近い隣の議論"
+role = "背景"
 agreement = ""
 
 [[reference]]
@@ -242,8 +259,8 @@ id = "M-herf-1984"
 paper = "M"
 bib = "Herf, Jeffrey. Reactionary Modernism"
 locus = ""
-supports = ""
-role = ""
+supports = "第3節の注 —— ユンガーを反動的モダニズムの側に置くこと。この枠組みを引くなら切り離せない歴史的な位置"
+role = "背景"
 agreement = ""
 
 [[reference]]
@@ -252,8 +269,9 @@ body_key = "Jünger"
 paper = "M"
 bib = "Der Arbeiter: Herrschaft und Gestalt"
 locus = ""
-supports = ""
-role = ""
+supports = "第3節 —— 労働者のゲシュタルト。動員された能力が、生きられた実際の形として現れる"
+role = "用語の出所"
+origin = "外から"
 agreement = ""
 note = "M は本文で、国家の総動員を論じた枠組みを自己の陶冶へ移すには**明示的な翻案が要る**と述べている。翻案が成立しているかは、原典の側を見なければ言えない。"
 
@@ -263,8 +281,9 @@ body_key = "Jünger"
 paper = "M"
 bib = "Jünger, Ernst. \"Total Mobilization\" (1930)"
 locus = ""
-supports = ""
-role = ""
+supports = "第3節 —— 総動員。個の能力が余さず一つの目的へ動員される形"
+role = "用語の出所"
+origin = "外から"
 agreement = ""
 
 [[reference]]
@@ -272,8 +291,9 @@ id = "M-kant-1785"
 paper = "M"
 bib = "Kant, Immanuel. Groundwork of the Metaphysics of Morals (1785)"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節 —— 個人帝国主義の中心にある形。自己が自己の法の立法者であり、同時にその法に従う者でもある"
+role = "直接支持"
+origin = "自前"
 agreement = ""
 
 [[reference]]
@@ -281,8 +301,9 @@ id = "M-kant-1797"
 paper = "M"
 bib = "The Metaphysics of Morals (1797)"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— 自己への義務が義務でありうること。自己の陶冶を勧めではなく義務として置く"
+role = "直接支持"
+origin = "自前"
 agreement = ""
 
 [[reference]]
@@ -290,8 +311,8 @@ id = "M-marcus-2002"
 paper = "M"
 bib = "Marcus Aurelius. Meditations"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— 日々書いて自分の判断を検め直す実践。統治が一度の宣言ではなく反復であること"
+role = "直接支持"
 agreement = ""
 
 [[reference]]
@@ -299,8 +320,9 @@ id = "M-nietzsche-1886"
 paper = "M"
 bib = "Beyond Good and Evil (1886)"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節 —— 力への意志という語が、ニーチェ自身が公刊した書に出てくる場所"
+role = "用語の出所"
+origin = "自前"
 agreement = ""
 
 [[reference]]
@@ -308,8 +330,9 @@ id = "M-nietzsche-1883"
 paper = "M"
 bib = "Thus Spoke Zarathustra"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節 —— 自己超克。到達した形を保つことではなく、越え続けることが自己の運動である"
+role = "直接支持"
+origin = "自前"
 agreement = ""
 
 [[reference]]
@@ -317,8 +340,9 @@ id = "M-nietzsche-1967"
 paper = "M"
 bib = "The Will to Power. Translated by Walter Kaufmann and R"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節 —— 意味の帝国という着想に、力への意志という語を与えている"
+role = "用語の出所"
+origin = "自前"
 agreement = ""
 note = "M は本文で、この語の**編集上の地位が争われている**ことに自ら言及している。遺稿の編纂物であり、著者が公刊した順序ではない。**論文がその危うさを認識していながら、確かめてはいない**箇所である。"
 
@@ -327,8 +351,8 @@ id = "M-young-2010"
 paper = "M"
 bib = "Young, Julian. Friedrich Nietzsche: A Philosophical Biography"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節の注 —— ニーチェ自身がその企画を捨てていたこと。遺稿は著者が選び並べたものではない"
+role = "背景"
 agreement = ""
 
 [[reference]]
