@@ -158,6 +158,35 @@ check("引用の一致を数えている", True,
       "一致 %d / 部分一致 %d / 不一致 %d / 未検証 %d"
       % (tally["一致"], tally["部分一致"], tally["不一致"], 未検証))
 
+# 参考文献欄にあるだけで、本文から引かれていない項目。
+#
+# **以前の検査は、参考文献の行に文字列があれば通していた。**本文で使われているかを
+# 見ていなかった。実際に一件（Foucault）を見落としていた。
+#
+# 探索語は id の真ん中から取り、取れないものは body_key を書く。
+# **Jünger を junger で探して誤検出した。**綴りは合わせる。
+
+print("\n3.5 参考文献欄にあって本文に無いもの")
+
+declared = set(spec.get("body_absent", []))
+absent = []
+for pid in PDF:
+    whole = text[pid]
+    i = whole.rfind("References")
+    body = whole[:i] if i > 0 else whole
+    for r in [x for x in refs if x["paper"] == pid]:
+        key = r.get("body_key") or r["id"].split("-")[1]
+        if key.lower() not in body.lower():
+            absent.append(r["id"])
+absent = sorted(set(absent))
+check("本文に無い項目が、宣言したものと一致する", absent == sorted(declared),
+      ("宣言 %s / 実際 %s" % (sorted(declared), absent)) if absent != sorted(declared)
+      else ("%d 件（%s）" % (len(absent), "、".join(absent)) if absent else "無い"))
+no_role = [r["id"] for r in refs if r["id"] in declared
+           and (str(r.get("role", "")).strip() or str(r.get("supports", "")).strip())]
+check("本文に無い項目に、支える主張が書かれていない", not no_role,
+      ("引かれていないのに supports か role がある: " + "、".join(no_role)) if no_role else "")
+
 print("\n4. 散文が名乗る残り件数")
 
 errata = io.open(os.path.join(ROOT, "ERRATA.md"), encoding="utf-8").read()
