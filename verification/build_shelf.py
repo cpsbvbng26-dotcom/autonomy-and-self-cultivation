@@ -53,6 +53,7 @@ done = [r for r in refs if filled(r)]
 todo = [r for r in refs if not filled(r)]
 意図のみ = [r for r in refs if intended(r) and not verified(r)]
 白紙 = [r for r in refs if not intended(r)]
+指せない = set(spec.get("read_no_locus", []))
 借り物 = [r for r in refs
           if str(r.get("origin", "")).strip() == "外から"
           and not str(r.get("agreement", "")).strip()]
@@ -60,14 +61,14 @@ todo = [r for r in refs if not filled(r)]
 out = []
 w = out.append
 
-w("# 書棚 —— まだ読んでいない %d 冊" % len(todo))
+w("# 書棚 —— まだ確かめていない %d 冊" % len(todo))
 w("")
 w("このファイルは `verification/references.toml` からの生成物である。"
   "手で編集しない。")
 w("（`python3 verification/build_shelf.py` で作り直す）")
 w("")
 w("三篇の参考文献欄に載っている典拠を、一冊ずつ並べたものである。")
-w("著者はこれらの原典に当たっていない（[ERRATA.md](ERRATA.md) の `E6`）。")
+w("著者はこれらの原典の大半に当たっていない（[ERRATA.md](ERRATA.md) の `E6`）。")
 w("")
 w("> この頁に、本の中身の要約は一行もない。読んでいないからである。")
 w("> 書いてあるのは紙面から取れることだけ ―― 書誌、どの論文が挙げているか、")
@@ -87,15 +88,18 @@ w("")
 w("| | |")
 w("| --- | --- |")
 w("| 合計 | %d 冊 |" % len(refs))
-w("| 読んで記入済み | %d 冊 |" % len(done))
-w("| 使い方は書いた、まだ読んでいない | %d 冊 |" % len(意図のみ))
+w("| 読んで、箇所も書いた | %d 冊 |" % len(done))
+w("| 使い方は書いた、箇所は書けていない | %d 冊 |" % len(意図のみ))
 w("| 何も書いていない | %d 冊 |" % len(白紙))
-w("| まだ読んでいない | **%d 冊** |" % len(todo))
+w("| まだ確かめていない | **%d 冊** |" % len(todo))
 w("")
 w("`origin` の欄がある本は、着想がどちら側から来たかを記している。")
 w("`自前` は論文の着想が先にあった場合、`外から` は典拠が着想を供給した場合である。")
 w("**外から来て、なお読んでいないものが %d 冊ある。**" % len(借り物))
 w("そこでは主張そのものが人伝えの要約に乗っている。")
+w("")
+w("読んでいながら位置を指せないものが %d 冊ある。" % len(指せない))
+w("**読んだことと、指せることは別である。**指せないものは未検証のまま置いてある。")
 w("")
 w("---")
 w("")
@@ -110,6 +114,7 @@ for pid in ("F", "M", "N"):
     w("")
     for r in rows:
         mark = ("記入済み" if filled(r)
+                else "読んだが、位置を指せない" if r["id"] in 指せない
                 else "使い方は書いた・未確認" if intended(r)
                 else "未記入")
         w("### %s" % r["bib"])
@@ -137,6 +142,16 @@ for pid in ("F", "M", "N"):
                 w("| %s | %s |" % (k, v))
             if not verified(r):
                 w("")
+                if r["id"] in 指せない:
+                    w("想定される反論。著者はこの本を読んでいると述べている。"
+                      "ただし、どの箇所がこの主張を支えているかは書けていない。"
+                      "読んだことと、指せることは別である。")
+                    w("")
+                    w("読んだら確かめられること。この本のどの巻が、"
+                      "ここに書いた使い方を支えているか。その本を持つ者なら、"
+                      "著者より先に書ける。")
+                    w("")
+                    continue
                 w("想定される反論。使い方は書けているが、"
                   "この本のどの箇所がそれを支えているかは書けていない。")
                 w("")

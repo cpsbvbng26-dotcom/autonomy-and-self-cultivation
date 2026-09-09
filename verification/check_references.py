@@ -227,6 +227,25 @@ check("外から来て、なお読んでいないものを数えている", True
 # 探索語は id の真ん中から取り、取れないものは body_key を書く。
 # **Jünger を junger で探して誤検出した。**綴りは合わせる。
 
+# 読んだと述べていながら、locus を書けない項目。
+# **読んだことと、指せることは別である。**確認として数えるのは後者だけである。
+
+print("\n3.4 読んだと述べていながら、位置を指せないもの")
+
+指せない = spec.get("read_no_locus", [])
+未知 = [i for i in 指せない if i not in set(ids)]
+check("宣言した id が実在する", not 未知, "、".join(未知))
+埋まった = [r["id"] for r in refs if r["id"] in set(指せない)
+            and (str(r.get("locus", "")).strip()
+                 or str(r.get("agreement", "")).strip())]
+check("位置を指せないと宣言した項目に、locus も agreement も無い", not 埋まった,
+      ("書けたのなら宣言から外す: " + "、".join(埋まった)) if 埋まった else "")
+半端 = [r["id"] for r in refs if r["id"] in set(指せない) and not intended(r)]
+check("位置を指せない項目にも、何を支えるかは書いてある", not 半端,
+      "、".join(半端))
+check("読んだと述べていながら位置を指せないものを数えている", True,
+      "%d 件（%s）" % (len(指せない), "、".join(指せない)) if 指せない else "無い")
+
 print("\n3.5 参考文献欄にあって本文に無いもの")
 
 declared = set(spec.get("body_absent", []))
@@ -264,6 +283,11 @@ for 段, 実際 in (("意図", sum(1 for r in refs if intended(r))),
           m5 is not None and int(m5.group(1)) == 実際,
           "名乗り %s / 実際 %d" % (m5.group(1) if m5 else "無し", 実際))
 
+m6 = re.search(r"読んでいながら位置を指せないものが \*\*(\d+) 件\*\*", errata)
+check("ERRATA.md が名乗る、位置を指せないものの件数が実際と合う",
+      m6 is not None and int(m6.group(1)) == len(指せない),
+      "名乗り %s / 実際 %d" % (m6.group(1) if m6 else "無し", len(指せない)))
+
 m3 = re.search(r"外から来て、なお読んでいないものが \*\*(\d+) 件\*\*", errata)
 check("ERRATA.md が名乗る借り物の件数が実際と合う",
       m3 is not None and int(m3.group(1)) == len(借り物),
@@ -288,8 +312,8 @@ after = io.open(os.path.join(ROOT, "SHELF.md"), encoding="utf-8").read()
 check("SHELF.md が references.toml から作り直したものと一致する",
       before == after, "python3 verification/build_shelf.py を走らせてください")
 
-m2 = re.search(r"まだ読んでいない (\d+) 冊", after)
-check("書棚が名乗る未読の冊数が実際と合う",
+m2 = re.search(r"まだ確かめていない (\d+) 冊", after)
+check("書棚が名乗る未確認の冊数が実際と合う",
       m2 is not None and int(m2.group(1)) == len(todo),
       "名乗り %s / 実際 %d" % (m2.group(1) if m2 else "無し", len(todo)))
 
