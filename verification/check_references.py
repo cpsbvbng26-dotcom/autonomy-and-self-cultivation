@@ -97,6 +97,34 @@ half = [r["id"] for r in refs
 check("途中まで埋まった項目が無い", not half,
       ("locus・supports・role は揃えて埋める: " + "、".join(half[:5])) if half else "")
 
+# 「原典に当たっていない」は手続きの記述であって、引用が誤っていることを意味しない。
+# 一致・部分一致・不一致・未検証を分けて数える。**空欄は未検証である。**
+# 一致だった場合、それは Trinity-Infinity 側で「再発見」と呼んだ形と同じである。
+AGREEMENT = ("一致", "部分一致", "不一致")
+
+bad_agree = [r["id"] for r in refs
+             if str(r.get("agreement", "")).strip()
+             and str(r.get("agreement", "")).strip() not in AGREEMENT]
+check("agreement が決めた語である", not bad_agree,
+      "、".join(bad_agree) or "使えるのは " + "・".join(AGREEMENT) + "（空欄は未検証）")
+
+no_agree = [r["id"] for r in done if not str(r.get("agreement", "")).strip()]
+check("埋めた項目には agreement がある", not no_agree,
+      ("典拠を読んだのなら一致か否かを書く: " + "、".join(no_agree[:5])) if no_agree else "")
+
+早い = [r["id"] for r in refs
+        if str(r.get("agreement", "")).strip() and not filled(r)]
+check("読まずに一致だけを書いた項目が無い", not 早い,
+      ("locus と supports の無い agreement は根拠が無い: " + "、".join(早い[:5]))
+      if 早い else "")
+
+tally = {k: sum(1 for r in refs if str(r.get("agreement", "")).strip() == k)
+         for k in AGREEMENT}
+未検証 = sum(1 for r in refs if not str(r.get("agreement", "")).strip())
+check("引用の一致を数えている", True,
+      "一致 %d / 部分一致 %d / 不一致 %d / 未検証 %d"
+      % (tally["一致"], tally["部分一致"], tally["不一致"], 未検証))
+
 print("\n4. 散文が名乗る残り件数")
 
 errata = io.open(os.path.join(ROOT, "ERRATA.md"), encoding="utf-8").read()

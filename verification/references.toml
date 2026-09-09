@@ -17,7 +17,22 @@
 #   locus     節・章・断章番号・頁。「その本のどこか」は認めない
 #   supports  その箇所が支えている、本文のどの主張か
 #   role      直接支持 / 用語の出所 / 対立見解 / 背景 / 反例 の五つだけ
+#   agreement 一致 / 部分一致 / 不一致 の三つだけ。空欄は未検証を意味する
 #   caveat    版や編纂の事情など、読者が知るべき留保（任意）
+#
+# **agreement を分けて置く理由。**「原典に当たっていない」は手続きについての記述で
+# あって、引用が誤っていることを意味しない。三つに分かれる。
+#
+#   一致    典拠が実際にその主張を述べている。**読んでいなくても当たっていた**
+#   不一致  典拠はそう述べていない。**未読が実害になっている**
+#   未検証  どちらか分からない。**いまは 39 件すべてがここにある**
+#
+# **一致だった場合、それは Trinity-Infinity 側で「再発見」と呼んだ形と同じである。**
+# あちらの README は、独立に標準形へ着地したこと自体が、直観が実在する構造を
+# 捉えていた証拠になると書いている。**同じ基準を哲学の側にも当てる。**
+#
+# **ただし読んでからしか言えない。**いま一致だと書けば、読まずに内容を主張したこと
+# になり、E6 を繰り返す。だから欄を作って空にしておく。
 #
 # **埋めた日は git が持つ。**あとから遡って埋めたことにはできない。
 #
@@ -36,6 +51,7 @@ bib = "Boehme, J. The Way to Christ"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-eckhart-14c"
@@ -44,6 +60,7 @@ bib = "Eckhart, M. Sermons"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-hadot-1995"
@@ -52,6 +69,7 @@ bib = "Hadot, P. Philosophy as a Way of Life"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-heidegger-1927"
@@ -60,6 +78,7 @@ bib = "Heidegger, M. Being and Time"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-kant-1785"
@@ -68,6 +87,7 @@ bib = "Kant, I. Groundwork of the Metaphysics of Morals"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-karatani-2001"
@@ -76,6 +96,7 @@ bib = "Karatani, K. Transcritique: On Kant and Marx"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 note = "参考文献欄が「Japanese original 2001; English translation 2003」とだけ書いている。**日本語で読んだのか英訳で読んだのかが、紙面から決まらない。**"
 
 [[reference]]
@@ -85,6 +106,7 @@ bib = "Kierkegaard, S. Either/Or"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-lyotard-1979"
@@ -93,6 +115,7 @@ bib = "Lyotard, J.-F. The Postmodern Condition"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-marx-1844"
@@ -101,6 +124,7 @@ bib = "Marx, K. Economic and Philosophic Manuscripts of 1844"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-musashi-1645"
@@ -109,6 +133,7 @@ bib = "Musashi, M. The Book of Five Rings"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-nietzsche-1872"
@@ -117,6 +142,7 @@ bib = "Nietzsche, F. The Birth of Tragedy"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-nietzsche-1887"
@@ -125,6 +151,7 @@ bib = "Nietzsche, F. On the Genealogy of Morality"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-sartre-1943"
@@ -133,6 +160,7 @@ bib = "Sartre, J.-P. Being and Nothingness"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-weber-1905"
@@ -141,6 +169,7 @@ bib = "Weber, M. The Protestant Ethic"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-yamamoto-1716"
@@ -149,6 +178,7 @@ bib = "Yamamoto, T. Hagakure"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "F-yoshimoto-1968"
@@ -157,6 +187,7 @@ bib = "Yoshimoto, T. Ky"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-colli-1980"
@@ -165,6 +196,7 @@ bib = "Colli, Giorgio, and Mazzino Montinari"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 note = "批判版。`M-nietzsche-1967` の編纂の経緯を確かめるなら、**突き合わせる相手はこれ**である。参考文献欄に両方が載っているのに、突き合わせた形跡は紙面に無い。"
 
 [[reference]]
@@ -174,6 +206,7 @@ bib = "Davidson, James Dale, and William Rees-Mogg"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-epictetus-2008"
@@ -182,6 +215,7 @@ bib = "Epictetus. Discourses and Selected Writings"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-foucault-1988"
@@ -190,6 +224,7 @@ bib = "Foucault, Michel. \"Technologies of the Self.\""
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-herf-1984"
@@ -198,6 +233,7 @@ bib = "Herf, Jeffrey. Reactionary Modernism"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-junger-1932"
@@ -206,6 +242,7 @@ bib = "Der Arbeiter: Herrschaft und Gestalt"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 note = "M は本文で、国家の総動員を論じた枠組みを自己の陶冶へ移すには**明示的な翻案が要る**と述べている。翻案が成立しているかは、原典の側を見なければ言えない。"
 
 [[reference]]
@@ -215,6 +252,7 @@ bib = "Jünger, Ernst. \"Total Mobilization\" (1930)"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-kant-1785"
@@ -223,6 +261,7 @@ bib = "Kant, Immanuel. Groundwork of the Metaphysics of Morals (1785)"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-kant-1797"
@@ -231,6 +270,7 @@ bib = "The Metaphysics of Morals (1797)"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-marcus-2002"
@@ -239,6 +279,7 @@ bib = "Marcus Aurelius. Meditations"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-nietzsche-1886"
@@ -247,6 +288,7 @@ bib = "Beyond Good and Evil (1886)"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-nietzsche-1883"
@@ -255,6 +297,7 @@ bib = "Thus Spoke Zarathustra"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "M-nietzsche-1967"
@@ -263,6 +306,7 @@ bib = "The Will to Power. Translated by Walter Kaufmann and R"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 note = "M は本文で、この語の**編集上の地位が争われている**ことに自ら言及している。遺稿の編纂物であり、著者が公刊した順序ではない。**論文がその危うさを認識していながら、確かめてはいない**箇所である。"
 
 [[reference]]
@@ -272,6 +316,7 @@ bib = "Young, Julian. Friedrich Nietzsche: A Philosophical Biography"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-aquinas-1947"
@@ -280,6 +325,7 @@ bib = "Aquinas, T. (1265"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-aristotle-2009"
@@ -288,6 +334,7 @@ bib = "Nicomachean Ethics"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-benatar-2006"
@@ -296,6 +343,7 @@ bib = "Benatar, D. (2006). Better Never to Have Been"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-diogenes-1925"
@@ -304,6 +352,7 @@ bib = "Diogenes Laertius. (3rd century CE/1925)"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-foucault-1978"
@@ -312,6 +361,7 @@ bib = "The History of Sexuality, Vol. 1"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-kant-1998"
@@ -320,6 +370,7 @@ bib = "Kant, I. (1785/1998)"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-schopenhauer-1818"
@@ -328,6 +379,7 @@ bib = "The World as Will and Representation, Vol. 1"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-schopenhauer-1844"
@@ -336,6 +388,7 @@ bib = "The Metaphysics of Sexual"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 
 [[reference]]
 id = "N-bible-1cor7"
@@ -344,4 +397,5 @@ bib = "The Holy Bible. 1 Corinthians 7"
 locus = ""
 supports = ""
 role = ""
+agreement = ""
 note = "参考文献欄の記載が **「any standard translation」** である。**これは箇所の指定になっていない。**訳によって語が変わる場所を、訳を決めずに引いている。"
