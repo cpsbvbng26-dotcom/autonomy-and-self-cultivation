@@ -79,6 +79,16 @@
 
 body_absent = ["N-foucault-1978"]
 
+# 著者が原典を読んでいると述べていながら、locus を書けない項目。
+#
+# **読んだことと、指せることは別である。**この記録が確認として数えるのは後者だけで、
+# 前者は内面であって外からは確かめられない。読んだと述べた項目でも、どの箇所が
+# その主張を支えているかを書けなければ、未検証のまま置く。
+#
+# **宣言しておく。**ここに並べた項目に agreement か locus が書かれたら落ちる。
+# 書けたのなら、この一覧から外すのが先である。
+read_no_locus = ["F-musashi-1645"]
+
 [paper]
 F = "Fragmentarian Spiritual Individualism"
 M = "Manifesto of Imperial Selfhood (Revised and Expanded Edition)"
@@ -177,6 +187,8 @@ bib = "Musashi, M. The Book of Five Rings"
 locus = ""
 supports = "第4節 —— 兵法は決闘の場に閉じず、大工の仕口にも将の采配にも日常の営みにも同じ形で及ぶ。思想と鍛錬が別々の部門ではないという主張の出どころ"
 role = "直接支持"
+origin = "自前"
+caveat = "39 件で唯一、著者が原典を読んでいると述べていながら未検証のまま置いてある一件である。どの巻がこの主張を支えているかを一つに絞れず、全体から影響を受けたと述べた。この記録は locus の無い agreement を認めない。だから未検証のままにする。読んだことと、指せることは別である"
 agreement = ""
 
 [[reference]]
