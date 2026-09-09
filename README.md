@@ -225,6 +225,15 @@ node build.js
 ## ライセンス
 
 © 2026 根本卓哉（Takuya Nemoto）— 本文・要旨ともに [CC BY 4.0](LICENSE)。出典を示せば、改変も含めて自由に使える。
+
+| 対象 | ライセンス |
+| --- | --- |
+| 散文・論文・構造化データ —— `README.md`、`ERRATA.md`、`SHELF.md`、`pdf/` の三篇、`docs/` | [CC BY 4.0](LICENSE) |
+| 実装 —— `verification/` の検査スクリプトと `build.js` | [MIT](LICENSE-CODE) |
+
+**実装が MIT であることは、これまでどこにも書いていなかった。**
+`LICENSE` は CC BY 4.0 しか置いておらず、検査スクリプトを CC BY 4.0 だと読む余地が
+あった。ライセンスを変えたのではない。書いていなかったものを書いた。
 引用の書き方は [docs/how-to-cite.md](docs/how-to-cite.md) にある。
 
 ## 執筆における AI の利用
