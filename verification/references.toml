@@ -39,6 +39,16 @@
 # 書式は errata-check の [[reference]] と同じである。
 # https://github.com/cpsbvbng26-dotcom/errata-check
 
+# 参考文献欄にあって、本文からは引かれていない項目。
+#
+# **宣言しておく。**新しく増えたら check_references.py が落ちる。
+# 増えたときに気づかないほうが、載っていること自体より悪い。
+#
+# 探索語は id の真ん中から取る。取れないもの（ウムラウトや書名だけの項目）は
+# body_key を書く。**Jünger を junger で探して見落とした。**
+
+body_absent = ["N-foucault-1978"]
+
 [paper]
 F = "Fragmentarian Spiritual Individualism"
 M = "Manifesto of Imperial Selfhood (Revised and Expanded Edition)"
@@ -182,6 +192,7 @@ agreement = ""
 
 [[reference]]
 id = "F-yoshimoto-1968"
+body_key = "Yoshimoto"
 paper = "F"
 bib = "Yoshimoto, T. Ky"
 locus = ""
@@ -237,6 +248,7 @@ agreement = ""
 
 [[reference]]
 id = "M-junger-1932"
+body_key = "Jünger"
 paper = "M"
 bib = "Der Arbeiter: Herrschaft und Gestalt"
 locus = ""
@@ -247,6 +259,7 @@ note = "M は本文で、国家の総動員を論じた枠組みを自己の陶�
 
 [[reference]]
 id = "M-junger-1930"
+body_key = "Jünger"
 paper = "M"
 bib = "Jünger, Ernst. \"Total Mobilization\" (1930)"
 locus = ""
@@ -323,18 +336,20 @@ id = "N-aquinas-1947"
 paper = "N"
 bib = "Aquinas, T. (1265"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節 —— 独身を、正の善からの単なる消極的な禁欲ではなく、観想の自由という高次の善へ秩序づけられたものとして扱う"
+role = "直接支持"
 agreement = ""
+caveat = "未読である"
 
 [[reference]]
 id = "N-aristotle-2009"
 paper = "N"
 bib = "Nicomachean Ethics"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— autarkeia（自足）が eudaimonia の一部であって全体ではないこと。および第2節 —— 実践生活の必要に没入した者は、最高の幸福を構成する観想の活動の能力が減ること"
+role = "直接支持"
 agreement = ""
+caveat = "未読である"
 
 [[reference]]
 id = "N-benatar-2006"
@@ -351,9 +366,10 @@ id = "N-diogenes-1925"
 paper = "N"
 bib = "Diogenes Laertius. (3rd century CE/1925)"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— エピクロスの『メノイケウス宛書簡』の所在。katastematic な快が、欲望と満足の周期に依らない静止した状態（ataraxia）の快であると述べる箇所"
+role = "用語の出所"
 agreement = ""
+caveat = "未読である。エピクロスの一次資料がどこにあるかを示すために引いている"
 
 [[reference]]
 id = "N-foucault-1978"
@@ -363,40 +379,47 @@ locus = ""
 supports = ""
 role = ""
 agreement = ""
+caveat = "**本文からは引かれていない。**紙面で `Foucault` が現れるのは参考文献欄の一行だけである。著者は内容を把握していない。したがって支えている主張が無く、supports と role を埋められない。**「背景」でもない** —— 背景として働いてすらいない。参考文献欄にあるだけの項目である（ERRATA の E8）"
 
 [[reference]]
 id = "N-kant-1998"
 paper = "N"
 bib = "Kant, I. (1785/1998)"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— 自律を、外的あるいは生物学的に課された目的に支配されるのではなく、自分の生を律する原理を自ら立てる能力として理解する"
+role = "直接支持"
 agreement = ""
+caveat = "未読である"
 
 [[reference]]
 id = "N-schopenhauer-1818"
 paper = "N"
 bib = "The World as Will and Representation, Vol. 1"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— あらゆる意志作用を、単一の、盲目で、満たされることのない形而上学的な意志の現れとして扱い、個別の満足はつねに一時的で、ただちに新たな渇望に取って代わられる。および、意志の否定と禁欲による放棄が、苦の源である渇望への露出を減らす最高の戦略のひとつであること"
+role = "直接支持"
 agreement = ""
+caveat = "**所有しているが、ほぼ読んでいない。**所有と読了は別である。なお第4節の第15文は「意志の否定」と禁欲による性的な放棄を Schopenhauer に帰しているが、そこには引用が付いていない —— 引用が付いているのは第12文（1818）と第13文（1844）だけである"
 
 [[reference]]
 id = "N-schopenhauer-1844"
 paper = "N"
 bib = "The Metaphysics of Sexual"
 locus = ""
-supports = ""
-role = ""
+supports = "第4節 —— 性的欲望は、主として個人の利益のためではなく種に奉仕して働く。情欲の強さは、意志が生殖を確保するための策略であり、それが動員する個人の幸福には実質的に無関心である"
+role = "直接支持"
 agreement = ""
+caveat = "未読である。**自分の直観と類似していると判断して直接支持に置いた。**この経緯は著者の証言ではなく紙面に印字されている —— 第4節は、これらの枠組みが「原版にあった直観を再構成する」ものであり（第16文）、「原版は偶像崇拝という神学的な語彙で述べていた」ものを神学的な前提なしに言い直したものだと述べている（第17文）。**直観が先にあり、あとから枠組みを当てた。**なお第15文は「意志の否定」と禁欲による性的な放棄を Schopenhauer に帰しているが、そこには引用が付いていない"
 
 [[reference]]
 id = "N-bible-1cor7"
+body_key = "Corinthians"
 paper = "N"
 bib = "The Holy Bible. 1 Corinthians 7"
 locus = ""
-supports = ""
-role = ""
+supports = "第2節 —— 独身が、分かたれない献身のために個人を自由にするという枠づけ。配偶者に配慮せねばならぬ既婚者と、単一の焦点をもつ未婚者との対比"
+role = "直接支持"
 agreement = ""
 note = "参考文献欄の記載が **「any standard translation」** である。**これは箇所の指定になっていない。**訳によって語が変わる場所を、訳を決めずに引いている。"
+caveat = "未読である"
+
