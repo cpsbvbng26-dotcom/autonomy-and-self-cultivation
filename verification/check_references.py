@@ -78,10 +78,28 @@ check("宣言した典拠がすべて紙面にある", not missing,
 print("\n3. 埋めた項目が、決まりを満たしているか")
 
 
-def filled(r):
-    return bool(str(r.get("locus", "")).strip()
-                and str(r.get("supports", "")).strip()
+# 二段階に分ける。**混ぜると、意図が分かっているのに書けない状態が続く。**
+#
+#   意図   supports と role。**紙面と突き合わせられる。**本は要らない
+#   確認   locus と agreement。**本が要る**
+#
+# 意図だけ埋めることは認める。確認だけ埋めることは認めない ——
+# どこを読んだかを書かずに一致を主張することはできない。
+
+def intended(r):
+    """意図が書かれているか。supports と role。"""
+    return bool(str(r.get("supports", "")).strip()
                 and str(r.get("role", "")).strip())
+
+
+def verified(r):
+    """典拠を確認したか。locus と agreement。"""
+    return bool(str(r.get("locus", "")).strip()
+                and str(r.get("agreement", "")).strip())
+
+
+def filled(r):
+    return intended(r) and verified(r)
 
 
 done = [r for r in refs if filled(r)]
@@ -91,11 +109,26 @@ bad_role = [r["id"] for r in done if r.get("role") not in ROLES]
 check("埋めた項目の使い方が決めた語である", not bad_role,
       "、".join(bad_role) or "使えるのは " + "・".join(ROLES))
 
-half = [r["id"] for r in refs
-        if not filled(r) and any(str(r.get(k, "")).strip()
-                                 for k in ("locus", "supports", "role"))]
-check("途中まで埋まった項目が無い", not half,
-      ("locus・supports・role は揃えて埋める: " + "、".join(half[:5])) if half else "")
+half_i = [r["id"] for r in refs
+          if not intended(r) and any(str(r.get(k, "")).strip()
+                                     for k in ("supports", "role"))]
+check("意図が途中まででない", not half_i,
+      ("supports と role は揃えて埋める: " + "、".join(half_i[:5])) if half_i else "")
+
+half_v = [r["id"] for r in refs
+          if not verified(r) and any(str(r.get(k, "")).strip()
+                                     for k in ("locus", "agreement"))]
+check("確認が途中まででない", not half_v,
+      ("locus と agreement は揃えて埋める: " + "、".join(half_v[:5])) if half_v else "")
+
+no_intent = [r["id"] for r in refs if verified(r) and not intended(r)]
+check("確認だけが書かれた項目が無い", not no_intent,
+      ("何を支える引用なのかを書かずに確認だけを書けない: " + "、".join(no_intent[:5]))
+      if no_intent else "")
+
+check("意図と確認を分けて数えている", True,
+      "意図 %d / 39・確認 %d / 39" % (sum(1 for r in refs if intended(r)),
+                                      sum(1 for r in refs if verified(r))))
 
 # 「原典に当たっていない」は手続きの記述であって、引用が誤っていることを意味しない。
 # 一致・部分一致・不一致・未検証を分けて数える。**空欄は未検証である。**
@@ -113,10 +146,10 @@ check("埋めた項目には agreement がある", not no_agree,
       ("典拠を読んだのなら一致か否かを書く: " + "、".join(no_agree[:5])) if no_agree else "")
 
 早い = [r["id"] for r in refs
-        if str(r.get("agreement", "")).strip() and not filled(r)]
+        if str(r.get("agreement", "")).strip()
+        and not str(r.get("locus", "")).strip()]
 check("読まずに一致だけを書いた項目が無い", not 早い,
-      ("locus と supports の無い agreement は根拠が無い: " + "、".join(早い[:5]))
-      if 早い else "")
+      ("locus の無い agreement は根拠が無い: " + "、".join(早い[:5])) if 早い else "")
 
 tally = {k: sum(1 for r in refs if str(r.get("agreement", "")).strip() == k)
          for k in AGREEMENT}
