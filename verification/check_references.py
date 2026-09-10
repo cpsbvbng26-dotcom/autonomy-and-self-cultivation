@@ -269,6 +269,24 @@ no_role = [r["id"] for r in refs if r["id"] in declared
 check("本文に無い項目に、支える主張が書かれていない", not no_role,
       ("引かれていないのに supports か role がある: " + "、".join(no_role)) if no_role else "")
 
+print("\n3.6 本文が名を挙げていて、参考文献欄に無いもの")
+
+# **向きが逆の抜け。**参考文献欄にある項目が本文で使われているかは 3.5 が見ている。
+# 本文が名を挙げた相手が参考文献欄にあるかは、どこも見ていなかった。
+only = []
+for spec_line in spec.get("body_only", []):
+    pid, _, key = str(spec_line).partition(":")
+    whole = text.get(pid, "")
+    i = whole.rfind("References")
+    body, tail = (whole[:i], whole[i:]) if i > 0 else (whole, "")
+    in_body = key.lower() in body.lower()
+    in_refs = key.lower() in tail.lower()
+    only.append((spec_line, in_body, in_refs))
+    check("「%s」が本文にある" % spec_line, in_body)
+    check("「%s」が参考文献欄に無い" % spec_line, not in_refs)
+check("本文だけに出る名を数えている", True,
+      "%d 件（%s）" % (len(only), "、".join(x[0] for x in only)) if only else "無い")
+
 print("\n4. 散文が名乗る残り件数")
 
 errata = io.open(os.path.join(ROOT, "ERRATA.md"), encoding="utf-8").read()
