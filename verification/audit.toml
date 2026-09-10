@@ -387,3 +387,45 @@ command = "python3 verification/check_references.py"
 extract = "(\\d+) 件すべて通りました"
 pattern = "書棚[^\\n]*?(\\d+) 項目"
 in = [".github/workflows/verify.yml"]
+
+# ------------------------------------------------- E9 —— 本文が名を挙げ、参考文献欄に無い
+
+[[quote]]
+source = "F"
+where = "第7節 —— 武士道の事後的な体系化"
+text = "Nitobe Inazō"
+
+# ------------------------------------------------- N8 —— 挙がっていない文献
+#
+# **無いことを確かめる。**一つでも紙面に現れたら落ちる。そのときは正誤表のほうが
+# 誤っている。物語的自己を退けながら、その論の相手も味方も挙げていない。
+
+[[quote]]
+source = "F"
+where = "物語論 —— 味方（Strawson）"
+text = "Strawson"
+present = false
+
+[[quote]]
+source = "F"
+where = "物語論 —— 相手（Ricoeur）"
+text = "Ricoeur"
+present = false
+
+[[quote]]
+source = "F"
+where = "物語論 —— 相手（MacIntyre）"
+text = "MacIntyre"
+present = false
+
+[[quote]]
+source = "F"
+where = "他者への義務（Levinas）"
+text = "Levinas"
+present = false
+
+[[quote]]
+source = "F"
+where = "武士道の歴史学（Benesch）"
+text = "Benesch"
+present = false

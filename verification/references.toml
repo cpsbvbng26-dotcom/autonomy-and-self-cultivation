@@ -92,6 +92,16 @@ body_absent = ["N-foucault-1978"]
 # 書けたのなら、この一覧から外すのが先である。
 read_no_locus = ["F-musashi-1645"]
 
+# 本文が名を挙げていて、参考文献欄には無いもの。
+#
+# **body_absent と向きが逆である。**あちらは参考文献欄にあって本文が引いていない項目、
+# こちらは本文が名を挙げていて参考文献欄に無い項目である。**後者を見る仕組みが無かった**
+# —— 断片主義が新渡戸稲造を名指ししていることに気づいていなかった（`ERRATA` の `E9`）。
+#
+# 書式は「紙面の id : 探索語」である。宣言した語が本文にあり、参考文献欄に無いことを
+# 確かめる。**増えたら落ちる。**
+body_only = ["F:Nitobe"]
+
 [paper]
 F = "Fragmentarian Spiritual Individualism"
 M = "Manifesto of Imperial Selfhood (Revised and Expanded Edition)"
