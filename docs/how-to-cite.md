@@ -21,7 +21,7 @@ Ascetic Reconsideration of Autonomy and Quality of Life," version 2, preprint, A
 https://doi.org/10.5281/zenodo.22058254.
 ```
 
-初版は 2025年10月21日、改訂版 (v2) は 2026年8月22日です。**どちらの版を参照したかを明記してください。**
+初版は 2025年10月21日、改訂版 (v2) は 2026年8月22日です。どちらの版を参照したかを明記してください。
 v2 で議論が番号付きの節に組み直されているため、節番号は版をまたいでは対応しません。
 
 ## Manifesto of Imperial Selfhood
@@ -68,7 +68,7 @@ Solitary Spiritual Autonomy," preprint, August 2026, https://doi.org/10.5281/zen
 | Zenodo（正） | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) |
 | SSRN | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) |
 
-**引用には Zenodo の DOI を用いてください。** 同じ本文なので、どちらを引いても間違いではありませんが、
+引用には Zenodo の DOI を用いてください。 同じ本文なので、どちらを引いても間違いではありませんが、
 引用がばらけると被引用が分散します。著者としては Zenodo を正としています。
 
 ## このリポジトリ自体を指す場合

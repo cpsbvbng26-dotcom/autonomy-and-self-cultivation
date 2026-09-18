@@ -55,7 +55,7 @@ Claude Sonnet 5 を、起草と構成の補助として用いました。用い�
 ## このリポジトリについて
 
 リポジトリの構成、Markdown への起こし、サイトの生成コードは、Claude Code（Anthropic）を
-用いて作成しました。**論文の中身には手を入れていません。**
+用いて作成しました。論文の中身には手を入れていません。
 
 Markdown は書き写したものではなく、PDF から抽出したものです。抽出したテキストと突き合わせています。
 
@@ -66,9 +66,9 @@ Markdown は書き写したものではなく、PDF から抽出したもので�
 | 断片主義 | 5173 | 5165 | 8 |
 
 差のうち、`non-negotiable` `self-overcoming` `self-constraint` `self-governance`
-`post-community` `Sein-zum-Tode` `Jean-François` `under-theorized` は、**行末で割れた語を
-一語に繋ぎ直した**箇所です。残る 4 箇所は `( Seelengrund)` `( 自己幻想)` のように、**抽出器が
-括弧の内側に入れてしまった空白を取り除いた**もので、こちらは元の PDF の表示のほうが正しく、
+`post-community` `Sein-zum-Tode` `Jean-François` `under-theorized` は、行末で割れた語を
+一語に繋ぎ直した箇所です。残る 4 箇所は `( Seelengrund)` `( 自己幻想)` のように、抽出器が
+括弧の内側に入れてしまった空白を取り除いたもので、こちらは元の PDF の表示のほうが正しく、
 照合の基準にした抽出結果のほうが誤っていました。
 
 段落の切れ目は、行の右端の座標から復元しています（文字数では判定できないため）。
