@@ -32,7 +32,7 @@ Issue も pull request も歓迎する。登録は要らない。
 
 ```
 node build.js
-pip install pypdf
+pip install pypdf==6.19.0
 python3 verification/check_fidelity.py -v   # 紙面との一致
 python3 verification/check_errata.py        # 正誤表の監査
 python3 verification/check_references.py    # 参考文献
