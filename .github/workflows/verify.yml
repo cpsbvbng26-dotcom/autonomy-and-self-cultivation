@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install pypdf
+      - run: pip install pypdf==6.19.0
       - run: python3 verification/check_fidelity.py -v
       - name: 正誤表が紙面からずれていないか（102 項目）
         run: python3 verification/check_errata.py
