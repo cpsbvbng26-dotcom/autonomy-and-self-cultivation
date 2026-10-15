@@ -119,8 +119,8 @@ expect = 1
 
 # ------------------------------------- E7 —— 確かめられないことを断言している
 #
-# 開示文の中で、いちばん重い一文である。捏造が無かったことを確かめたのは AI で、
-# 著者は原典に当たっていない（E6）。**AI 自身の報告以外に根拠が無い。**
+# 開示文の中で、いちばん重い一文である。捏造が無かったことを確かめたのは言語モデルで、
+# 著者は原典に当たっていない（E6）。**言語モデル自身の報告以外に根拠が無い。**
 # 二つとも紙面に印字されている。書き換えられたら、そこで落ちる。
 
 [[quote]]
@@ -131,7 +131,7 @@ text = "No data, quotations, or sources were fabricated by the AI system in the 
 
 [[quote]]
 source = "M"
-where = "E7 —— 照合したのは AI である"
+where = "E7 —— 照合したのは言語モデルである"
 group = "e7"
 text = "verify the bibliographic citations listed in the References section against publicly available sources"
 
@@ -214,23 +214,23 @@ where = "表紙"
 text = "Preprint. This work has not been peer reviewed."
 in_document = false
 
-# ------------------------------------------------ N4 —— AI の使用の開示
+# ------------------------------------------------ N4 —— 言語モデルの使用の開示
 
 [[quote]]
 source = "N"
-where = "AI 開示"
+where = "言語モデル利用の開示"
 text = "The author reviewed, revised, and takes full intellectual responsibility for all claims, arguments, and citations herein."
 in_document = false
 
 [[quote]]
 source = "M"
-where = "AI 開示"
+where = "言語モデル利用の開示"
 text = "The author's original draft set out the core proposal"
 in_document = false
 
 [[quote]]
 source = "F"
-where = "AI 開示"
+where = "言語モデル利用の開示"
 text = "AI Use Disclosure Statement"
 in_document = false
 
@@ -260,25 +260,25 @@ must_not_say = ["まだ確かめていません"]
 
 # ------------------------------- E5 —— 開示文が挙げている作業（翻訳は無い）
 #
-# 三篇とも AI の使用を開示し、何をさせたかを列挙している。その列挙に
+# 三篇とも言語モデルの使用を開示し、何をさせたかを列挙している。その列挙に
 # 「翻訳」が無いことが E5 である。列挙のほうを紙面から取って固定しておく。
 
 [[quote]]
 source = "F"
 group = "ai_disclosure"
-where = "断章論の AI 開示"
+where = "断章論の言語モデル利用の開示"
 text = "expanding the author’s original conceptual outline into full prose"
 
 [[quote]]
 source = "N"
 group = "ai_disclosure"
-where = "独身論の AI 開示"
+where = "独身論の言語モデル利用の開示"
 text = "expand and copyedit the prose of the original manuscript"
 
 [[quote]]
 source = "M"
 group = "ai_disclosure"
-where = "M の AI 開示"
+where = "M の言語モデル利用の開示"
 text = "expand the exposition of each philosophical source with additional textual and historical detail"
 
 # 「翻訳」という語が、どの開示文にも無いこと。ここが E5 の中身である。
@@ -286,23 +286,23 @@ text = "expand the exposition of each philosophical source with additional textu
 
 [[quote]]
 source = "F"
-where = "断章論の AI 開示"
+where = "断章論の言語モデル利用の開示"
 text = "translated from Japanese"
 present = false
 
 [[quote]]
 source = "N"
-where = "独身論の AI 開示"
+where = "独身論の言語モデル利用の開示"
 text = "translated from Japanese"
 present = false
 
 [[quote]]
 source = "M"
-where = "M の AI 開示"
+where = "M の言語モデル利用の開示"
 text = "translated from Japanese"
 present = false
 
-# ------------------------- E6 —— 引用について AI に何をさせたかの書き分け
+# ------------------------- E6 —— 引用について言語モデルに何をさせたかの書き分け
 #
 # 二本は引用の割り当てを開示しているが、断章論だけ狭い。三本とも
 # 「著者は原典に当たっていない」とは述べていない。紙面から取って固定する。
@@ -310,19 +310,19 @@ present = false
 [[quote]]
 source = "N"
 group = "citation_disclosure"
-where = "独身論の AI 開示（引用の割り当て）"
+where = "独身論の言語モデル利用の開示（引用の割り当て）"
 text = "situate the paper's claims within existing philosophical literature"
 
 [[quote]]
 source = "M"
 group = "citation_disclosure"
-where = "M の AI 開示（引用の割り当て）"
+where = "M の言語モデル利用の開示（引用の割り当て）"
 text = "identify and verify the bibliographic citations listed in the References section"
 
 [[quote]]
 source = "F"
 group = "citation_disclosure"
-where = "断章論の AI 開示（狭い書き方）"
+where = "断章論の言語モデル利用の開示（狭い書き方）"
 text = "checking selected bibliographic details for accuracy"
 
 # 「原典に当たっていない」に相当する記述は、どの紙面にも無い。

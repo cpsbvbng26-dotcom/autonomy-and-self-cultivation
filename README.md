@@ -161,7 +161,7 @@ E6 は周辺の飾りではありません。論証の関節に入っていま�
 | [papers/](papers/README.md) | 全文（Markdown）。PDF の本文を起こしたもの |
 | [pdf/](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/tree/main/pdf) | 配布した PDF そのもの |
 | [docs/how-to-cite.md](docs/how-to-cite.md) | 引用の書き方 |
-| [docs/ai-disclosure.md](docs/ai-disclosure.md) | 執筆における AI 利用の開示 |
+| [docs/ai-disclosure.md](docs/ai-disclosure.md) | 執筆における言語モデル利用の開示 |
 | `build.js` | Markdown を静的な HTML に変換する（依存パッケージなし） |
 
 ### なぜ Markdown も置くのか
@@ -238,7 +238,7 @@ node build.js
 ありました。ライセンスを変えたのではありません。書いていなかったものを書きました。
 引用の書き方は [docs/how-to-cite.md](docs/how-to-cite.md) にあります。
 
-## 執筆における AI の利用
+## 執筆における言語モデルの利用
 
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge)](https://claude.com/claude-code)
 [![Assisted by Grok](https://img.shields.io/badge/Assisted%20by-Grok-111111?style=for-the-badge)](https://grok.com)
