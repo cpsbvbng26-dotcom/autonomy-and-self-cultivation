@@ -229,6 +229,12 @@ node build.js
 
 `site/` に HTML が出ます。Node.js 以外に必要なものはありません。
 
+```bash
+node verification/check_keyboard.js
+```
+
+ブラウザを起こし、生成した頁を Tab で辿ります。焦点の枠と辿る順を確かめ、広い幅から狭い幅まで、頁が横へはみ出さないかを測ります。playwright と Chromium が要ります。
+
 ## ライセンス
 
 © 2026 根本卓哉（Takuya Nemoto）— 本文・要旨ともに [CC BY 4.0](LICENSE)。出典を示せば、改変も含めて自由に使えます。
