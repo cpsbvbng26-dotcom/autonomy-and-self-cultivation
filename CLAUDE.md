@@ -141,7 +141,7 @@
 ```
 node build.js                           # site/ を生成
 python3 verification/check_fidelity.py  # papers/*.md ↔ pdf/*.pdf の照合
-python3 verification/check_errata.py    # 正誤表の監査 50 項目
+python3 verification/check_errata.py    # 正誤表の監査 103 項目
 node verification/check_text.js
 node verification/check_site.js
 ```
