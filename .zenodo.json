@@ -1,0 +1,41 @@
+{
+  "title": "自律と自己陶冶 — 三篇のプレプリント",
+  "description": "<p>自分の生をどこまで自分で治められるかを主題にした三篇のプレプリントを、全文・PDF・出典・正誤表とともに収めたリポジトリの保存版です。独身を擁護しうる自己陶冶の型として読み直す一篇、断片化した自己の統合を「人格的帝国主義」として素描する一篇、断片化を修復せずそこに住まう規律を組み立てる一篇からなります。</p><p>この記録はリポジトリそのもの（逐語の翻刻、凍結した PDF、出典の書棚、正誤表と、その検査）です。三篇の論文はそれぞれ自分の DOI を持ちます。論文を引くときは、関連する識別子に挙げた各論文の DOI を使います。</p><p>This record is the repository of three preprints: verbatim transcriptions, the frozen PDFs, the sources and the errata, with their checks. Each paper has its own DOI, listed under related identifiers; cite a paper by its DOI, not by this record.</p>",
+  "upload_type": "dataset",
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Nemoto, Takuya",
+      "orcid": "0009-0000-1406-0547"
+    }
+  ],
+  "keywords": [
+    "celibacy",
+    "antinatalism",
+    "autonomy",
+    "quality of life",
+    "personal imperialism",
+    "self-sovereignty",
+    "Kant",
+    "Nietzsche"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.22058254",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22057583",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.22064241",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    }
+  ],
+  "notes": "The repository was written with Claude Code (Anthropic) at the author's request. The author reviewed it and is responsible for it. Claude is not an author. The texts are CC BY 4.0; the code is MIT (LICENSE-CODE)."
+}
