@@ -214,6 +214,11 @@ python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 PhilArchive は DOI を発行しません。 掲載先が増えても識別子は増えないため、
 哲学の読者に届ける窓口として使っています。
 
+このリポジトリ自体も、版を出すたびに Zenodo に保存しています。
+版 1.0.1 の DOI は [10.5281/zenodo.24033809](https://doi.org/10.5281/zenodo.24033809) です。
+すべての版に共通する DOI は [10.5281/zenodo.22765620](https://doi.org/10.5281/zenodo.22765620) で、いちばん新しい版を指します。
+これは翻刻・PDF・出典・正誤表をまとめたリポジトリの記録です。論文を引くときは、上の表の DOI を使います。
+
 著者ページ: [PhilPeople](https://philpeople.org/profiles/takuyanemoto) ｜ [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) ｜ [ORCID](https://orcid.org/0009-0000-1406-0547)
 
 ## サイトを手元で作る

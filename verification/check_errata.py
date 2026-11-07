@@ -59,6 +59,14 @@ check("配布している PDF は宣言した三篇だけ", declared == actual, 
 check("正誤表が、解決しないと決めた項目を持っている",
       "この項目は解決しません" in audit.document_text())
 
+# Zenodo が版を出したときに与えた DOI（DataCite：24033809 が v1.0.1 で、22765620 の版である）。
+cff = io.open(os.path.join(ROOT, "CITATION.cff"), encoding="utf-8").read()
+readme = io.open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
+dois = ("10.5281/zenodo.24033809", "10.5281/zenodo.22765620")
+check("CITATION.cff と README が、このリポジトリの版 1.0.1 の DOI とすべての版の DOI を挙げる",
+      all(('value: "%s"' % d) in cff and ("(https://doi.org/%s)" % d) in readme for d in dois)
+      and 'doi: "10.5281/zenodo.22765620"' in cff and 'version: "1.0.1"' in cff)
+
 # CI の題が名乗る件数を、この検査自身が数えた件数と突き合わせる。
 # **自分自身を数に入れる。**だから宣言の前に一つ足す。
 wf = io.open(os.path.join(ROOT, ".github", "workflows", "verify.yml"),
