@@ -263,3 +263,5 @@ node verification/check_keyboard.js
 根本卓哉（Takuya Nemoto）
 [プロフィール](https://cpsbvbng26-dotcom.vercel.app/) ｜
 [ORCID](https://orcid.org/0009-0000-1406-0547)
+
+責任の範囲は、[免責事項](https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/DISCLAIMER.md)に定めています。
