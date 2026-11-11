@@ -1,6 +1,6 @@
 # 引用の書き方
 
-いずれも査読前の原稿です。引用する際は、**プレプリントであることが読者に分かる形**にしてください。
+いずれも査読前の原稿です。引用する際は、**プレプリントであることが読者に分かる形**にします。
 著者による公開は Zenodo・SSRN・PhilArchive で行っており、著者は Zenodo の記録を正としています（下の「二つの DOI について」）。
 
 ## The Nobility and Exemplarity of the Celibate Individual
@@ -21,7 +21,7 @@ Ascetic Reconsideration of Autonomy and Quality of Life," version 2, preprint, A
 https://doi.org/10.5281/zenodo.22058254.
 ```
 
-初版は 2025年10月21日、改訂版 (v2) は 2026年8月22日です。どちらの版を参照したかを明記してください。
+初版は 2025年10月21日、改訂版 (v2) は 2026年8月22日です。どちらの版を参照したかを明記します。
 v2 で議論が番号付きの節に組み直されているため、節番号は版をまたいでは対応しません。
 
 ## Manifesto of Imperial Selfhood
@@ -68,12 +68,12 @@ Solitary Spiritual Autonomy," preprint, August 2026, https://doi.org/10.5281/zen
 | Zenodo（正） | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) |
 | SSRN | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) |
 
-引用には Zenodo の DOI を用いてください。 同じ本文なので、どちらを引いても間違いではありませんが、
+引用には Zenodo の DOI を用います。同じ本文なので、どちらを引いても間違いではありませんが、
 引用がばらけると被引用が分散します。著者としては Zenodo を正としています。
 
 ## このリポジトリ自体を指す場合
 
-全文をこの形で読んだ、という趣旨で参照する場合は、リポジトリの URL と参照日を添えてください。
+全文をこの形で読んだ、という趣旨で参照する場合は、リポジトリの URL と参照日を添えます。
 
 ```
 Nemoto, T. (2026). Autonomy and self-cultivation [Repository].
@@ -86,4 +86,4 @@ https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation
 ## ライセンス
 
 [CC BY 4.0](../LICENSE) です。出典を示せば、翻訳や改変を含めて自由に使えます。
-改変した場合は、その旨を示してください。
+改変した場合は、その旨を示します。

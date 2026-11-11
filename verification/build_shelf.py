@@ -65,7 +65,7 @@ w("# 書棚 —— まだ確かめていない %d 冊" % len(todo))
 w("")
 w("このファイルは `verification/references.toml` からの生成物です。"
   "手で編集しません。")
-w("（`python3 verification/build_shelf.py` で作り直す）")
+w("（`python3 verification/build_shelf.py` で作り直します）")
 w("")
 w("三篇の参考文献欄に載っている典拠を、一冊ずつ並べたものです。")
 w("著者はこれらの原典の大半に当たっていません（[ERRATA.md](ERRATA.md) の `E6`）。")
