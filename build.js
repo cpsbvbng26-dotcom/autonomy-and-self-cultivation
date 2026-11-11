@@ -21,6 +21,15 @@ const OUT = path.join(ROOT, 'site');
 const SITE_NAME = '自律と自己陶冶';
 const REPO = 'https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation';
 const REPO_BLOB = REPO + '/blob/main/';
+/* Pages の配信先。deploy の仕事の記録（Evaluated environment url）にある URL である。
+ * 各頁の正の URL（canonical）と sitemap.xml はここから作る。 */
+const BASE = 'https://cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation/';
+/* 頁の下の欄。運営・連絡・免責の三つを、どの頁にも同じ形で置く。研究の系列のサイトなので、
+ * 創作のサイトへはつながない。 */
+const ERROR_FORM = REPO + '/issues/new?template=error-report.yml';
+const DISCLAIMER = 'https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/DISCLAIMER.md';
+/* sitemap.xml に載せない頁。CLAUDE.md は作業の指示書であり、読ませる頁ではない。 */
+const NOT_IN_SITEMAP = ['CLAUDE.html'];
 
 const esc = (s) => String(s)
   .replace(/&/g, '&amp;')
@@ -273,7 +282,7 @@ const NAV = [
   ['docs/how-to-cite.html', '引用']
 ];
 
-function layout(title, body, depth) {
+function layout(title, body, depth, url) {
   const up = '../'.repeat(depth);
   const nav = NAV.map((n) => '      <a href="' + up + n[0] + '">' + n[1] + '</a>').join('\n');
   const css = fs.readFileSync(path.join(ROOT, 'assets', 'style.css'), 'utf8');
@@ -287,6 +296,7 @@ function layout(title, body, depth) {
     '<title>' + esc(title) + '</title>',
     '<meta name="description" content="自分の生をどこまで自分で治められるかを主題にした三篇のプレプリント。全文・PDF・出典。">',
     '<meta name="robots" content="index, follow">',
+    '<link rel="canonical" href="' + url + '">',
     '<meta name="theme-color" content="#faf9f7">',
     '<style>',
     css,
@@ -312,8 +322,8 @@ function layout(title, body, depth) {
     '',
     '<footer>',
     '  <div class="wrap foot">',
-    '    <span>CC BY 4.0 &nbsp;/&nbsp; 根本卓哉</span>',
-    '    <span><a href="' + REPO + '">GitHub</a></span>',
+    '    <span>運営 根本卓哉 &nbsp;/&nbsp; CC BY 4.0</span>',
+    '    <span><a href="' + ERROR_FORM + '">連絡（誤りの知らせ）</a> &nbsp;/&nbsp; <a href="' + DISCLAIMER + '">免責事項</a> &nbsp;/&nbsp; <a href="' + REPO + '">GitHub</a></span>',
     '  </div>',
     '</footer>',
     '',
@@ -347,6 +357,7 @@ function build() {
   })(ROOT);
 
   fs.rmSync(OUT, { recursive: true, force: true });
+  const urls = [];
 
   for (const src of files) {
     const rel = path.relative(ROOT, src).replace(/\.md$/, '.html');
@@ -365,7 +376,9 @@ function build() {
     if (SRC_DIR === 'papers' && PAPER_SLUGS.indexOf(slug) >= 0) {
       body = body.replace(/<\/h1>/, '</h1>\n' + readingTime(slug));
     }
-    fs.writeFileSync(dest, withCSP(layout(pageTitle, body, depth)));
+    const outRel = rel === 'README.html' ? 'index.html' : rel.split(path.sep).join('/');
+    fs.writeFileSync(dest, withCSP(layout(pageTitle, body, depth, outRel === 'index.html' ? BASE : BASE + outRel)));
+    urls.push(outRel);
   }
 
   fs.renameSync(path.join(OUT, 'README.html'), path.join(OUT, 'index.html'));
@@ -373,6 +386,15 @@ function build() {
   fs.copyFileSync(path.join(ROOT, 'assets', 'theme.js'), path.join(OUT, 'assets', 'theme.js'));
   copyDir(path.join(ROOT, 'pdf'), path.join(OUT, 'pdf'));
   fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
+
+  /* sitemap.xml と robots.txt。Pages の利用者サイトではなく、そのひとつ下に置かれるので、
+   * 検索エンジンは robots.txt をここからは読まない。sitemap.xml は Search Console から渡せる。 */
+  const listed = urls.filter((u) => NOT_IN_SITEMAP.indexOf(u) < 0).sort();
+  fs.writeFileSync(path.join(OUT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n'
+    + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    + listed.map((u) => '  <url><loc>' + (u === 'index.html' ? BASE : BASE + u) + '</loc></url>\n').join('')
+    + '</urlset>\n');
+  fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + BASE + 'sitemap.xml\n');
 
   console.log('生成しました: site/ (' + files.length + ' ページ)');
 }
