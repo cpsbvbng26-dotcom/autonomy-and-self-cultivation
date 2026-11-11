@@ -1,5 +1,7 @@
 # 自律と自己陶冶
 
+種類：エッセイ　状態：凍結
+
 [![照合](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/actions/workflows/verify.yml/badge.svg)](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/actions/workflows/verify.yml)
 
 **自分の生をどこまで自分で治められるか**を主題にした、三篇のプレプリントを収めたリポジトリです。
@@ -25,6 +27,14 @@
 エピクロスの快の区別とショーペンハウアーの意志の形而上学を手がかりに、他者や欲望の周期に
 依存しない自足的な幸福という観点から独身を積極的に評価します。
 
+平易に三行で書きます。
+
+- 独身を、性的な活動が欠けた状態ではなく、仏教・キリスト教・古典哲学に前史のある倫理的な選択として読み直します。
+- 「生殖がなければ社会が続かないから性的な活動は義務だ」という考えは、生物の事実から倫理の義務を導いており、そのままでは成り立たないと論じます。
+- そのうえで独身を、他人や欲望の波に左右されない安定した幸福を育てる、手本になりうる生き方の一つとして擁護します。
+
+<!-- 読む時間:celibate-individual -->
+
 [全文](papers/celibate-individual.md) ｜ [PDF](pdf/nobility-and-exemplarity-of-the-celibate-individual-v2.pdf)
 
 ### [Manifesto of Imperial Selfhood](papers/imperial-selfhood.md)
@@ -34,6 +44,14 @@
 カントの「目的の王国」から立法の層を、ニーチェの力への意志から評価の層を、ユンガーの
 「労働者のゲシュタルト」から動員の層を取り、三層構造として組み立てます。眼目は、三者を
 滑らかに統合しないところにある —— 普遍主義と遠近法主義の緊張こそが構造の中身である、と論じます。
+
+平易に三行で書きます。
+
+- ばらばらになった自分を、自分の内側で一つの秩序にまとめる企てを、人格的帝国主義と名づけます。ここでの帝国は国家でも他人の支配でもありません。
+- 材料は三人です。自分で法を立ててそれに従うカント、価値を作り直し続けるニーチェ、持てる力を残らず形にするユンガーです。
+- 三つは互いに噛み合いません。その緊張を欠陥ではなく中身として抱えると論じ、「帝国」という語が外へ漏れる危うさを最大の未解決問題として残します。
+
+<!-- 読む時間:imperial-selfhood -->
 
 [全文](papers/imperial-selfhood.md) ｜ [PDF](pdf/manifesto-of-imperial-selfhood-revised.pdf)
 
@@ -46,7 +64,32 @@
 **厳密さをもって住まう**ための規律を組み立てます。実存主義・キリスト教神秘主義・武士道・戦後日本の
 批評（吉本隆明、柄谷行人）からの総合です。
 
+平易に三行で書きます。
+
+- 生・信仰・社会・思想・終わりへの向き合い方を、ひと続きの物語ではなく、別々の断片として扱います。
+- 断片化を治すべき傷とは見ず、生の実際の姿として受け入れ、その中で規律をもって暮らす方法を組み立てます。
+- 近代の合理主義・制度宗教・物語としての自己・資本主義的な自己実現は、どれも一人ひとりを外から来る連続の論理に従わせている、と指摘します。
+
+<!-- 読む時間:fragmentarian-spiritual-individualism -->
+
 [全文](papers/fragmentarian-spiritual-individualism.md) ｜ [PDF](pdf/fragmentarian-spiritual-individualism.pdf)
+
+## 呼び名
+
+三篇を散文で呼ぶときは、この表の名だけを使います。
+
+| 英語の題 | 日本語の正式名 | 略称 | 正誤表の略号 |
+| --- | --- | --- | --- |
+| The Nobility and Exemplarity of the Celibate Individual | 置いていない | 独身論 | N |
+| Manifesto of Imperial Selfhood | 人格的帝国主義 | 皇帝主義 | M |
+| Fragmentarian Spiritual Individualism | 断片主義的精神的個人主義 | 断章論 | F |
+
+独身論には、日本語の正式名を置いていません。英語の題が正式名です。
+表に無い呼び名が README・正誤表・`docs/`・サイトの見出しに出れば、`verification/check_site.js` が落とします。
+止める呼び名の一覧は、検査の側にあります。
+
+三篇に共通する語は、[用語集](docs/glossary.md)にまとめています。
+各篇の主張と、それが覆る条件、そして各篇が言っていないことは、[主張と覆し方](docs/claims.md)にあります。
 
 ## 三篇の骨格
 
@@ -154,12 +197,66 @@ E6 は周辺の飾りではありません。論証の関節に入っていま�
 
 どちらも書いておく。片方だけを出せば、片方は宣伝になります。
 
+## まだ確かめていない典拠
+
+三篇が拠る典拠の大半を、著者は原典で確かめていません（[ERRATA.md](ERRATA.md) の `E6`）。
+一冊ずつの一覧は [SHELF.md](SHELF.md) にあります。`verification/references.toml` からの生成物です。
+論文ごとの数は次のとおりです。
+
+| 論文 | 参考文献欄の典拠 | 箇所まで確かめた | まだ確かめていない |
+| --- | --- | --- | --- |
+| 独身論 | 9 | 1 | 8 |
+| 皇帝主義 | 14 | 0 | 14 |
+| 断章論 | 16 | 0 | 16 |
+
+依存の重さが違うものを、別に挙げます。
+
+- 着想が典拠の側から来ていて、なお読んでいないもの。皇帝主義のユンガーです（`M-junger-1930`、`M-junger-1932`）。
+- 読んでいながら、主張を支える箇所を指せないもの。断章論の五輪書です（`F-musashi-1645`）。
+- 参考文献欄にあるが、本文から引かれていないもの。独身論のフーコーです（`N-foucault-1978`、`E8`）。所有しているが読んでいません。
+- 本文が名を挙げているが、参考文献欄に無いもの。断章論の新渡戸稲造です（`E9`）。この一件は棚に載っていません。
+
+## 外部の反応
+
+外部から受けた評価と、出した先の結果は、[外部からの評価](https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/docs/external-evaluations.md)にまとめて記録しています。
+三篇についての行を、そこから写します。記録の欄は、最初の一文だけを写しています。
+続きと経緯は記録の側にあります。
+
+### 独身論
+
+| 場 | 記録の表 | 記録の欄（最初の一文） |
+| --- | --- | --- |
+| Stanford Agentic Reviewer（paperreview.ai） | 受けた評価 | `autonomy` の `ERRATA` N5・N6、登録簿の `PH-009` |
+| 外部の公開レビューの場（名前は最初の評価が届いた時点で記す） | 出した先 | 受付済み。 |
+| Conatus – Journal of Philosophy（アテネ大学） | 出した先 | 落ちた。 |
+| SocArXiv（OSF Preprints） | 出した先 | 受け付けられなかった。 |
+| PhilArchive | 出した先 | 門を通った。 |
+
+### 皇帝主義
+
+| 場 | 記録の表 | 記録の欄（最初の一文） |
+| --- | --- | --- |
+| Stanford Agentic Reviewer（paperreview.ai） | 受けた評価 | `autonomy` の `ERRATA` E7、登録簿の `PH-008`・`EX-008` |
+| 外部の公開レビューの場（名前は最初の評価が届いた時点で記す） | 出した先 | 受付済み。 |
+| PhilArchive | 出した先 | 門を通った。 |
+
+### 断章論
+
+| 場 | 記録の表 | 記録の欄（最初の一文） |
+| --- | --- | --- |
+| Stanford Agentic Reviewer（paperreview.ai） | 受けた評価 | `autonomy` の `ERRATA` E9・N8、登録簿の `PH-011`・`EX-009` |
+| SSRN | 出した先 | 弾かれた。 |
+| PhilArchive | 出した先 | 載ったが、門は下りていない（SC-027）。 |
+
 ## このリポジトリの構成
 
 | | |
 | --- | --- |
 | [papers/](papers/README.md) | 全文（Markdown）。PDF の本文を起こしたもの |
 | [pdf/](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/tree/main/pdf) | 配布した PDF そのもの |
+| [docs/claims.md](docs/claims.md) | 三篇の主張と覆し方、各篇が言っていないこと |
+| [docs/glossary.md](docs/glossary.md) | 三篇に共通の用語集 |
+| [SHELF.md](SHELF.md) | まだ確かめていない典拠の一覧（生成物） |
 | [docs/how-to-cite.md](docs/how-to-cite.md) | 引用の書き方 |
 | [docs/ai-disclosure.md](docs/ai-disclosure.md) | 執筆における言語モデル利用の開示 |
 | `build.js` | Markdown を静的な HTML に変換する（依存パッケージなし） |
@@ -179,7 +276,7 @@ PDF は体裁を固定できるが、本文を引用しようとすると行が�
 | --- | --- | --- | --- | --- |
 | 独身論 | 3696 | 3696 | なし | — |
 | 人格的帝国主義 | 4302 | 4294 | 4 箇所 | ハイフン語の結合 4 |
-| 断片主義 | 5147 | 5131 | 8 箇所 | ハイフン語の結合 4、括弧内の余分な空白 4 |
+| 断章論 | 5147 | 5131 | 8 箇所 | ハイフン語の結合 4、括弧内の余分な空白 4 |
 
 数えているのは **Abstract 以降**です。冒頭の書誌表と日本語の要旨はこのリポジトリのために
 書き下ろしたもので、原文にはないため、照合の対象から外しています。
@@ -196,7 +293,7 @@ python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 
 本文か PDF のどちらかが変われば落ちます。GitHub Actions が push ごとに実行しています。
 
-抽出器の版が変わっても落ちます。2026-10-10 に pypdf 6.20.0 が出て、断片主義の抽出で空白の入り方が変わりました。上の表の数が合わなくなったので、版を 6.19.0 に固定しています。表の数は変えていません。紙面は凍結されているので、動いたのは抽出器のほうです。
+抽出器の版が変わっても落ちます。2026-10-10 に pypdf 6.20.0 が出て、断章論の抽出で空白の入り方が変わりました。上の表の数が合わなくなったので、版を 6.19.0 に固定しています。表の数は変えていません。紙面は凍結されているので、動いたのは抽出器のほうです。
 
 ## 公開先
 
@@ -209,7 +306,7 @@ python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 | --- | --- | --- | --- |
 | 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [NEMTNA](https://philarchive.org/rec/NEMTNA) |
 | 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) | [NEMMOI](https://philarchive.org/rec/NEMMOI) |
-| 断片主義 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) | — | [NEMFSI](https://philarchive.org/rec/NEMFSI) |
+| 断章論 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) | — | [NEMFSI](https://philarchive.org/rec/NEMFSI) |
 
 PhilArchive は DOI を発行しません。 掲載先が増えても識別子は増えないため、
 哲学の読者に届ける窓口として使っています。

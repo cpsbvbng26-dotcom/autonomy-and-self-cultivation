@@ -63,7 +63,7 @@ Markdown は書き写したものではなく、PDF から抽出したもので�
 | --- | --- | --- | --- |
 | 独身論 | 3696 | 3696 | なし |
 | 人格的帝国主義 | 4302 | 4294 | 4 箇所 |
-| 断片主義 | 5147 | 5131 | 8 箇所 |
+| 断章論 | 5147 | 5131 | 8 箇所 |
 
 食い違いのうち、`non-negotiable` `self-overcoming` `self-constraint` `self-governance`
 `post-community` `Sein-zum-Tode` `Jean-François` `under-theorized` は、行末で割れた語を
