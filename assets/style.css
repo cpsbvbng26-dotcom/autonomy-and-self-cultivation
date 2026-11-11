@@ -106,6 +106,8 @@ header {
 .prose h4 { font-size: .92rem; font-weight: 600; margin: 2rem 0 .6rem; }
 
 .prose p { margin: 0 0 1.4rem; color: var(--muted); text-wrap: pretty; }
+/* 読む時間の目安。build.js が語数から数える。 */
+.prose .reading-time { font-size: .78rem; color: var(--faint); }
 .prose strong { color: var(--text); font-weight: 600; }
 
 .prose ul, .prose ol { margin: 0 0 1.6rem; padding-left: 1.4rem; color: var(--muted); }

@@ -59,7 +59,7 @@ PAPERS = [
         "expected_matched": 4294,
     },
     {
-        "label": "断片主義",
+        "label": "断章論",
         "pdf": "pdf/fragmentarian-spiritual-individualism.pdf",
         "md": "papers/fragmentarian-spiritual-individualism.md",
         "expected_pdf_words": 5147,

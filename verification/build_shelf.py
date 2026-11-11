@@ -24,7 +24,7 @@ with io.open(os.path.join(HERE, "references.toml"), "rb") as fh:
 
 refs = spec["reference"]
 paper = spec["paper"]
-LABEL = {"F": "断章論", "M": "Manifesto", "N": "独身論"}
+LABEL = {"F": "断章論", "M": "皇帝主義", "N": "独身論"}
 
 
 # 二段階に分けます。check_references.py と同じ切り方です。
