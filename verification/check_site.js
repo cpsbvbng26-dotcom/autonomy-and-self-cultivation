@@ -57,7 +57,17 @@ for (const file of pages) {
   for (const m of body.matchAll(/\[[^\]\n]{1,80}\]\([^)\s]{1,200}\)/g)) links.push(rel + ': ' + m[0]);
   for (const m of body.matchAll(/<img[^>]+src="https?:\/\/([^/"]+)/g)) external.push(rel + ': ' + m[1]);
 }
+/* リポジトリの中のファイルへのリンク（GitHub の URL）は、実在するファイルを指す。../ を残さない。 */
+const blob = [];
+for (const file of pages) {
+  const rel = path.relative(ROOT, file);
+  for (const m of fs.readFileSync(file, 'utf8').matchAll(/href="https:\/\/github\.com\/cpsbvbng26-dotcom\/autonomy-and-self-cultivation\/blob\/main\/([^"#]+)/g)) {
+    const p = decodeURIComponent(m[1]);
+    if (p.split('/').includes('..') || !fs.existsSync(path.join(ROOT, p))) blob.push(rel + ': ' + m[1]);
+  }
+}
 check('アスタリスクのまま残った強調がない', emphasis);
+check('リポジトリの中のファイルへのリンクが、実在するファイルを指す', blob);
 check('Markdown のまま残ったリンク記法がない', links);
 check('外部ホストから画像を読み込んでいない', external);
 
