@@ -75,6 +75,9 @@ function withCSP(html) {
   return html.replace(/(<meta name="viewport"[^>]*>\n?)/, '$1' + tag);
 }
 
+// いま変換している Markdown のディレクトリ（リポジトリの根からの相対）。リンクを解くのに使う。
+let SRC_DIR = '.';
+
 function inline(text) {
   // コードは先に取り出して、他の変換から守る
   const codes = [];
@@ -105,7 +108,8 @@ function inline(text) {
       } else if (/\.pdf$/.test(href)) {
         to = href;                                        // PDF はそのまま site/ に置く
       } else {
-        to = REPO_BLOB + href.replace(/^\.\//, '');       // それ以外は元の場所へ
+        // それ以外は元の場所へ。リンクを書いたファイルの位置から解き、../ を GitHub の URL に残さない。
+        to = REPO_BLOB + path.posix.normalize(path.posix.join(SRC_DIR, href));
         external = true;
       }
     }
@@ -310,6 +314,7 @@ function build() {
     const rel = path.relative(ROOT, src).replace(/\.md$/, '.html');
     const dest = path.join(OUT, rel);
     const md = fs.readFileSync(src, 'utf8');
+    SRC_DIR = path.relative(ROOT, path.dirname(src)).split(path.sep).join('/') || '.';
     const m = md.match(/^#\s+(.*)$/m);
     const title = m ? m[1] : SITE_NAME;
     const depth = rel.split(path.sep).length - 1;
