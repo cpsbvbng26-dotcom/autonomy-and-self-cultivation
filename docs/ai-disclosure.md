@@ -59,13 +59,13 @@ Claude Sonnet 5 を、起草と構成の補助として用いました。用い�
 
 Markdown は書き写したものではなく、PDF から抽出したものです。抽出したテキストと突き合わせています。
 
-| | 語数 | 一致 | 差 |
+| | PDF の語数 | 一致 | 食い違い |
 | --- | --- | --- | --- |
-| 独身論 | 3739 | 3739 | なし |
-| 人格的帝国主義 | 4368 | 4364 | 4 |
-| 断片主義 | 5173 | 5165 | 8 |
+| 独身論 | 3696 | 3696 | なし |
+| 人格的帝国主義 | 4302 | 4294 | 4 箇所 |
+| 断片主義 | 5147 | 5131 | 8 箇所 |
 
-差のうち、`non-negotiable` `self-overcoming` `self-constraint` `self-governance`
+食い違いのうち、`non-negotiable` `self-overcoming` `self-constraint` `self-governance`
 `post-community` `Sein-zum-Tode` `Jean-François` `under-theorized` は、行末で割れた語を
 一語に繋ぎ直した箇所です。残る 4 箇所は `( Seelengrund)` `( 自己幻想)` のように、抽出器が
 括弧の内側に入れてしまった空白を取り除いたもので、こちらは元の PDF の表示のほうが正しく、
