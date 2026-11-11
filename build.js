@@ -105,6 +105,10 @@ function inline(text) {
     if (!external && !/^#/.test(href)) {
       if (/\.md(#|$)/.test(href)) {
         to = href.replace(/\.md(#|$)/, '.html$1');       // 変換済みのページへ
+        // 根の README は index.html として出す。そこへのリンクも index.html に向ける。
+        if (path.posix.normalize(path.posix.join(SRC_DIR, href.split('#')[0])) === 'README.md') {
+          to = to.replace(/README\.html/, 'index.html');
+        }
       } else if (/\.pdf$/.test(href)) {
         to = href;                                        // PDF はそのまま site/ に置く
       } else {
@@ -224,14 +228,48 @@ function render(md) {
 }
 
 /* ---------------------------------------------------------------- *
+ * 読むのにかかる時間の目安
+ *
+ * 三篇の本文の語数から計算する。数を手で書かない（決めごと 5）。
+ * 数えるのは papers/<slug>.md の「## Abstract」から「## References」の手前まで。
+ * 書誌の表と日本語の要旨は数えない（このリポジトリのための書き下ろしであり、本文ではない）。
+ * Markdown の記号を落とし、空白で区切った語を数える。一分に 200 語として割り、切り上げる。
+ * check_site.js が同じ数え方で数え直し、頁に書いた数と突き合わせる。
+ * ---------------------------------------------------------------- */
+const PAPER_SLUGS = ['celibate-individual', 'imperial-selfhood', 'fragmentarian-spiritual-individualism'];
+const WORDS_PER_MINUTE = 200;
+
+function paperWords(slug) {
+  const md = fs.readFileSync(path.join(ROOT, 'papers', slug + '.md'), 'utf8');
+  const a = md.indexOf('\n## Abstract');
+  const b = md.indexOf('\n## References');
+  return md.slice(a, b)
+    .replace(/^#+ .*$/gm, '')
+    .replace(/[*_`|>#]/g, ' ')
+    .split(/\s+/)
+    .filter((w) => /[A-Za-z0-9À-ɏ]/.test(w))
+    .length;
+}
+
+function readingTime(slug) {
+  const n = paperWords(slug);
+  return '<p class="reading-time">読むのにかかる時間の目安は約 ' + Math.ceil(n / WORDS_PER_MINUTE)
+    + ' 分です（要旨から参考文献欄の手前までの ' + n + ' 語を、一分に ' + WORDS_PER_MINUTE + ' 語として build.js が数えました）。</p>';
+}
+
+/* ---------------------------------------------------------------- *
  * 出力
  * ---------------------------------------------------------------- */
 
+/* 論文の呼び名は README の「呼び名」の表の略称に揃える。check_site.js が表と突き合わせる。 */
 const NAV = [
   ['index.html', '概観'],
-  ['papers/celibate-individual.html', '独身と自己陶冶'],
-  ['papers/imperial-selfhood.html', '人格的帝国主義'],
-  ['papers/fragmentarian-spiritual-individualism.html', '断片主義'],
+  ['papers/celibate-individual.html', '独身論'],
+  ['papers/imperial-selfhood.html', '皇帝主義'],
+  ['papers/fragmentarian-spiritual-individualism.html', '断章論'],
+  ['docs/claims.html', '主張'],
+  ['docs/glossary.html', '用語'],
+  ['SHELF.html', '書棚'],
   ['docs/how-to-cite.html', '引用']
 ];
 
@@ -320,7 +358,14 @@ function build() {
     const depth = rel.split(path.sep).length - 1;
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     const pageTitle = title === SITE_NAME ? SITE_NAME : title + ' | ' + SITE_NAME;
-    fs.writeFileSync(dest, withCSP(layout(pageTitle, render(md), depth)));
+    /* 読む時間の印。render() は注釈を落とすので、その前に段落の印へ替えておく。 */
+    let body = render(md.replace(/<!-- 読む時間:([a-z-]+) -->/g, '%%RT:$1%%'));
+    body = body.replace(/<p>%%RT:([a-z-]+)%%<\/p>/g, (m, slug) => readingTime(slug));
+    const slug = path.basename(src, '.md');
+    if (SRC_DIR === 'papers' && PAPER_SLUGS.indexOf(slug) >= 0) {
+      body = body.replace(/<\/h1>/, '</h1>\n' + readingTime(slug));
+    }
+    fs.writeFileSync(dest, withCSP(layout(pageTitle, body, depth)));
   }
 
   fs.renameSync(path.join(OUT, 'README.html'), path.join(OUT, 'index.html'));
