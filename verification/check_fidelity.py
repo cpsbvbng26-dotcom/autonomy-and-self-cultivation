@@ -69,6 +69,11 @@ PAPERS = [
 
 VERBOSE = "-v" in sys.argv or "--verbose" in sys.argv
 
+# 同じ数を散文の表に書いている文書。表の行を読み、ここで出した数と突き合わせる。
+# 期待値の写しを別に持つと、写しどうしが黙ってずれる（docs/ai-disclosure.md が
+# 一度そうなった）。だから表そのものを読む。
+TABLES = ["README.md", "docs/ai-disclosure.md"]
+
 
 def words(text):
     """語の列にする。ページ番号だけの行は落とし、空白の種類は問わない。"""
@@ -97,6 +102,31 @@ def md_words(path):
     body = re.sub(r"^#+ ", "", body, flags=re.M)          # 見出し記号
     body = re.sub(r"^\*(.+)\*$", r"\1", body, flags=re.M)  # 単独行の強調
     return words(body)
+
+
+def table_row(text, label):
+    """`| label | PDF 語数 | 一致 | なし / N 箇所 |` の行を読む。無ければ None。"""
+    m = re.search(r"^\|\s*%s\s*\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*(なし|(\d+) 箇所)\s*\|"
+                  % re.escape(label), text, flags=re.M)
+    if not m:
+        return None
+    return int(m.group(1)), int(m.group(2)), int(m.group(4) or 0)
+
+
+def check_tables(rows):
+    """散文の表が、いま出した数と同じかを見る。食い違いの一覧を返す。"""
+    problems = []
+    for rel in TABLES:
+        with open(os.path.join(ROOT, rel), encoding="utf-8") as fh:
+            text = fh.read()
+        for label, n_src, _, matched, _, n_diffs, _ in rows:
+            got = table_row(text, label)
+            want = (n_src, matched, n_diffs)
+            if got is None:
+                problems.append("%s: %s の行が無い" % (rel, label))
+            elif got != want:
+                problems.append("%s: %s の行が %s、実際は %s" % (rel, label, got, want))
+    return problems
 
 
 def main():
@@ -145,7 +175,15 @@ def main():
             print("-v を付けて実行すると、食い違いを一件ずつ表示します。")
         return 1
 
-    print("README の表のとおりです。")
+    problems = check_tables(rows)
+    if problems:
+        print()
+        print("散文の表が、いま出した数と合いません:")
+        for p in problems:
+            print("  " + p)
+        return 1
+
+    print("README の表のとおりです。%s の表も同じ数です。" % "・".join(TABLES))
     if not VERBOSE:
         print("差の中身は -v で表示できます。")
     return 0
