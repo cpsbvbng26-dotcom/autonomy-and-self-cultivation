@@ -330,7 +330,11 @@ node build.js
 node verification/check_keyboard.js
 ```
 
-ブラウザを起こし、生成した頁を Tab で辿ります。焦点の枠と辿る順を確かめ、広い幅から狭い幅まで、頁が横へはみ出さないかを測ります。playwright と Chromium が要ります。
+ブラウザを起こし、生成した頁を Tab で辿ります。焦点の枠と辿る順を確かめ、広い幅から狭い幅まで、頁が横へはみ出さないかを測ります。文字を 200% にしたときも測ります。playwright と Chromium が要ります。
+
+`verification/check_site.js` は、配色の比（WCAG）、端末の設定に従う暗い配色、画像の代替テキスト、頁の重さ、
+頁の下の欄（運営・連絡・免責）、`sitemap.xml` と `robots.txt`、各頁の正の URL も見ます。
+サイトは <https://cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation/> に出ています。
 
 ## ライセンス
 
@@ -355,6 +359,13 @@ node verification/check_keyboard.js
 どこまでを著者が引き受けているかは、各論文の末尾の開示文と
 [docs/ai-disclosure.md](docs/ai-disclosure.md) に記載しています。
 README と開示文書の言い回しは、Grok（xAI）に候補を出させました（[docs/ai-disclosure.md](docs/ai-disclosure.md#公開文の言い回し)）。
+
+| 道具 | 使ったところ | 確かめた人 |
+| --- | --- | --- |
+| Claude（Anthropic） | 三篇の改訂。構成、展開、反論の節の起草、校正（各論文の末尾の開示文） | 著者。引用した原典には当たっていません（self-correction の PH-007） |
+| 特定できない言語モデル | 日本語の原稿からの英訳（self-correction の PH-006） | 記録がありません |
+| Claude Code（Anthropic） | このリポジトリの構成、PDF からの Markdown への起こし、サイトの生成と検査のコード | 著者と、このリポジトリの検査（紙面との照合ほか） |
+| Grok（xAI） | README と開示文書の言い回しの候補 | 著者 |
 
 ## 著者
 

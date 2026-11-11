@@ -1,0 +1,25 @@
+# check_hygiene.py が読む。このリポジトリだけの違いをここに置く。
+
+# 外部のパッケージ。pypdf は紙面の照合、playwright はキーボードと幅の検査、
+# docx は submission/ の原稿の組版（submission/ の node_modules に入れる。リポジトリには置かない）。
+packages = ["pypdf", "playwright", "docx"]
+
+# 書き込みの権限。「ワークフローのファイル名:権限」。
+writes = ["pages.yml:pages", "pages.yml:id-token"]
+
+# 要旨。.zenodo.json の description に、日本語と英語を続けて置いている。
+[abstract]
+ja = [".zenodo.json", "description"]
+en = [".zenodo.json", "description"]
+
+# 散文の数。ほかの検査が拾っていなかったもの。
+[[copies]]
+what = "正誤表の監査の項目数"
+# CI の題の数は check_errata.py が実際と突き合わせている。CLAUDE.md はその写し。
+from = [".github/workflows/verify.yml", '正誤表の監査 (\d+) 項目']
+to = [["CLAUDE.md", '正誤表の監査 (\d+) 項目']]
+
+[[copies]]
+what = "断章論の、括弧の内側の余分な空白の数"
+from = ["README.md", '括弧内の余分な空白 (\d+)']
+to = [["docs/ai-disclosure.md", '残る (\d+) 箇所は']]
