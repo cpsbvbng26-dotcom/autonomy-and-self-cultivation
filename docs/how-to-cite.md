@@ -1,7 +1,7 @@
 # 引用の書き方
 
 いずれも査読前の原稿です。引用する際は、**プレプリントであることが読者に分かる形**にしてください。
-著者による公開は SSRN・PhilArchive などの窓口で行っており、版が更新された場合はそちらが正になります。
+著者による公開は Zenodo・SSRN・PhilArchive で行っており、著者は Zenodo の記録を正としています（下の「二つの DOI について」）。
 
 ## The Nobility and Exemplarity of the Celibate Individual
 
@@ -57,7 +57,7 @@ Takuya Nemoto, "Fragmentarian Spiritual Individualism: A Philosophy of Fragments
 Solitary Spiritual Autonomy," preprint, August 2026, https://doi.org/10.5281/zenodo.22064241.
 ```
 
-この一篇は Zenodo にのみ登録されており、DOI は 1 つです。
+この一篇は SSRN には登録しておらず、DOI は Zenodo の 1 つだけです。
 
 ## 二つの DOI について
 
