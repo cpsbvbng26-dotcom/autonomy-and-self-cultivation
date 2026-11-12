@@ -321,6 +321,28 @@ for 語, 実際 in (("自前", o_tally["自前"]), ("外から", o_tally["外か
           m4 is not None and int(m4.group(1)) == 実際,
           "名乗り %s / 実際 %d" % (m4.group(1) if m4 else "無し", 実際))
 
+# 「自前」の括弧の中の内訳も数である。カント・ニーチェは id で、第4節は M の supports で数える。
+# 数は算用数字で書く（2026-11-12）。漢数字に戻れば、数が合っていても落ちる。
+自前 = [r for r in refs if str(r.get("origin", "")).strip() == "自前"]
+カント = sum(1 for r in 自前 if "-kant-" in r["id"])
+ニーチェ = sum(1 for r in 自前 if "-nietzsche-" in r["id"])
+第4節 = sum(1 for r in 自前 if r.get("paper") == "M" and str(r.get("supports", "")).startswith("第4節")
+          and "-kant-" not in r["id"] and "-nietzsche-" not in r["id"])
+五輪書 = sum(1 for r in 自前 if "-musashi-" in r["id"])
+m7 = re.search(r"\| 自前 \| (\d+) 件（カント (\d+)、ニーチェ (\d+)、第4節の (\d+) 件、五輪書） \|", errata)
+check("ERRATA.md の「自前」の内訳（カント・ニーチェ・第4節・五輪書）が実際と合い、算用数字で書いてある",
+      m7 is not None and 五輪書 == 1
+      and [int(x) for x in m7.groups()] == [len(自前), カント, ニーチェ, 第4節]
+      and len(自前) == カント + ニーチェ + 第4節 + 五輪書,
+      "名乗り %s / 実際 %d（カント %d、ニーチェ %d、第4節 %d、五輪書 %d）"
+      % (m7.groups() if m7 else "無し", len(自前), カント, ニーチェ, 第4節, 五輪書))
+m8 = re.findall(r"第4節の ?(\d+|[一二三四五六七八九]) ?件", errata)
+m9 = re.findall(r"ニーチェの ?(\d+|[一二三四五六七八九]) ?件", errata)
+check("ERRATA.md の散文が名乗る第4節とニーチェの件数が、算用数字で実際と合う",
+      len(m8) >= 2 and len(m9) >= 1
+      and set(m8) == {str(第4節)} and set(m9) == {str(ニーチェ)},
+      "名乗り 第4節 %s・ニーチェ %s / 実際 %d・%d" % (m8, m9, 第4節, ニーチェ))
+
 print("\n5. 書棚が作り直せるか")
 
 import subprocess                                    # noqa: E402
