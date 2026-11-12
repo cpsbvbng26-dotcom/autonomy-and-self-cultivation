@@ -332,8 +332,8 @@ const tableRows = (t) => t.split('\n').filter((l) => l.startsWith('|') && !/^\|[
   const hits = [];
   const doc = readText(path.join('docs', 'revised-editions.md'));
   const errata = readText('ERRATA.md');
-  if (doc.split('\n')[2] !== '2026-11-12 に、二つの段に分ける計画を採りました。改訂版は、まだ出していません。') hits.push('冒頭に、計画を採った日と、出していないという断りが無い');
-  if (/案（/.test(doc) || doc.indexOf('\n## 決めたこと\n\n2026-11-12 に、次のとおり決めました。\n') < 0 || doc.indexOf('\n改訂版は、段 1 も段 2 も出していません。\n') < 0) hits.push('決めたことの節が無いか、案の印が残っている');
+  if (doc.split('\n')[2] !== '2026-11-12 に、Claude が二つの段に分ける計画を採りました。改訂版は、まだ出していません。') hits.push('冒頭に、計画を採った日と採った者（Claude）と、出していないという断りが無い');
+  if (/案（/.test(doc) || doc.indexOf('\n## 決めたこと\n\n2026-11-12 に、Claude が次のとおり決めました。\n') < 0 || doc.indexOf('\n改訂版は、段 1 も段 2 も出していません。\n') < 0) hits.push('決めたことの節が無いか、案の印が残っている');
   if (doc.indexOf('\n公開済みの PDF は差し替えません。\n') < 0) hits.push('紙面を差し替えないという一文が無い');
   const want = [...errata.matchAll(/^#{2,3} ([EN]\d+) —/gm)].map((m) => m[1]);
   const rows = tableRows(block(doc, '## 正誤表の項目ごとの扱い'));
@@ -348,7 +348,7 @@ const tableRows = (t) => t.split('\n').filter((l) => l.startsWith('|') && !/^\|[
     if (toml.indexOf('id = "' + id.slice(1, -1) + '"') < 0) hits.push('references.toml に無い id: ' + id);
   }
   if (README.indexOf('| [docs/revised-editions.md](docs/revised-editions.md) |') < 0) hits.push('README の構成の表から指していない');
-  check('改訂版の計画が、採った日と出していないことを名乗り、正誤表の項目を一度ずつ挙げている', hits);
+  check('改訂版の計画が、採った日と採った者（Claude）と出していないことを名乗り、正誤表の項目を一度ずつ挙げている', hits);
 }
 
 /* 9. 外部の反応。外部評価の記録から写す。兄弟ディレクトリに cpsbvbng26-dotcom があれば
