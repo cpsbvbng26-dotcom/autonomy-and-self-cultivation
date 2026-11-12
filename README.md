@@ -256,6 +256,7 @@ E6 は周辺の飾りではありません。論証の関節に入っていま�
 | [pdf/](https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation/tree/main/pdf) | 配布した PDF そのもの |
 | [docs/claims.md](docs/claims.md) | 三篇の主張と覆し方、各篇が言っていないこと |
 | [docs/glossary.md](docs/glossary.md) | 三篇に共通の用語集 |
+| [docs/revised-editions.md](docs/revised-editions.md) | 三篇の改訂版を出す時期の案。利用者が確かめる |
 | [SHELF.md](SHELF.md) | まだ確かめていない典拠の一覧（生成物） |
 | [docs/how-to-cite.md](docs/how-to-cite.md) | 引用の書き方 |
 | [docs/ai-disclosure.md](docs/ai-disclosure.md) | 執筆における言語モデル利用の開示 |

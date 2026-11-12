@@ -325,6 +325,30 @@ const tableRows = (t) => t.split('\n').filter((l) => l.startsWith('|') && !/^\|[
   check('まだ確かめていない典拠の数と挙げた id が、references.toml と合う', hits);
 }
 
+/* 8b. 改訂版の案（docs/revised-editions.md）。案であると名乗り、紙面を差し替えないと書き、
+ *     表が正誤表の項目を過不足なく一度ずつ挙げ、段の欄が決めた三つのどれかであること。 */
+{
+  const hits = [];
+  const doc = readText(path.join('docs', 'revised-editions.md'));
+  const errata = readText('ERRATA.md');
+  if (doc.split('\n')[2] !== '案（利用者が確かめる）。この頁は提案です。まだ何も決めていません。') hits.push('冒頭に案の断りが無い');
+  if (doc.indexOf('\n公開済みの PDF は差し替えません。\n') < 0) hits.push('紙面を差し替えないという一文が無い');
+  const want = [...errata.matchAll(/^#{2,3} ([EN]\d+) —/gm)].map((m) => m[1]);
+  const rows = tableRows(block(doc, '## 正誤表の項目ごとの扱い'));
+  const got = rows.map((r) => r[0]);
+  if (JSON.stringify(got) !== JSON.stringify(want)) hits.push('表 ' + got.join(' ') + ' / 正誤表 ' + want.join(' '));
+  rows.forEach((r) => { if (r.length !== 4 || ['段 1', '段 2', '—'].indexOf(r[3]) < 0) hits.push('段の欄: ' + r.join(' | ')); });
+  const conds = tableRows(block(doc, '## 二つの段に分ける案'));
+  const shorts = Object.keys(PAPER).map((k) => PAPER[k].short);
+  if (JSON.stringify(conds.map((r) => r[0]).sort()) !== JSON.stringify(shorts.slice().sort())) hits.push('段 2 の条件の篇: ' + conds.map((r) => r[0]).join(' '));
+  const toml = readText(path.join('verification', 'references.toml'));
+  for (const id of doc.match(/`[NMF]-[a-z]+-\d+`/g) || []) {
+    if (toml.indexOf('id = "' + id.slice(1, -1) + '"') < 0) hits.push('references.toml に無い id: ' + id);
+  }
+  if (README.indexOf('| [docs/revised-editions.md](docs/revised-editions.md) |') < 0) hits.push('README の構成の表から指していない');
+  check('改訂版の案が、案と名乗り、正誤表の項目を一度ずつ挙げている', hits);
+}
+
 /* 9. 外部の反応。外部評価の記録から写す。兄弟ディレクトリに cpsbvbng26-dotcom があれば
  *    （ECOSYSTEM_ROOT でも指せる）、三篇の行が過不足なく、欄の最初の一文が同じであることを見る。 */
 {
