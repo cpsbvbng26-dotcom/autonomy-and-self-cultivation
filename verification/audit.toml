@@ -429,3 +429,28 @@ source = "F"
 where = "武士道の歴史学（Benesch）"
 text = "Benesch"
 present = false
+
+# ------------------------------------- N9 —— 自律と自足を一つの語で扱っている
+#
+# 2026-11-12 に足した。定義（自己立法）と、それが最もよく発揮される生き方
+# （他者に依らない幸福）と、自律の語を自足の意味で使う文の三つが、紙面にあること。
+
+[[quote]]
+source = "N"
+where = "N9 —— 第4節の自律の定義"
+text = "the capacity to legislate for oneself the principles governing one's own life"
+
+[[quote]]
+source = "N"
+where = "N9 —— 第4節の提案"
+text = "is best exercised, I want to suggest, in a mode of living that does not make one's stable well-being hostage to the responsiveness of another person"
+
+[[quote]]
+source = "N"
+where = "N9 —— 第4節の終わり"
+text = "exercising a specific kind of autonomy: the autonomy to organize one's life around self-sustaining rather than externally dependent sources of well-being"
+
+[[quote]]
+source = "N"
+where = "N9 —— 要旨"
+text = "autonomous, self-sustained flourishing"
