@@ -86,5 +86,5 @@ https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation
 
 ## ライセンス
 
-[CC BY 4.0](../LICENSE) です。出典を示せば、翻訳や改変を含めて自由に使えます。
+[CC BY 4.0](../LICENSE) です。CC BY 4.0 の第 3 節が求める表示（著作者の名、ライセンスへのリンク、改変したかどうかなど）を添えれば、翻訳や改変を含めて自由に使えます。
 改変した場合は、その旨を示します。
