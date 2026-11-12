@@ -1,6 +1,10 @@
 cff-version: 1.2.0
 title: 自律と自己陶冶 — 三篇のプレプリント
-message: このリポジトリを参照する場合は、以下の情報を用いてください。個々の論文を引用する場合は docs/how-to-cite.md を参照してください。
+message: >-
+  このリポジトリを参照する場合は、以下の情報を用いてください。個々の論文を引用する場合は docs/how-to-cite.md を参照してください。
+  文書と論文は CC BY 4.0（LICENSE）、verification/ と build.js のコードは MIT（LICENSE-CODE）です。
+  license の欄は、文書と論文だけに掛かります。
+  このリポジトリが引き、または引用を確かめるために置いている他人の文は、CC BY 4.0 でも MIT でも許諾しておらず、それぞれの権利者のものです。
 type: dataset
 authors:
   - family-names: Nemoto
