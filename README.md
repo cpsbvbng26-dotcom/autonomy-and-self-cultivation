@@ -339,7 +339,7 @@ node verification/check_keyboard.js
 
 ## ライセンス
 
-© 2026 根本卓哉（Takuya Nemoto）— 本文・要旨ともに [CC BY 4.0](LICENSE)。出典を示せば、改変も含めて自由に使えます。
+© 2026 根本卓哉（Takuya Nemoto）— 本文・要旨ともに [CC BY 4.0](LICENSE)。CC BY 4.0 の第 3 節が求める表示（著作者の名、ライセンスへのリンク、改変したかどうかなど）を添えれば、改変も含めて自由に使えます。
 
 | 対象 | ライセンス |
 | --- | --- |
