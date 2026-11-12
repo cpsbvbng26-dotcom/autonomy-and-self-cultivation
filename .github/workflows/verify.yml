@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   fidelity:
-    name: 紙面との照合 / 正誤表の監査 103 項目 / 参考文献と書棚 41 項目
+    name: 紙面との照合 / 正誤表の監査 111 項目 / 参考文献と書棚 41 項目
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
       - run: pip install pypdf==6.19.0
       - run: python3 verification/check_fidelity.py -v
-      - name: 正誤表が紙面からずれていないか（103 項目）
+      - name: 正誤表が紙面からずれていないか（111 項目）
         run: python3 verification/check_errata.py
       - name: 参考文献の宣言と書棚（41 項目）
         run: python3 verification/check_references.py

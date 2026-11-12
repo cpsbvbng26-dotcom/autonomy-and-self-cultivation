@@ -573,6 +573,10 @@ involuntary-celibacy subcultures` と述べました。当たっています。
 quality of life について、能力アプローチ（`Sen` `Nussbaum`）にも触れていません。
 これらは誤りではなく、踏まえていないものです。正誤表には数えません。
 
+2026-11-12 に、Academia Co-scientist（言語モデルの研究補助）の出力も同じ点を挙げました。
+選んだかどうかに加えて、周りからの圧力を分けて見る必要を述べています。
+査読ではありません。同じ点なので、新しい項目は立てません。
+
 ### N7 — 読者が影響を認めたことは、典拠が支持している根拠にならない
 
 ニーチェの 3 件について、著者は使い方を「用語の出所」と「直接支持」の両方だと述べました。
@@ -627,6 +631,42 @@ quality of life について、能力アプローチ（`Sen` `Nussbaum`）にも
 退ける相手を挙げないことは、退けたことになりません。
 指摘は外部の機械査読（Stanford Agentic Reviewer）によるものです。当たっています。
 無いことは `verification/audit.toml` が紙面に当たって確かめています。
+
+---
+
+### N9 — N が、自己立法としての自律と、他者に依らない自足を、一つの語で扱っている
+
+第4節は、自律をカントの意味で定義します。
+
+> the capacity to legislate for oneself the principles governing one's own life
+
+同じ段落は、その自律がいちばんよく発揮される生き方を、次のように述べます。
+
+> is best exercised, I want to suggest, in a mode of living that does not make one's stable well-being hostage to the responsiveness of another person
+
+段落の終わりでは、独身者が発揮しているものを、次のように呼びます。
+
+> exercising a specific kind of autonomy: the autonomy to organize one's life around self-sustaining rather than externally dependent sources of well-being
+
+定義が述べているのは、生き方の原則をだれが立てるかです。
+二つ目と三つ目の文が述べているのは、安定した幸福が他者に依るかどうかです。
+後者は自足（autarkeia）の区別で、紙面も同じ段落で autarkeia に近いと書いています。
+二つは別の区別です。他者に依る生き方を、自分で立てた原則として選ぶことは、定義の上では自律です。
+定義から、他者に依らない生き方で最もよく発揮されるという文は出ません。
+紙面はそこを `I want to suggest` と提案の形で置き、論証を足していません。
+そのうえで三つ目の文は、自律の語を自足の意味で使っています。
+
+要旨の `autonomous, self-sustained flourishing` も、二つを一つの句にまとめています。
+
+N の結論（範例的な選択肢の一つである）は、第4節の自足の論証だけでも立ちえます。
+崩れるのは結論ではありません。自律の名で自足を論じている点です。
+
+指摘は、Academia Co-scientist（言語モデルの研究補助）の出力によるものです。
+出力は、心理学でいう自律は他者に依らないことと同じではない、と述べていました。
+紙面の自律は、心理学ではなくカントの意味で定義されています。
+それでも、自律と自足を一つにしている点は同じで、当たっています。
+2026-11-12 に利用者から受け取りました。査読でも、人による評価でもありません。
+紙面との照合は Claude が行いました。
 
 ## 見つけ方
 

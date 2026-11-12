@@ -148,7 +148,7 @@
 ```
 node build.js                           # site/ を生成
 python3 verification/check_fidelity.py  # papers/*.md ↔ pdf/*.pdf の照合
-python3 verification/check_errata.py    # 正誤表の監査 103 項目
+python3 verification/check_errata.py    # 正誤表の監査 111 項目
 node verification/check_text.js
 node verification/check_site.js
 python3 verification/check_hygiene.py   # 依存・権限・固定・秘密・要旨・散文の数（設定は verification/hygiene.toml）
