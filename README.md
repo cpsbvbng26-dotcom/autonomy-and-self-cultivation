@@ -13,7 +13,7 @@
 主題は離れて見えますが、問いは共通しています —— **何を基準に、自分の生の形を決めるのか**。
 統合を目指す二篇目と、統合を諦める三篇目が並んでいるのは、矛盾ではなく問いの幅です。
 
-三篇とも査読前の原稿です。著者による公開は SSRN・PhilArchive などの窓口で行っており、
+三篇とも査読前の原稿です。著者による公開は Zenodo で行っています。SSRN にあるのは二篇です。所在は下の「公開先」の表にあります。
 このリポジトリは**全文を読める形に開き、版と出典をひとところに置くため**のものです。
 
 ## 三篇
@@ -307,7 +307,7 @@ python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 | --- | --- | --- | --- |
 | 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [NEMTNA](https://philarchive.org/rec/NEMTNA) |
 | 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) | [NEMMOI](https://philarchive.org/rec/NEMMOI) |
-| 断章論 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) | — | [NEMFSI](https://philarchive.org/rec/NEMFSI) |
+| 断章論 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) | —（SSRN に弾かれた） | [NEMFSI](https://philarchive.org/rec/NEMFSI)（2026-09-26 に削除を依頼。いまの状態は、ここからは確かめていません） |
 
 PhilArchive は DOI を発行しません。掲載先が増えても識別子は増えないため、
 哲学の読者に届ける窓口として使っています。

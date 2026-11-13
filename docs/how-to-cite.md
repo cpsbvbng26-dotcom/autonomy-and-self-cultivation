@@ -2,7 +2,9 @@
 
 三篇を引用するときの書き方を並べた頁です。
 いずれも査読前の原稿です。引用する際は、**プレプリントであることが読者に分かる形**にします。
-著者による公開は Zenodo・SSRN・PhilArchive で行っており、著者は Zenodo の記録を正としています（下の「二つの DOI について」）。
+著者による公開は Zenodo で行っており、著者は Zenodo の記録を正としています（下の「二つの DOI について」）。
+独身論と人格的帝国主義は、SSRN と PhilArchive にも同じ本文があります。断章論は SSRN に弾かれました。
+PhilArchive の断章論（`NEMFSI`）は、2026-09-26 に削除を依頼しました。いまの状態は、ここからは確かめていません。
 
 ## The Nobility and Exemplarity of the Celibate Individual
 
