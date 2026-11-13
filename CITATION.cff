@@ -93,6 +93,6 @@ references:
     identifiers:
       - type: url
         value: "https://philarchive.org/rec/NEMFSI"
-        description: PhilArchive の掲載ページ
+        description: PhilArchive の掲載ページ。2026-09-26 に削除を依頼しました。いまの状態は、ここからは確かめていません
     license: CC-BY-4.0
     notes: Preprint. Not peer-reviewed.
