@@ -1,0 +1,33 @@
+{
+  "from": "2026-12-01",
+  "forms": [
+    {
+      "label": "erratum",
+      "kind": "quote",
+      "where": [
+        "どこか / Where"
+      ],
+      "quote": [
+        "書いてあること / What it says"
+      ]
+    }
+  ],
+  "pages": [],
+  "blob": "https://github.com/cpsbvbng26-dotcom/autonomy-and-self-cultivation",
+  "dois": {
+    "10.5281/zenodo.22058254": [
+      "pdf/nobility-and-exemplarity-of-the-celibate-individual-v2.pdf",
+      "papers/celibate-individual.md"
+    ],
+    "10.5281/zenodo.22057583": [
+      "pdf/manifesto-of-imperial-selfhood-revised.pdf",
+      "papers/imperial-selfhood.md"
+    ],
+    "10.5281/zenodo.22064241": [
+      "pdf/fragmentarian-spiritual-individualism.pdf",
+      "papers/fragmentarian-spiritual-individualism.md"
+    ]
+  },
+  "ids": [],
+  "neverClose": []
+}
