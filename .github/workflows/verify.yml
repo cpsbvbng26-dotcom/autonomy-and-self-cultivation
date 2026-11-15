@@ -14,8 +14,11 @@ jobs:
   fidelity:
     name: 紙面との照合 / 正誤表の監査 111 項目 / 参考文献と書棚 41 項目
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.12'
@@ -29,8 +32,11 @@ jobs:
   build:
     name: サイトが生成できるか
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: 22
@@ -45,8 +51,11 @@ jobs:
     name: キーボードで辿れるか・どの幅でも読めるか
     # ubuntu 26.04 では playwright 1.56.1 が Chromium を入れられない。cpsbvbng26-dotcom と同じく 24.04 に置く。
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: 22
