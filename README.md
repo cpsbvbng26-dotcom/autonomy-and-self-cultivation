@@ -319,6 +319,16 @@ PhilArchive は DOI を発行しません。掲載先が増えても識別子は
 
 著者ページ: [PhilPeople](https://philpeople.org/profiles/takuyanemoto) ｜ [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) ｜ [ORCID](https://orcid.org/0009-0000-1406-0547)
 
+### 予定：独身論の続き
+
+独身論の続きを準備しています。
+独身論が頼っている心理学・精神医学と生物学の主張を、公表された研究に照らして検討し直す論文です。
+臨床の主張や助言はしません。
+出す先は SSRN と PhilArchive で、この順に出します。Zenodo には出しません。
+この続きの正本の DOI は、SSRN の DOI とします。独身論の正本は Zenodo なので、続きだけ正本の場が異なります。
+この出し方は 2026-11-18 に利用者が決めました。
+SSRN への投稿は後回しにしており、まだ出していません。
+
 ## サイトを手元で作る
 
 ```
