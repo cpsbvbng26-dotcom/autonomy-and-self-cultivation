@@ -28,6 +28,8 @@ const BASE = 'https://cpsbvbng26-dotcom.github.io/autonomy-and-self-cultivation/
  * 創作のサイトへはつながない。 */
 const ERROR_FORM = REPO + '/issues/new?template=error-report.yml';
 const DISCLAIMER = 'https://github.com/cpsbvbng26-dotcom/cpsbvbng26-dotcom/blob/main/DISCLAIMER.md';
+/* 見た目の部品の権利と許諾と法令の扱い（docs/design-legal.md）。2026-11-22 に足した。check_site.js の 11 が、どの頁の下の欄からも指すことを見る。 */
+const DESIGN_LEGAL = 'docs/design-legal.html';
 /* sitemap.xml に載せない頁。CLAUDE.md は作業の指示書であり、読ませる頁ではない。 */
 const NOT_IN_SITEMAP = ['CLAUDE.html'];
 
@@ -323,7 +325,7 @@ function layout(title, body, depth, url) {
     '<footer>',
     '  <div class="wrap foot">',
     '    <span>運営 根本卓哉 &nbsp;/&nbsp; CC BY 4.0</span>',
-    '    <span><a href="' + ERROR_FORM + '">連絡（誤りの知らせ）</a> &nbsp;/&nbsp; <a href="' + DISCLAIMER + '">免責事項</a> &nbsp;/&nbsp; <a href="' + REPO + '">GitHub</a></span>',
+    '    <span><a href="' + ERROR_FORM + '">連絡（誤りの知らせ）</a> &nbsp;/&nbsp; <a href="' + DISCLAIMER + '">免責事項</a> &nbsp;/&nbsp; <a href="' + up + DESIGN_LEGAL + '">デザインに関する法的な扱い</a> &nbsp;/&nbsp; <a href="' + REPO + '">GitHub</a></span>',
     '  </div>',
     '</footer>',
     '',
