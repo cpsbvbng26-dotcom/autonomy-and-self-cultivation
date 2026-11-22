@@ -260,6 +260,7 @@ E6 は周辺の飾りではありません。論証の関節に入っていま�
 | [SHELF.md](SHELF.md) | まだ確かめていない典拠の一覧（生成物） |
 | [docs/how-to-cite.md](docs/how-to-cite.md) | 引用の書き方 |
 | [docs/ai-disclosure.md](docs/ai-disclosure.md) | 執筆における言語モデル利用の開示 |
+| [docs/design-legal.md](docs/design-legal.md) | このサイトの見た目の部品（書体、配色、配置、画像の有無）の作り手と出所、権利と許諾、関わる法令の条 |
 | `build.js` | Markdown を静的な HTML に変換する（依存パッケージなし） |
 
 ### なぜ Markdown も置くのか

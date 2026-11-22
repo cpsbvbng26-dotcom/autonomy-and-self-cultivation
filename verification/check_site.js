@@ -482,6 +482,200 @@ const tableRows = (t) => t.split('\n').filter((l) => l.startsWith('|') && !/^\|[
   check('sitemap.xml が CLAUDE.html のほかの全頁を挙げ、robots.txt がそれを指す', mapHits);
 }
 
+/* 11. デザインに関する法的な扱い（docs/design-legal.md、2026-11-22）。このリポジトリだけに置く。
+ * 頁に書いた事実を、site/ と assets/ と README と LICENSE と verification/design-statutes.json から数え直す。
+ *   部品の一覧の「配るファイル」と三つの除外が、site/ のファイルを過不足なく覆うこと。
+ *   書体を配らず（@font-face・@import・url(・書体のファイル・font-src が無い）、font-family の並びが頁の列挙と同じこと。
+ *   アイコン・共有用の画像・<img> などの画像・画像のファイル・外の素材が無いこと。切り替えの印の二つの文字。
+ *   ライセンスの表の二つの行、assets/ が表に無いこと、下の欄の CC BY 4.0、LICENSE と LICENSE-CODE の冒頭、言語モデルの表の行。
+ *   見やすさの事柄（動きを減らす設定、本文のリンクの下の線、本文へスキップ、lang、200%、Tab、4.5:1）。
+ *   条の文：各条の SHA-256 が文と合い、頁の引用が文の一字一句そのままの部分（「全文」なら全部）で、引かない条が無く、
+ *   兄弟のディレクトリに出所のリポジトリがあれば、その文と一字一句同じであること。
+ * 調べる中身を一つの関数にし、壊したものを渡して落ちることも毎回確かめる。 */
+{
+  const DOC = path.join('docs', 'design-legal.md');
+  const ST = path.join('verification', 'design-statutes.json');
+  const sha256 = (t) => crypto.createHash('sha256').update(t, 'utf8').digest('hex');
+  const listFiles = (dir, rel = '') => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const r = rel ? rel + '/' + e.name : e.name;
+    return e.isDirectory() ? listFiles(path.join(dir, e.name), r) : [r];
+  }).sort();
+  const eco = process.env.ECOSYSTEM_ROOT || path.resolve(ROOT, '..');
+  const statutes = JSON.parse(readText(ST));
+  const sibPath = path.join(eco, statutes['出所']['リポジトリ'].split('/')[1], statutes['出所']['ファイル']);
+  const real = {
+    doc: readText(DOC),
+    statutes,
+    sibling: fs.existsSync(sibPath) ? JSON.parse(fs.readFileSync(sibPath, 'utf8')) : null,
+    css: readText(path.join('assets', 'style.css')),
+    theme: readText(path.join('assets', 'theme.js')),
+    build: readText('build.js'),
+    readme: README,
+    license: readText('LICENSE'),
+    licenseCode: readText('LICENSE-CODE'),
+    keyboard: readText(path.join('verification', 'check_keyboard.js')),
+    self: readText(path.join('verification', 'check_site.js')),
+    verify: readText(path.join('.github', 'workflows', 'verify.yml')),
+    files: listFiles(SITE),
+    html: Object.fromEntries(pages.map((f) => [path.relative(SITE, f).split(path.sep).join('/'), fs.readFileSync(f, 'utf8')]))
+  };
+
+  function problems(x) {
+    const bad = [];
+    const sec = (h) => block(x.doc, h);
+    if (x.doc.split('\n')[0] !== '# デザインに関する法的な扱い') bad.push('頁の題');
+    for (const h of ['## この頁について', '## 部品の一覧', '## 書体', '## 著作権', '## 商標・意匠・不正競争', '## 見やすさ', '## 人と団体', '## 変わったとき']) {
+      if (x.doc.indexOf('\n' + h + '\n') < 0) bad.push('節が無い: ' + h);
+    }
+    for (const s of ['法的な助言ではありません。', '弁護士の確認は受けていません。', 'PDF の中の意匠は、この頁の対象に入れていません。', '記憶からは書いていません。']) {
+      if (sec('## この頁について').indexOf(s) < 0) bad.push('「この頁について」に無い: ' + s);
+    }
+    if (/nusquama|ヌスクァマ|無何有|騎士王国/i.test(x.doc)) bad.push('頁が創作の系列の名を書く');
+
+    /* 部品の一覧。名のない列のうち、ファイルの形をしたものを拾う。「*.html」は、どの階層の頁も指す。 */
+    const rows = tableRows(sec('## 部品の一覧'));
+    const pats = [];
+    rows.forEach((r) => {
+      if (r.length !== 5) { bad.push('表の列の数: ' + r[0]); return; }
+      const ps = quotes(r[1]);
+      if (/^無い/.test(r[1]) !== (ps.length === 0)) bad.push('「無い」とファイルの食い違い: ' + r[0]);
+      ps.forEach((p) => pats.push(p));
+    });
+    const toRe = (p) => new RegExp('^' + (p.indexOf('/') < 0 ? '(?:.*/)?' : '') + p.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '[^/]*') + '$');
+    const exLine = sec('## 部品の一覧').split('\n').find((l) => l.startsWith('`site/` のうち、')) || '';
+    const excepted = quotes(exLine).slice(1);
+    if (JSON.stringify(excepted.slice().sort()) !== JSON.stringify(['.nojekyll', 'robots.txt', 'sitemap.xml'])) bad.push('除外の三つ: ' + excepted.join(' '));
+    for (const f of x.files) {
+      const by = pats.filter((p) => toRe(p).test(f)).concat(excepted.filter((e) => e === f));
+      if (by.length !== 1) bad.push('site/' + f + ' を覆う行が ' + by.length);
+    }
+    pats.concat(excepted).forEach((p) => { if (!x.files.some((f) => toRe(p).test(f))) bad.push('配っていないファイルを挙げる: ' + p); });
+
+    /* 書体。配らない。並びは頁の列挙と、出てくる順に同じ。 */
+    if (/@font-face|@import|url\(/i.test(x.css)) bad.push('style.css が書体か外の素材を読む');
+    x.files.filter((f) => /\.(woff2?|ttf|otf|eot)$/i.test(f)).forEach((f) => bad.push('書体のファイルを配る: ' + f));
+    const stacks = [...new Set([...x.css.matchAll(/font-family:\s*([^;]+);/g)].map((m) => m[1].trim()))];
+    const listed = sec('## 書体').split('\n').filter((l) => l.startsWith('- ')).map((l) => (quotes(l)[0] || ''));
+    if (JSON.stringify(stacks) !== JSON.stringify(listed)) bad.push('font-family の並び ' + stacks.length + ' / 頁の列挙 ' + listed.length);
+    if (sec('## 書体').indexOf('`font-family` の並びは、次の' + (['', '一', '二', '三', '四', '五', '六', '七', '八'][listed.length] || '?') + 'つです。') < 0) bad.push('書体の並びの数の言い方が列挙と合わない');
+
+    /* アイコン・画像・外の素材・切り替えの印。 */
+    for (const [rel, h] of Object.entries(x.html)) {
+      if (/<link[^>]+rel="[^"]*(icon|stylesheet|preload|manifest)/i.test(h)) bad.push(rel + ' がアイコンか外のファイルを宣言する');
+      if (/<meta[^>]+(og:image|twitter:image)/i.test(h)) bad.push(rel + ' が共有用の画像を宣言する');
+      if (/<(img|svg|picture|video|audio|canvas|iframe|object|embed)\b/i.test(h)) bad.push(rel + ' に画像か埋め込みがある');
+      const csp = (/<meta http-equiv="Content-Security-Policy" content="([^"]*)">/.exec(h) || [, ''])[1];
+      if (csp.indexOf("default-src 'none'") !== 0 || /font-src/.test(csp)) bad.push(rel + ' の CSP');
+      for (const m of h.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)) if (!/^(\.\.\/)*assets\/theme\.js$/.test(m[1])) bad.push(rel + ' が別のスクリプトを読む: ' + m[1]);
+    }
+    x.files.filter((f) => /\.(png|jpe?g|gif|svg|ico|webp|avif|bmp)$/i.test(f)).forEach((f) => bad.push('画像のファイルを配る: ' + f));
+    if (x.build.indexOf('aria-label="テーマを切り替える">&#9790;</button>') < 0 || 9790 !== 0x263E) bad.push('build.js の切り替えの印');
+    if (x.theme.indexOf("btn.textContent = toLight ? '☀' : '☾';") < 0) bad.push('theme.js の切り替えの印');
+    if (sec('## 部品の一覧').indexOf('☾（U+263E）と ☀（U+2600）の二つの文字です。') < 0 || '☾'.codePointAt(0) !== 0x263E || '☀'.codePointAt(0) !== 0x2600) bad.push('頁の切り替えの印');
+    if (x.readme.split('\n')[0] !== '# 自律と自己陶冶' || x.build.indexOf("const SITE_NAME = '自律と自己陶冶';") < 0) bad.push('サイトの名が README の題と違う');
+
+    /* 許諾。ライセンスの表の二つの行、assets/ が表に無いこと、下の欄、LICENSE の冒頭、言語モデルの表の行。 */
+    const lic = block(x.readme, '## ライセンス');
+    const licRows = tableRows(lic).map((r) => r.join(' | '));
+    if (JSON.stringify(licRows) !== JSON.stringify(['散文・論文・構造化データ —— `README.md`、`ERRATA.md`、`SHELF.md`、`pdf/` の三篇、`docs/` | [CC BY 4.0](LICENSE)', '実装 —— `verification/` の検査スクリプトと `build.js` | [MIT](LICENSE-CODE)'])) bad.push('README のライセンスの表が頁の書いたものと違う');
+    if (/assets/.test(lic)) bad.push('README のライセンスの節が assets/ を挙げる（頁は挙がっていないと書く）');
+    if (!/^Creative Commons Attribution 4\.0 International/.test(x.license) || !/^MIT License/.test(x.licenseCode)) bad.push('LICENSE か LICENSE-CODE の冒頭');
+    for (const [rel, h] of Object.entries(x.html)) {
+      const foot = (/<footer>([\s\S]*?)<\/footer>/.exec(h) || ['', ''])[1];
+      if (foot.indexOf('CC BY 4.0') < 0 || foot.indexOf('運営 根本卓哉') < 0) bad.push(rel + ' の下の欄の許諾か運営');
+      const m = /<a href="([^"]+)">デザインに関する法的な扱い<\/a>/.exec(foot);
+      if (!m || path.posix.normalize(path.posix.join(path.posix.dirname(rel), m[1])) !== 'docs/design-legal.html') bad.push(rel + ' の下の欄がこの頁を指さない');
+    }
+    if (!x.files.includes('docs/design-legal.html')) bad.push('頁が生成されていない');
+    if (x.readme.indexOf('| [docs/design-legal.md](docs/design-legal.md) |') < 0) bad.push('README の構成の表から指していない');
+    if (x.readme.indexOf('| Claude Code（Anthropic） | このリポジトリの構成、PDF からの Markdown への起こし、サイトの生成と検査のコード |') < 0) bad.push('言語モデルの表の Claude Code の行');
+
+    /* 見やすさ。 */
+    if (!/@media \(prefers-reduced-motion: reduce\) \{\s*\*, \*::before, \*::after \{ transition-duration: \.01ms !important; \}\s*\}/.test(x.css)) bad.push('動きを減らす設定');
+    if (!/\.prose a \{[^}]*border-bottom: 1px solid var\(--line\);[^}]*\}/.test(x.css)) bad.push('本文のリンクの下の線');
+    for (const [rel, h] of Object.entries(x.html)) {
+      if (h.indexOf('<a class="skip-link" href="#main">本文へスキップ</a>') < 0 || h.indexOf('<main id="main"') < 0) bad.push(rel + ' に本文へスキップが無い');
+      if (h.indexOf('<html lang="ja">') < 0) bad.push(rel + ' の lang');
+    }
+    if (x.keyboard.indexOf("document.documentElement.style.fontSize = '200%';") < 0 || x.keyboard.indexOf("pg.keyboard.press('Tab')") < 0) bad.push('check_keyboard.js の 200% か Tab');
+    if (x.verify.indexOf('node verification/check_keyboard.js') < 0) bad.push('CI が check_keyboard.js を走らせない');
+    if (x.self.indexOf('if (r < 4.5) low.push(') < 0 || sec('## 見やすさ').indexOf('WCAG の 4.5:1 以上あります。') < 0) bad.push('配色の比の 4.5:1');
+    if (sec('## 見やすさ').indexOf('障害を理由とする差別の解消の推進に関する法律（以下、障害者差別解消法）') < 0
+      || x.doc.indexOf('障害者差別解消法') < x.doc.indexOf('障害を理由とする差別の解消の推進に関する法律')) bad.push('障害者差別解消法の正式の名が先に無い');
+
+    /* 条の文。 */
+    const 条 = x.statutes['条'] || {};
+    const src = x.statutes['出所'] || {};
+    if (!/^[0-9a-f]{40}$/.test(src['コミット'] || '') || x.doc.indexOf('コミット ' + (src['コミット'] || '').slice(0, 7)) < 0) bad.push('出所のコミット');
+    if (src['取り寄せた日'] !== '2026-11-22' || x.doc.indexOf('e-Gov 法令 API から ' + src['取り寄せた日'] + ' に取り寄せた写し') < 0) bad.push('取り寄せた日');
+    for (const [k, v] of Object.entries(条)) {
+      if (sha256(v['文'] || '') !== v.sha256) bad.push(k + ' の SHA-256 が文と合わない');
+      if (/^障害者差別解消法 /.test(k) && v['法令名'] !== '障害を理由とする差別の解消の推進に関する法律') bad.push(k + ' の法令名');
+      if (x.sibling && x.sibling[k] !== undefined && x.sibling[k] !== v['文']) bad.push(k + ' が出所のリポジトリの文と違う');
+    }
+    const lines = x.doc.split('\n');
+    const used = new Set();
+    lines.forEach((l, i) => {
+      if (!l.startsWith('> ')) return;
+      const q = l.slice(2);
+      let j = i - 1;
+      while (j >= 0 && !lines[j].trim()) j--;
+      const intro = lines[j] || '';
+      const key = quotes(intro).find((k) => 条[k] || k === 'LICENSE');
+      if (!key) { bad.push((i + 1) + ' 行目の引用の出所が無い'); return; }
+      used.add(key);
+      const full = key === 'LICENSE' ? x.license : 条[key]['文'];
+      if (full.indexOf(q) < 0) bad.push(key + ' の引用が一字一句同じでない');
+      else if (/全文を引きます。$/.test(intro) !== (q === full)) bad.push(key + ' の「全文」と「切り出し」が引用と合わない');
+      else if (q !== full && !/を切り出して引きます。$/.test(intro)) bad.push(key + ' の切り出しを断っていない');
+      const page = x.html['docs/design-legal.html'] || '';
+      if (page.indexOf('<blockquote>' + q.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</blockquote>') < 0) bad.push(key + ' の引用が生成した頁に無い');
+    });
+    Object.keys(条).filter((k) => !used.has(k)).forEach((k) => bad.push('写したのに引かない条: ' + k));
+    if (Object.keys(条).length === 0) bad.push('条が無い');
+    return bad;
+  }
+
+  const now = problems(real);
+  const sib = real.sibling ? Object.keys(real.statutes['条']).filter((k) => real.sibling[k] !== undefined).length : 0;
+  check('デザインに関する法的な扱い（docs/design-legal.md）が、配るファイル・書体・画像・許諾・見やすさ・条の文と合う（条 '
+    + Object.keys(real.statutes['条']).length + '、出所のリポジトリと突き合わせた条 ' + sib + '）', now);
+
+  const W = (k, v) => Object.assign({}, real, { [k]: v });
+  const H = (rel, f) => W('html', Object.assign({}, real.html, { [rel]: f(real.html[rel]) }));
+  const D = (a, b) => W('doc', real.doc.replace(a, b));
+  const S = (k, f) => W('statutes', Object.assign({}, real.statutes, { 条: Object.assign({}, real.statutes['条'], { [k]: f(real.statutes['条'][k]) }) }));
+  const key0 = '意匠法 第23条';
+  const breaks = [
+    ['site/ にロゴの画像を足す', W('files', real.files.concat(['assets/logo.svg']).sort())],
+    ['表から PDF の行を外す', D(/\n\| 三篇の論文の PDF \|[^\n]*/, '')],
+    ['除外の三つから robots.txt を外す', D('`sitemap.xml`、`robots.txt`、`.nojekyll`', '`sitemap.xml`、`.nojekyll`')],
+    ['style.css に @font-face を足す', W('css', real.css + '\n@font-face { font-family: X; src: url(x.woff2); }\n')],
+    ['本文の書体の並びから一つ外す', W('css', real.css.replace('"Noto Sans JP", ', ''))],
+    ['書体の並びの数の言い方を変える', D('`font-family` の並びは、次の四つです。', '`font-family` の並びは、次の三つです。')],
+    ['頁にアイコンを宣言する', H('index.html', (h) => h.replace('</head>', '<link rel="icon" href="favicon.ico">\n</head>'))],
+    ['頁に画像を足す', H('docs/claims.html', (h) => h.replace('</main>', '<img src="x.png" alt="x">\n</main>'))],
+    ['頁に外のスタイルシートを足す', H('index.html', (h) => h.replace('</head>', '<link rel="stylesheet" href="https://example.org/x.css">\n</head>'))],
+    ['切り替えの印を変える', W('theme', real.theme.replace("'☀' : '☾'", "'*' : '☾'"))],
+    ['README のライセンスの表に assets/ を足す', W('readme', real.readme.replace('| 実装 —— `verification/` の検査スクリプトと `build.js` |', '| 実装 —— `verification/` の検査スクリプトと `build.js` と `assets/` |'))],
+    ['一つの頁の下の欄から、この頁へのつなぎを外す', H('ERRATA.html', (h) => h.replace(/ &nbsp;\/&nbsp; <a href="[^"]*">デザインに関する法的な扱い<\/a>/, ''))],
+    ['動きを減らす設定を外す', W('css', real.css.replace(/@media \(prefers-reduced-motion: reduce\) \{[\s\S]*?\n\}\n/, ''))],
+    ['本文のリンクの下の線を外す', W('css', real.css.replace('.prose a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); }', '.prose a { color: var(--text); text-decoration: none; }'))],
+    ['一つの頁から本文へスキップを外す', H('SHELF.html', (h) => h.replace('<a class="skip-link" href="#main">本文へスキップ</a>', ''))],
+    ['引いた条の文を一字変える', D('意匠権者は、業として登録意匠', '意匠権者は、業として登録商標')],
+    ['写しの文を一字変える（SHA-256 が合わない）', S(key0, (v) => Object.assign({}, v, { 文: v['文'].replace('専有', '占有') }))],
+    ['出所のリポジトリの文と食い違う', W('sibling', Object.assign({}, real.sibling || {}, { [key0]: real.statutes['条'][key0]['文'] + ' ' }))],
+    ['切り出した引用を「全文」と名乗る', D('`意匠法 第2条` の第1項を切り出して引きます。', '`意匠法 第2条` の全文を引きます。')],
+    ['引用を一つ外す（写したのに引かない条が残る）', D(/`商標法 第25条` の全文を引きます。\n\n> [^\n]*\n/, '')],
+    ['障害者差別解消法の正式の名を外す', D('障害を理由とする差別の解消の推進に関する法律（以下、障害者差別解消法）を引きます。', '障害者差別解消法を引きます。')],
+    ['LICENSE の引いた文を変える', W('license', real.license.replace('but not otherwise.', 'and otherwise.'))],
+    ['頁に創作の系列の名を書く', D('出所のリポジトリの名を、この頁には書いていません。', '出所のリポジトリは nusquama です。')]
+  ];
+  const missed = breaks.filter(([, x]) => problems(x).length === 0).map(([n]) => n);
+  check('壊して確かめる：デザインの頁の部品の一覧・書体・アイコンと画像と外の素材・切り替えの印・ライセンスの表・下の欄・見やすさ・条の文と写しと出所のどれを壊しても落ちる（'
+    + (breaks.length - missed.length) + ' / ' + breaks.length + '）', missed);
+}
+
 console.log();
 if (failures.length) {
   console.log(failures.length + ' 項目が通りませんでした。');
