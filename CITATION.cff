@@ -58,6 +58,9 @@ references:
       - type: url
         value: "https://philarchive.org/rec/NEMTNA"
         description: PhilArchive の掲載ページ
+      - type: url
+        value: "https://dl.ndl.go.jp/pid/15017937"
+        description: 国立国会図書館デジタルコレクション（info:ndljp/pid/15017937）
     notes: Preprint. Not peer-reviewed. Original version 21 October 2025.
   - type: article
     title: >-
@@ -78,6 +81,9 @@ references:
       - type: url
         value: "https://philarchive.org/rec/NEMMOI"
         description: PhilArchive の掲載ページ
+      - type: url
+        value: "https://dl.ndl.go.jp/pid/15017938"
+        description: 国立国会図書館デジタルコレクション（info:ndljp/pid/15017938）
     notes: Exploratory essay, revised and expanded edition. Preprint. Not peer-reviewed.
   - type: article
     title: >-
