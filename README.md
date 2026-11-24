@@ -323,15 +323,21 @@ PhilArchive は DOI を発行しません。掲載先が増えても識別子は
 
 著者ページ: [PhilPeople](https://philpeople.org/profiles/takuyanemoto) ｜ [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=8730280) ｜ [ORCID](https://orcid.org/0009-0000-1406-0547)
 
-### 予定：独身論の続き
+### 独身論の続き
 
-独身論の続きを準備しています。
+独身論の続きを書きました。
+題は「Celibacy, Attachment, and the Non-Reproducing Individual: A Psychiatric and Biological Re-examination of “The Nobility and Exemplarity of the Celibate Individual”」です。
+この題は原稿のもので、SSRN の記録とは突き合わせていません。
 独身論が頼っている心理学・精神医学と生物学の主張を、公表された研究に照らして検討し直す論文です。
 臨床の主張や助言はしません。
 出す先は SSRN と PhilArchive で、この順に出します。Zenodo には出しません。
 この続きの正本の DOI は、SSRN の DOI とします。独身論の正本は Zenodo なので、続きだけ正本の場が異なります。
 この出し方は 2026-11-18 に利用者が決めました。
-SSRN への投稿は後回しにしており、まだ出していません。
+SSRN の DOI は `10.2139/ssrn.7726682` です。
+この番号は、2026-11-24 に利用者から受け取りました。
+同じ日に、Crossref の API はこの DOI に Resource not found を返しました。
+原稿と PDF は、このリポジトリに置いていません。`papers/` と `pdf/` は三篇のままです。
+原稿の日付は 2026-11-18 です。決めごと 15 が許す、独身論の続きにあたります。
 
 ## サイトを手元で作る
 
