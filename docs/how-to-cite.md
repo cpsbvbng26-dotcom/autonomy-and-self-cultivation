@@ -71,6 +71,7 @@ Solitary Spiritual Autonomy," preprint, August 2026, https://doi.org/10.5281/zen
 | Zenodo（正） | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) |
 | SSRN | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) |
 | 国立国会図書館（DOI ではない） | [info:ndljp/pid/15017937](https://dl.ndl.go.jp/pid/15017937) | [info:ndljp/pid/15017938](https://dl.ndl.go.jp/pid/15017938) |
+| 全国書誌（電子書籍編、2026-11-24 提供分） | [R100000039-I15017937](https://ndlsearch.ndl.go.jp/books/R100000039-I15017937) | [R100000039-I15017938](https://ndlsearch.ndl.go.jp/books/R100000039-I15017938) |
 
 引用には Zenodo の DOI を用います。同じ本文なので、どちらを引いても間違いではありませんが、
 引用がばらけると被引用が分散します。著者としては Zenodo を正としています。
