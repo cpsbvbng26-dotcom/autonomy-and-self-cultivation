@@ -306,12 +306,13 @@ python3 verification/check_fidelity.py -v    # 食い違いを一件ずつ表示
 
 | | Zenodo（正） | SSRN | PhilArchive | 国立国会図書館 |
 | --- | --- | --- | --- | --- |
-| 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [NEMTNA](https://philarchive.org/rec/NEMTNA) | [info:ndljp/pid/15017937](https://dl.ndl.go.jp/pid/15017937) |
-| 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) | [NEMMOI](https://philarchive.org/rec/NEMMOI) | [info:ndljp/pid/15017938](https://dl.ndl.go.jp/pid/15017938) |
+| 独身論 | [10.5281/zenodo.22058254](https://doi.org/10.5281/zenodo.22058254) | [10.2139/ssrn.7358779](https://doi.org/10.2139/ssrn.7358779) | [NEMTNA](https://philarchive.org/rec/NEMTNA) | [info:ndljp/pid/15017937](https://dl.ndl.go.jp/pid/15017937)<br>全国書誌（電子書籍編） [R100000039-I15017937](https://ndlsearch.ndl.go.jp/books/R100000039-I15017937) |
+| 人格的帝国主義 | [10.5281/zenodo.22057583](https://doi.org/10.5281/zenodo.22057583) | [10.2139/ssrn.7358818](https://doi.org/10.2139/ssrn.7358818) | [NEMMOI](https://philarchive.org/rec/NEMMOI) | [info:ndljp/pid/15017938](https://dl.ndl.go.jp/pid/15017938)<br>全国書誌（電子書籍編） [R100000039-I15017938](https://ndlsearch.ndl.go.jp/books/R100000039-I15017938) |
 | 断章論 | [10.5281/zenodo.22064241](https://doi.org/10.5281/zenodo.22064241) | —（SSRN に弾かれた） | [NEMFSI](https://philarchive.org/rec/NEMFSI)（2026-09-26 に削除を依頼。いまの状態は、ここからは確かめていません） | — |
 
 国立国会図書館の番号は、デジタルコレクションの資料の番号で、DOI ではありません。
 2026-11-21 に書誌が登録されました。オンライン資料収集制度（e デポ）で、Zenodo のレコードから収集されたものです。
+二篇は、2026-11-24 に提供された全国書誌（電子書籍編）のファイルにも載りました。表の R100000039-I… は、国立国会図書館サーチの書誌の番号です。
 
 PhilArchive は DOI を発行しません。掲載先が増えても識別子は増えないため、
 哲学の読者に届ける窓口として使っています。

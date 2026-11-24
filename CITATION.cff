@@ -61,6 +61,9 @@ references:
       - type: url
         value: "https://dl.ndl.go.jp/pid/15017937"
         description: 国立国会図書館デジタルコレクション（info:ndljp/pid/15017937）
+      - type: url
+        value: "https://ndlsearch.ndl.go.jp/books/R100000039-I15017937"
+        description: 全国書誌（電子書籍編）2026-11-24 提供分の書誌（国立国会図書館サーチ、R100000039-I15017937）
     notes: Preprint. Not peer-reviewed. Original version 21 October 2025.
   - type: article
     title: >-
@@ -84,6 +87,9 @@ references:
       - type: url
         value: "https://dl.ndl.go.jp/pid/15017938"
         description: 国立国会図書館デジタルコレクション（info:ndljp/pid/15017938）
+      - type: url
+        value: "https://ndlsearch.ndl.go.jp/books/R100000039-I15017938"
+        description: 全国書誌（電子書籍編）2026-11-24 提供分の書誌（国立国会図書館サーチ、R100000039-I15017938）
     notes: Exploratory essay, revised and expanded edition. Preprint. Not peer-reviewed.
   - type: article
     title: >-
