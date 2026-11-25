@@ -328,7 +328,7 @@ PhilArchive は DOI を発行しません。掲載先が増えても識別子は
 
 独身論の続きを書きました。
 題は「Celibacy, Attachment, and the Non-Reproducing Individual: A Psychiatric and Biological Re-examination of “The Nobility and Exemplarity of the Celibate Individual”」です。
-この題は原稿のもので、SSRN の記録とは突き合わせていません。
+2026-11-24 の時点では、この題は原稿のもので、SSRN の記録とは突き合わせていませんでした。
 独身論が頼っている心理学・精神医学と生物学の主張を、公表された研究に照らして検討し直す論文です。
 臨床の主張や助言はしません。
 出す先は SSRN と PhilArchive で、この順に出します。Zenodo には出しません。
@@ -337,6 +337,13 @@ PhilArchive は DOI を発行しません。掲載先が増えても識別子は
 SSRN の DOI は `10.2139/ssrn.7726682` です。
 この番号は、2026-11-24 に利用者から受け取りました。
 同じ日に、Crossref の API はこの DOI に Resource not found を返しました。
+2026-11-25 に、Crossref の API で記録を確かめました。
+記録が作られた時刻は 2026-11-24T05:11:04Z です。
+Resource not found を受け取った時刻は書き留めていません。そのため、二つの前後は分かりません。
+記録の題は、原稿の題と同じです。違うのは引用符の形だけで、Crossref の記録はまっすぐな引用符を使っています。
+記録の著者は Takuya Nemoto です。著者には ORCID `0009-0000-1406-0547` が、ORCID の認証を経て付いています。
+この DOI は、ORCID の公開の記録にも載っています。これも 2026-11-25 に確かめました。
+SSRN が頁を公開した日は確かめていません。SSRN の頁は、作業の環境から開けません。
 原稿と PDF は、このリポジトリに置いていません。`papers/` と `pdf/` は三篇のままです。
 原稿の日付は 2026-11-18 です。決めごと 15 が許す、独身論の続きにあたります。
 
